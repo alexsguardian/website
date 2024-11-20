@@ -1,14 +1,18 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro'
-import { Notification } from 'accessible-astro-components'
-import { Icon } from 'astro-icon/components'
-import '@astrojs/tailwind/base.css'
-import '../assets/scss/globals.scss'
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import { Notification } from 'accessible-astro-components';
+import { Icon } from 'astro-icon/components';
+import '@astrojs/tailwind/base.css';
+import '../assets/scss/globals.scss';
+import PageTitle from '../components/PageTitle.astro';
+
+const pageTitle = "Scams";
 ---
 
 <DefaultLayout title="Scams">
   <div class="container">
-    <h1 style="display: flex; justify-content: center; margin-bottom: 2rem;">Scams</h1>
+    <PageTitle title={pageTitle} />
+
     <div id="scam-warning">
       <Notification type="error">
         <Icon name="ion:warning-outline" />
@@ -152,7 +156,6 @@ import '../assets/scss/globals.scss'
             height="315"
             src="https://www.youtube.com/embed/_3RBNNbMhqs?si=MwI4ygr0ZvvviNxs"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen></iframe>
@@ -160,7 +163,6 @@ import '../assets/scss/globals.scss'
             height="315"
             src="https://www.youtube.com/embed/vu-Y1h9rTUs?si=BL054ZNXVratT6V-"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen></iframe>
@@ -168,7 +170,6 @@ import '../assets/scss/globals.scss'
             height="315"
             src="https://www.youtube.com/embed/gtFEBY_9J30?si=MUjrIO72QFgePwzH"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen></iframe>
@@ -176,7 +177,6 @@ import '../assets/scss/globals.scss'
             height="315"
             src="https://www.youtube.com/embed/JlwQ2tPNSS8?si=Sk2s4YqDJVcPoM43"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen></iframe>
@@ -185,3 +185,57 @@ import '../assets/scss/globals.scss'
     </div>
   </div>
 </DefaultLayout>
+
+<style>
+  #scam-warning{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+#scam-def {
+    ul, p, h2 {
+        display: flex;
+        flex-direction: column;
+    }
+    ul {
+        gap: 0.2rem;
+    }
+    h2 {
+        margin-bottom: 2rem;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-decoration-thickness: 2px;
+    }
+    h3 {
+        margin: 0 0.6rem 0.6rem;
+    }
+}
+#scam-def-2 {
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+}
+#yt-vids {
+    display: grid;
+    grid: auto auto/auto auto;
+    row-gap: 10px;
+    column-gap: 10px;
+    margin-top: 1rem;
+
+    iframe {
+        aspect-ratio: 16/9;
+    }
+}
+@media (max-width: 960px) {
+    #yt-vids {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }    
+    iframe {
+        aspect-ratio: 4/3;
+    }
+}
+</style>
