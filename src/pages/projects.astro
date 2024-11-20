@@ -1,83 +1,58 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro'
-import ContentMedia from '../components/ContentMedia.astro'
-import ProjectCard from '../components/ProjectCard.astro'
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import ContentMedia from '../components/ContentMedia.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PageTitle from '../components/PageTitle.astro';
+import ProjectContainer from '../components/ProjectContainer.astro';
+
+const pageTitle = "Projects";
 ---
 
-<DefaultLayout title="Projects">
+<DefaultLayout title={pageTitle}>
   <div class="container">
-    <div id="center">
-      <h1>Projects</h1>
-      <p>This page contains some examples of projects Alex's Guardian has done.</p>
-      <p class="text-sm">To protect the privacy of clients some images are cropped or edited.</p>
-    </div>
-    <hr>
-    <br>
-    <section class="body-font mb-20">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-5">
-          <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4">Custom PCs</h2>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Below are a few examples of custom PCs we have built for clients. Images are provided to us by the client or taken by us directly.</p>
-        </div>
-        <div class="flex flex-wrap -m-4">
-          <ProjectCard 
-            title="Chris V.'s PC"
-            body='A custom highend build for Chris V. This was a fun build and we think it turned out great!'
-            aux="System specs: i7-13700KF, 32GB RAM, and a RTX 4090. With Corsair iCue all in a Lian Li 011 Dynamic Evo."
-            img="/src/assets/img/custom-pc-1.webp"
-          />
-          <ProjectCard 
-            title="Geoffery S.'s PC"
-            body="Another custom highend build for Geoffery S. The Deep Cool AIO's infinity mirror CPU block looks sweet!"
-            aux="System specs: i7-14700K, 32GB RAM, and a RTX 4070TI. All in a NZXT H9 Flow."
-            img="/src/assets/img/custom-pc-2.webp"
-          />
-        </div>
-      </div>
-    </section>
-    <section class="body-font">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-5">
-          <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4">Camera Installs</h2>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Below are a few examples of camera installtions we have done. To protect the privacy of clients some images are cropped or edited.</p>
-        </div>
-        <div class="flex flex-wrap -m-4">
-          <ProjectCard 
-            title="A Full 360"
-            body='A client wanted to have a full 360 view of their property. We also installed some color nightvision cameras.'
-            aux="System Specs: 6x CX810, PoE Doorbell, 3x Duo 3, 2x RLC-520A, and a RLN36. Powered by Ubiquiti!"
-            img="/src/assets/img/camera-install-1.webp"
-          />
-          <ProjectCard 
-            title="Geoffery S.'s PC"
-            body="Another custom highend build for Geoffery S. The Deep Cool AIO's infinity mirror CPU block looks sweet!"
-            aux="System specs: i7-14700K, 32GB RAM, RTX 4070TI, all in a NZXT H9 Flow."
-            img="/src/assets/img/custom-pc-2.webp"
-          />
-        </div>
-      </div>
-    </section>
-    <section class="body-font">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-5">
-          <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4">Network Installs</h2>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Below are a few examples of networking installtions we have done.</p>
-        </div>
-        <div class="flex flex-wrap -m-4">
-          <ProjectCard 
-            title="A Full 360"
-            body='A client wanted to have a full 360 view of their property. We also installed some color nightvision cameras.'
-            aux="System Specs: 6x CX810, PoE Doorbell, 3x Duo 3, 2x RLC-520A, and a RLN36"
-            img="/src/assets/img/camera-install-1.webp"
-          />
-          <ProjectCard 
-            title="Geoffery S.'s PC"
-            body="Another custom highend build for Geoffery S. The Deep Cool AIO's infinity mirror CPU block looks sweet!"
-            aux="System specs: i7-14700K, 32GB RAM, RTX 4070TI, all in a NZXT H9 Flow."
-            img="/src/assets/img/custom-pc-2.webp"
-          />
-        </div>
-      </div>
-    </section>
+
+    <PageTitle title={pageTitle} desc="This page contains some examples of projects Alex's Guardian has done." notice="To protect the privacy of clients some images are cropped or edited." />
+    
+    <hr class="py-4">
+
+    <ProjectContainer title="Custom PCs">
+      <ProjectCard
+        title="Chris V.'s PC"
+        body='A custom highend build for Chris V. This was a fun build and we think it turned out great!'
+        aux="System specs: i7-13700KF, 32GB RAM, and a RTX 4090. With Corsair iCue all in a Lian Li 011 Dynamic Evo."
+        img="/src/assets/img/custom-pc-1.webp"
+      />
+      <ProjectCard 
+        title="Geoffery S.'s PC"
+        body="Another custom highend build for Geoffery S. The Deep Cool AIO's infinity mirror CPU block looks sweet!"
+        aux="System specs: i7-14700K, 32GB RAM, and a RTX 4070TI. All in a NZXT H9 Flow."
+        img="/src/assets/img/custom-pc-2.webp"
+      />
+      <ProjectCard
+        title="Test card"
+        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, inventore?"
+        aux="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro veritatis quas asperiores quos repudiandae."
+        
+      />
+    </ProjectContainer>
+
+    <ProjectContainer title="Camera Installs">
+      <ProjectCard 
+        title="A Full 360"
+        body='A client wanted to have a full 360 view of their property. We also installed some color nightvision cameras.'
+        aux="System Specs: 6x CX810, PoE Doorbell, 3x Duo 3, 2x RLC-520A, and a RLN36. Powered by Ubiquiti!"
+        img="/src/assets/img/camera-install-1.webp"
+      />
+    </ProjectContainer>
+
+    <ProjectContainer title="Network Installs">
+      <ProjectCard
+        title=""
+        body=""
+        aux=""
+        
+      />
+    </ProjectContainer>
+
   </div>
 </DefaultLayout>
