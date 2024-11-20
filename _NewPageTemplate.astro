@@ -1,0 +1,29 @@
+---
+// Delete the "ts-ignore" when using this template
+//@ts-ignore
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+//@ts-ignore
+import PageTitle from '../components/PageTitle.astro';
+
+const pageTitle = "Projects";
+---
+
+<DefaultLayout title={pageTitle}>
+  <div class="container">
+
+    // 3 page title examples
+    // The "desc"and "notice" are optional
+    
+    // # 1
+    <PageTitle title={pageTitle} />
+
+    // # 2
+    <PageTitle title={pageTitle} desc="Page description" />
+
+    // # 3
+    <PageTitle title={pageTitle} desc="Page description" notice="Page notice (shows under description)" />
+
+    // ⬇⬇ Page content goes here ⬇⬇
+
+  </div>
+</DefaultLayout>
