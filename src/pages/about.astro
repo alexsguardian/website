@@ -2,18 +2,18 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro'
 import { Card } from 'accessible-astro-components'
 import ContentMedia from '../components/ContentMedia.astro'
+import PageTitle from '../components/PageTitle.astro'
+
+const pageTitle = "About";
 ---
 
-<DefaultLayout>
+<DefaultLayout title={pageTitle}>
   <div class="container">
-    <div id="center">
-      <h1>About</h1>
-      <p>
-        Alex's Guardian was started in 2015 by Alexander Henderson with the goal to make Information Technology (IT)
-        work easier and transparent. IT work should never be complicated, or hidden behind bogus fees, for end users &
-        businesses. You want someone to put YOU before profit.
-      </p>
-    </div>
+
+    <PageTitle 
+      title={pageTitle} 
+      desc="Alex's Guardian was started in 2015 by Alexander Henderson with the goal to make Information Technology (IT) work easier and transparent. IT work should never be complicated, or hidden behind bogus fees, for end users & businesses. You want someone to put YOU before profit." />
+
     <div>
       <ContentMedia imgSrc="/about/map.webp" lazyload alt="Map picture of Lancaster County, PA">
         <h2>Manheim, PA</h2>
