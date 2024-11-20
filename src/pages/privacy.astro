@@ -1,12 +1,17 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro'
+import PageTitle from '../components/PageTitle.astro';
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+
+const pageTitle = "Privacy Policy";
 ---
 
 <!-- TODO: Add privacy policy to this page -->
-<DefaultLayout>
+<DefaultLayout title={pageTitle}>
   <section class="container">
+
+    <PageTitle title={pageTitle} />
+
     <div id="spacing">
-      <h1 style="display: flex; justify-content: center; margin-bottom: 2rem;">Privacy Policy</h1>
       <h2>Introduction</h2>
       <p>
         Welcome to Alex's Guardian. We value your privacy and are committed to protecting your personal information.
@@ -139,17 +144,18 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
       </p>
     </div>
   </section>
-  <style>
-    #spacing {
-      p {
-        margin-bottom: 0.5rem;
-      }
-      h2 {
-        margin-bottom: 0.2rem;
-      }
-      li {
-        margin-bottom: 0.5rem;
-      }
-    }
-  </style>
 </DefaultLayout>
+
+<style>
+  #spacing {
+    p {
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin-bottom: 0.2rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>
