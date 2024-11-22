@@ -34,8 +34,8 @@ interface Props {
 const { desc, icon = 'mdi:rocket', title = 'Title', color } = Astro.props;
 const selectedColor = FeatureColors[color];
 ---
-<div class="relative p-8 flex flex-col gap-4" style=`border-radius: 1rem;border:4px solid ${selectedColor.main};box-shadow:4px 4px 0 3px var(--background), 12px 12px 0 4px ${selectedColor.dark};`>
-  <Icon name={icon} class="relative z-[2]" style=`color: ${selectedColor.main};width:4rem;height:auto;`/>
+<div class="relative h-full p-8 flex flex-col gap-4" style=`border-radius: 1rem;border:4px solid ${selectedColor.main};box-shadow:4px 4px 0 3px var(--background), 12px 12px 0 4px ${selectedColor.dark};`>
+  <Icon name={icon} style=`color: ${selectedColor.main};width:4rem;height:auto;`/>
   <div>
     <h3>{title}</h3>
     {desc && <p>{desc}</p>}
