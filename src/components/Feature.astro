@@ -29,66 +29,15 @@ interface Props {
   color: FeatureColorsType;
   icon: string;
   title: string;
+  desc?: string;
 }
-const { icon = 'mdi:rocket', title = 'Title', color } = Astro.props;
+const { desc, icon = 'mdi:rocket', title = 'Title', color } = Astro.props;
 const selectedColor = FeatureColors[color];
 ---
-
-<div class=`relative p-8 flex flex-col gap-4 before:border-[3px] before:border-[${selectedColor.main}] after:bg-[${selectedColor.dark}]` >
-  <Icon name={icon} class="relative z-[2]" style=`color: ${selectedColor.main};`/>
-  <div class="relative z-[2] content">
-    <h3 class="relative z-[2]">{title}</h3>
-    <p class="relative z-[2]"> 
-      {selectedColor.main}
-      <slot>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, corporis.</slot>
-    </p>
+<div class="relative p-8 flex flex-col gap-4" style=`border-radius: 1rem;border:4px solid ${selectedColor.main};box-shadow:4px 4px 0 3px var(--background), 12px 12px 0 4px ${selectedColor.dark};`>
+  <Icon name={icon} class="relative z-[2]" style=`color: ${selectedColor.main};width:4rem;height:auto;`/>
+  <div>
+    <h3>{title}</h3>
+    {desc && <p>{desc}</p>}
   </div>
 </div>
-
-<!-- <style lang="scss">
-  @use '../assets/scss/base/breakpoint' as *;
-
-  .feature {
-    width: calc(100% - 0.5rem);
-
-    > * {
-      z-index: 2;
-    }
-
-    @include breakpoint(large) {
-      width: 100%;
-    }
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-    }
-
-    &::before {
-      inset: 0;
-      background-color: var(--neutral-100);
-      border-radius: 1rem;
-      box-shadow: 0 0 0 6px var(--neutral-100);
-      z-index: 1;
-    }
-
-    &::after {
-      // background-color: var(--neutral-400);
-      inset: 1rem -0.85rem -0.85rem 1rem;
-      border-radius: 1rem;
-      z-index: 0;
-    }
-  }
-
-  :global(.feature [data-icon]) {
-    height: auto;
-    width: 4rem;
-    // color: var(--feature-action-color, var(--action-color));
-  }
-
-  :global(.darkmode .feature::before) {
-    background-color: var(--dark-100);
-    box-shadow: 0 0 0 6px var(--dark-100);
-  }
-</style> -->
