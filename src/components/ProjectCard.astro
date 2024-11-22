@@ -11,40 +11,12 @@ interface Props {
 const { img = b64image, aux, title, body } = Astro.props
 ---
 
-<!-- <div class="project-item relative overflow-hidden aspect-video max-h-64"> -->
-<div class="project-item overflow-hidden">
-  <img class="" alt="project image" src={img} />
-  <div class=""> <!-- relative h-full w-full bg-white p-6 opacity-0 transition duration-300 ease-in-out hover:opacity-85 -->
-    <h2>{title}</h2>
-    <h3>{body}</h3>
-    <p>{aux}</p>
+<!-- DEBUG: class="outline-dashed outline-2 outline-red-500" -->
+<div class="relative project-item overflow-hidden h-[250px] w-[350px]">
+  <Image class="absolute w-full h-full object-cover" alt="project image" src={img} width="350" height="250"/>
+  <div class="absolute h-full w-full bg-white p-6 opacity-0 transition duration-300 ease-in-out hover:opacity-85">
+    <h2 class="text-lg leading-7 text-gray-900">{title}</h2>
+    <h3 class="text-sm leading-5 text-gray-900">{body}</h3>
+    <p class="text-sm leading-5 text-gray-900">{aux}</p>
   </div>
 </div>
-
-<!-- TODO: Move style back to Tailwind -->
-<style>
-  .project-item {
-    height: 200px;
-    width: 300px;
-    /* outline: dashed 2px red; */
-  }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  h2 {
-    font-size: 18px;
-    line-height: 28px;
-    color: rgb(17 24 39);
-  }
-  h3 {
-    font-size: 14px;
-    line-height: 20px;
-    color: rgb(17 24 39);
-  }
-  p {
-    font-size: 14px;
-    line-height: 20px;
-    color: rgb(17 24 39);
-  }
-</style>

@@ -1,29 +1,57 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 
-const { icon = 'mdi:rocket', title = 'Title' } = Astro.props
+const FeatureColors = {
+  blue: {
+    main: '#6388c5',
+    dark: '#374762',
+  },
+  purple: {
+    main: '#95509f',
+    dark: '#3d2442',
+  },
+  green: {
+    main: '#3dae5b',
+    dark: '#21502c',
+  },
+  yellow: {
+    main: '#fac31e',
+    dark: '#896d1a',
+  },
+  red: {
+    main: '#eb4637',
+    dark: '#7e2b25',
+  },
+} as const;
+
+type FeatureColorsType = keyof typeof FeatureColors;
+interface Props {
+  color: FeatureColorsType;
+  icon: string;
+  title: string;
+}
+const { icon = 'mdi:rocket', title = 'Title', color } = Astro.props;
+const selectedColor = FeatureColors[color];
 ---
 
-<div class="feature flex flex-col gap-4">
-  <Icon name={icon} />
-  <div class="content">
-    <h3>{title}</h3>
-    <p>
+<div class=`relative p-8 flex flex-col gap-4 before:border-[3px] before:border-[${selectedColor.main}] after:bg-[${selectedColor.dark}]` >
+  <Icon name={icon} class="relative z-[2]" style=`color: ${selectedColor.main};`/>
+  <div class="relative z-[2] content">
+    <h3 class="relative z-[2]">{title}</h3>
+    <p class="relative z-[2]"> 
+      {selectedColor.main}
       <slot>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, corporis.</slot>
     </p>
   </div>
 </div>
 
-<style lang="scss">
+<!-- <style lang="scss">
   @use '../assets/scss/base/breakpoint' as *;
 
   .feature {
-    position: relative;
     width: calc(100% - 0.5rem);
-    padding: 2rem;
 
     > * {
-      position: relative;
       z-index: 2;
     }
 
@@ -40,14 +68,13 @@ const { icon = 'mdi:rocket', title = 'Title' } = Astro.props
     &::before {
       inset: 0;
       background-color: var(--neutral-100);
-      border: 3px solid var(--neutral-700);
       border-radius: 1rem;
       box-shadow: 0 0 0 6px var(--neutral-100);
       z-index: 1;
     }
 
     &::after {
-      background-color: var(--action-color);
+      // background-color: var(--neutral-400);
       inset: 1rem -0.85rem -0.85rem 1rem;
       border-radius: 1rem;
       z-index: 0;
@@ -57,11 +84,11 @@ const { icon = 'mdi:rocket', title = 'Title' } = Astro.props
   :global(.feature [data-icon]) {
     height: auto;
     width: 4rem;
-    color: var(--action-color);
+    // color: var(--feature-action-color, var(--action-color));
   }
 
   :global(.darkmode .feature::before) {
     background-color: var(--dark-100);
     box-shadow: 0 0 0 6px var(--dark-100);
   }
-</style>
+</style> -->

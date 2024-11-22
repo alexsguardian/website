@@ -43,14 +43,14 @@ const { src = '/hero.webp' } = Astro.props
 
 <style lang="scss">
   .text-gradient {
-    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-500));
+    background: linear-gradient(315deg, var(--hl-purple) 25%, var(--primary-200));
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   :global(.darkmode .text-gradient) {
-    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-400));
+    background: linear-gradient(315deg, var(--hl-purple) 25%, var(--primary-200));
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

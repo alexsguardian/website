@@ -5,34 +5,7 @@ import '../assets/scss/globals.scss'
 import { Icon } from 'astro-icon/components'
 ---
 
-<style lang="scss" is:global>
-  // theme settings
-  :root {
-    --radius-small: 3px;
-    --radius-large: 6px;
-    --gap-default: 2rem;
-    --font-measure: 70ch;
-    --font-family-default: 'Open Sans', sans-serif;
-    --font-family-special: 'Open Sans', sans-serif;
-    // light theme
-    --font-color: var(--neutral-900);
-    --action-color: var(--primary-300);
-    --action-color-state: var(--primary-500);
-    --background: var(--neutral-100);
-    --primary-background: var(--primary-100);
-    --neutral-background: var(--neutral-200);
-  }
-
-  // dark color scheme overrides
-  .dark-mode {
-    --font-color: var(--neutral-100);
-    --action-color: var(--secondary-100);
-    --action-color-state: var(--secondary-500);
-    --background: var(--dark-100);
-    --primary-background: var(--primary-500);
-    --neutral-background: var(--neutral-900);
-  }
-
+<style lang="scss">
   .carousel {
     position: relative;
     overflow: hidden;
@@ -87,7 +60,7 @@ import { Icon } from 'astro-icon/components'
 
   .star {
     font-size: 1.5rem;
-    color: var(--action-color);
+    color: var(--hl-yellow);
     margin: 0 0.1rem;
   }
 
@@ -111,7 +84,7 @@ import { Icon } from 'astro-icon/components'
   }
 
   .dark-mode .star {
-    color: var(--action-color-state);
+    color: var(--hl-yellow);
   }
 </style>
 
