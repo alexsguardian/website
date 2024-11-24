@@ -1,32 +1,17 @@
 <div class="container">
   <div class="call-to-action mb-32 mt-24 flex flex-col items-center gap-12 rounded-xl p-12 md:p-24">
     <h2 class="text-center text-3xl md:text-5xl">Contact us today!</h2>
-    <a href="mailto:info@alexsguardian.net" class="text-center text-lg"> Contact Us</a>
+    <a href="mailto:info@alexsguardian.net">
+      <button class=`rounded-md border border-[var(--neutral-800)] py-2 px-4 text-center text-2xl transition-all shadow-sm hover:shadow-lg text-[var(--neutral-900)] hover:text-[var(--neutral-200)] hover:bg-[var(--highlight-blue-400)] hover:border-[var(--neutral-800)] focus:text-white focus:bg-[var(--highlight-blue-400)] focus:border-[var(--neutral-800)] active:border-[var(--neutral-800)] active:text-[var(--neutral-200)] active:bg-[var(--highlight-blue-400)] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none` type="button">
+        Contact Us
+      </button>
+    </a>
   </div>
 </div>
 
 <style lang="scss">
   .call-to-action {
     color: var(--neutral-900);
-    background-image: linear-gradient(40deg, var(--primary-100), var(--secondary-200));
-  }
-
-  .call-to-action a:not(button),
-  .call-to-action a:not(button):visited {
-    padding: 1rem;
-    color: var(--neutral-900);
-    font-weight: bold;
-    border: 3px solid var(--neutral-900);
-    border-radius: 3px;
-    text-decoration: none;
-    transition:
-      color 0.15s ease-in-out,
-      background-color 0.15s ease-in-out;
-
-    &:where(:hover, :focus) {
-      color: var(--neutral-100);
-      background-color: var(--neutral-900);
-      text-decoration: underline;
-    }
+    background-image: linear-gradient(40deg, var(--highlight-blue-300) 45%, var(--highlight-purple-200));
   }
 </style>
