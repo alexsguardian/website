@@ -1,15 +1,35 @@
 ---
-const { count, title, sub } = Astro.props
+const FeatureColors = {
+  blue: {
+    main: '#6388c5',
+  },
+  purple: {
+    main: '#95509f',
+  },
+  green: {
+    main: '#3dae5b',
+  },
+  yellow: {
+    main: '#fac31e',
+  },
+  red: {
+    main: '#eb4637',
+  },
+} as const;
+
+type FeatureColorsType = keyof typeof FeatureColors;
+interface Props {
+  color: FeatureColorsType;
+  title: string;
+  sub: string;
+  count: string;
+}
+const { count, title, sub, color} = Astro.props;
+const selectedColor = FeatureColors[color];
 ---
 
 <div class="animate text-center">
-  <p class="text-6xl font-bold">{count}</p>
+  <p class="text-6xl font-bold" style=`color: ${selectedColor.main};`>{count}</p>
   <p class="text-4xl font-semibold">{title}</p>
   <p class="text-2xl">{sub}</p>
 </div>
-
-<style lang="scss">
-  div > p:first-child {
-    color: var(--action-color);
-  }
-</style>
