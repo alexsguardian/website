@@ -8,6 +8,7 @@ import ProjectContainer from '../components/ProjectContainer.astro';
 import CustomPC1 from '../assets/img/custom-pc-1.webp';
 import CustomPC2 from '../assets/img/custom-pc-2.webp';
 import CamInstall1 from '../assets/img/camera-install-1.webp';
+import NetInstall1 from '../assets/img/network-install-1.webp'
 
 const pageTitle = "Projects";
 ---
@@ -43,13 +44,14 @@ const pageTitle = "Projects";
       />
     </ProjectContainer>
 
-    <!-- <ProjectContainer title="Network Installs">
+    <ProjectContainer title="Network Installs">
       <ProjectCard
-        title=""
-        body=""
-        aux=""
+        title="Faster Garage Network"
+        body="A client wanted networking to/from their detached garage, but getting a cable to it was not possible."
+        aux="2x Ubiquiti airMAX NanoStation 5AC Loco"
+        img={NetInstall1}
       />
-    </ProjectContainer> -->
+    </ProjectContainer>
 
   </div>
 </DefaultLayout>
