@@ -6,14 +6,14 @@ import { JSDOM } from 'jsdom';
 // Fetch environment variables
 const emailRecieverAddr = import.meta.env.EMAIL_RECIEVER;
 const emailSenderAddr = import.meta.env.EMAIL_SENDER;
-const emailUser = import.meta.env.EMAIL_SERVICEID;
-const emailPass = import.meta.env.EMAIL_KEY;
+const emailUser = import.meta.env.EMAIL_USER;
+const emailPass = import.meta.env.EMAIL_PASS;
 const host = import.meta.env.EMAIL_HOST;
 const port = import.meta.env.PORT;
 
 // Set character limits
 const nameMaxLength = 100;
-const emailMaxLength = 150;
+const emailMaxLength = 100;
 const phoneMaxLength = 15;
 const titleMaxLength = 50;
 const companyMaxLength = 100;
@@ -109,11 +109,13 @@ export const POST: APIRoute = async ({ request }) => {
     port: port,
     secure: false,
     auth: {
-      user: "",
-      pass: "",
+      user: `${emailUser}`,
+      pass: `${emailPass}`,
     },
   });
-
+  
+  console.log(emailUser, emailPass);
+  
   // Send email
   async function main() {
     try {

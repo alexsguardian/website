@@ -9,6 +9,7 @@ const isSubmitting = ref<boolean>(false);
 const formData = ref({
   name: '',
   email: '',
+  phone: '',
   title: '',
   company: '',
   message: ''
@@ -17,6 +18,7 @@ const formData = ref({
 // Set character limits
 const nameMaxLength = 100;
 const emailMaxLength = 150;
+const phoneMaxLength = 15;
 const titleMaxLength = 50;
 const companyMaxLength = 100;
 const messageMaxLength = 500;
@@ -35,6 +37,7 @@ async function submit(e: Event) {
   const dataToSend = new FormData();
   dataToSend.append('name', formData.value.name);
   dataToSend.append('email', formData.value.email);
+  dataToSend.append('phone', formData.value.name);
   dataToSend.append('title', formData.value.title);
   dataToSend.append('company', formData.value.email);
   dataToSend.append('message', formData.value.message);
@@ -68,6 +71,7 @@ async function submit(e: Event) {
 function resetForm() {
   formData.value = {
     name: '',
+    phone: '',
     email: '',
     title: '',
     company: '',
@@ -94,7 +98,7 @@ function resetForm() {
 
       <div class="mb-[15px]">
         <label for="phone">Callback Number</label>
-        <input type="tel" id="phone" name="phone" v-model="formData.phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="123-867-5309" class="py-3 px-4 block w-full text-md rounded-lg border border-[var(--highlight-blue-200)] dark:border-[var(--highlight-blue-400)] bg-white dark:bg-[var(--highlight-blue-700)]" />
+        <input type="tel" id="phone" name="phone" v-model="formData.phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-867-5309" class="py-3 px-4 block w-full text-md rounded-lg border border-[var(--highlight-blue-200)] dark:border-[var(--highlight-blue-400)] bg-white dark:bg-[var(--highlight-blue-700)]" />
       </div>      
 
       <div class="mb-[15px]">
