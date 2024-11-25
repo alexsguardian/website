@@ -10,6 +10,7 @@ const emailUser = import.meta.env.EMAIL_USER;
 const emailPass = import.meta.env.EMAIL_PASS;
 const host = import.meta.env.EMAIL_HOST;
 const port = import.meta.env.PORT;
+const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SEC_KEY;
 
 // Set character limits
 const nameMaxLength = 100;
@@ -33,6 +34,35 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const data = await request.formData();
+
+  const turnstileToken = data.get("turnstileToken") as string;
+
+  if (!turnstileToken) {
+    return new Response(
+      JSON.stringify({ message: "Turnstile validation token missing." }),
+      { status: 400 }
+    );
+  }
+
+  // Verify the Turnstile token
+  const verifyResponse = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      secret: TURNSTILE_SECRET_KEY,
+      response: turnstileToken,
+    }),
+  });
+
+  const verifyData = await verifyResponse.json();
+
+  if (!verifyData.success) {
+    return new Response(
+      JSON.stringify({ message: "Turnstile verification failed." }),
+      { status: 400 }
+    );
+  }
+
   let name = data.get("name") as string;
   let email = data.get("email") as string;
   let phone = data.get("phone") as string;

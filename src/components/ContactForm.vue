@@ -1,9 +1,35 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 // Track form submission state and response message
 const responseMessage = ref<string>();
 const isSubmitting = ref<boolean>(false);
+const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY;
+
+// Cloudflare Turnstile
+onMounted(() => {
+  // Dynamically load the Turnstile widget
+  const script = document.createElement("script");
+  script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
+
+  // Initialize Turnstile once the script is loaded
+  script.onload = () => {
+    if (window.turnstile) {
+      window.turnstile.render("#turnstile-container", {
+        sitekey: `${TURNSTILE_SITE_KEY}`,
+        callback: (token: string) => {
+          formData.value.turnstileToken = token;
+        },
+        "error-callback": () => {
+          responseMessage.value = "Turnstile validation failed. Please try again.";
+        },
+      });
+    }
+  };
+});
 
 // Data for form inputs with two-way binding
 const formData = ref({
@@ -12,7 +38,8 @@ const formData = ref({
   phone: '',
   title: '',
   company: '',
-  message: ''
+  message: '',
+  turnstileToken: ''
 });
 
 // Set character limits
@@ -26,6 +53,11 @@ const messageMaxLength = 500;
 // Handle form submission
 async function submit(e: Event) {
   e.preventDefault();
+
+  if (!formData.value.turnstileToken) {
+    responseMessage.value = "Please complete the Turnstile challenge.";
+    return;
+  }
 
   if (isSubmitting.value) {
     return;
@@ -75,7 +107,8 @@ function resetForm() {
     email: '',
     title: '',
     company: '',
-    message: ''
+    message: '',
+    turnstileToken: ''
   };
   responseMessage.value = '';
 }
@@ -85,7 +118,7 @@ function resetForm() {
 <template>
   <div class="flex flex-col max-w-xl mx-auto rounded-lg backdrop-blur border border-[var(--highlight-blue-200)] dark:border-[var(--highlight-blue-400)] bg-[var(--neutral-100)] dark:bg-[var(--highlight-blue-900)] shadow p-4 sm:p-6 lg:p-8 w-full">
     <form @submit="submit">
-      
+
       <div class="mb-[15px]">
         <label for="name">Name <span class="text-red-600">*</span></label>
         <input type="text" id="name" name="name" v-model="formData.name" required :maxlength="nameMaxLength" placeholder="John Smith" class="py-3 px-4 block w-full text-md rounded-lg border border-[var(--highlight-blue-200)] dark:border-[var(--highlight-blue-400)] bg-white dark:bg-[var(--highlight-blue-700)]" />
@@ -128,6 +161,10 @@ function resetForm() {
         <span v-if="isSubmitting">Sending...</span>
         <span v-else>Send Message</span>
       </button>
+
+      <div class="mb-[15px]">
+        <div id="turnstile-container"></div>
+      </div>
 
       <p v-if="responseMessage" class="response-message">{{ responseMessage }}</p>
     </form>
