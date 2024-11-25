@@ -103,10 +103,9 @@ jobs:
         id: build
         run: |
           sed -i -e 's#alexsguardian.net#dev.alexsugardian.net#g' ./src/components/SiteMeta.astro
-          sed -i -e 's#{GA-ID}#'${{ secrets.GOOGLE_ANALYTICS_ID_DEV }}'#g' ./src/layouts/DefaultLayout.astro
           sed -i '51i \ \ \ \ <Announcement />' ./src/layouts/DefaultLayout.astro
           npm install
-          npm run build
+          npm run build:dev
       
       - name: htmlproofer test
         uses: chabad360/htmlproofer@master
