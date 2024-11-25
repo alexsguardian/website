@@ -19,7 +19,7 @@ onMounted(() => {
   script.onload = () => {
     if (window.turnstile) {
       window.turnstile.render("#turnstile-container", {
-        sitekey: `${TURNSTILE_SITE_KEY}`,
+        sitekey: TURNSTILE_SITE_KEY,
         callback: (token: string) => {
           formData.value.turnstileToken = token;
         },
