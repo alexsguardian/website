@@ -3,6 +3,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro';
 import { Icon } from 'astro-icon/components';
 import Aside from '../components/Aside.astro';
 import PageTitle from '../components/PageTitle.astro';
+import CallToAction from '../components/CallToAction.astro';
 
 const pageTitle = "Scams";
 ---
@@ -169,6 +170,7 @@ const pageTitle = "Scams";
       </div>
     </div>
   </div>
+  <CallToAction />
 </DefaultLayout>
 
 <!-- This can stay in <style> because converting to tailwind breaks it.. -->

@@ -1,8 +1,9 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro'
-import { Card } from 'accessible-astro-components'
-import ContentMedia from '../components/ContentMedia.astro'
-import PageTitle from '../components/PageTitle.astro'
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import { Card } from 'accessible-astro-components';
+import ContentMedia from '../components/ContentMedia.astro';
+import PageTitle from '../components/PageTitle.astro';
+import CallToAction from '../components/CallToAction.astro';
 
 const pageTitle = "About";
 ---
@@ -30,10 +31,11 @@ const pageTitle = "About";
       </div>
     </div>
   </div>
-
-  <style is:global>
-    #blog-card > div {
-      margin: auto;
-    }
-  </style>
+  <CallToAction />
 </DefaultLayout>
+
+<style is:global>
+  #blog-card > div {
+    margin: auto;
+  }
+</style>

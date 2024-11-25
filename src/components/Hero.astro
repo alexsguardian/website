@@ -15,10 +15,10 @@ const { src = '/hero.webp' } = Astro.props;
           <slot>Transparent IT, No Surprises.</slot>
         </h3>
         <div class="flex flex-col gap-3 min-[500px]:flex-row">
-          <a href="mailto:info@alexsguardian.net" class="!no-underline">
+          <a href="/contact" class="!no-underline">
             <button class=`flex items-center rounded-md bg-[var(--highlight-blue-400)] py-2 px-8 border border-transparent text-center text-lg text-[var(--neutral-200)] transition-all shadow-sm hover:shadow-lg focus:bg-[var(--highlight-blue-500)] focus:shadow-none active:bg-[var(--highlight-blue-500)] hover:bg-[var(--highlight-blue-500)] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none` type="button">
-              <Icon name="ion:email" class="pr-2 h-10 w-10"/>
-              Contact Us         
+              Contact Us
+              <Icon name="mdi:keyboard-arrow-right" class="pl-2 h-10 w-10"/>    
             </button>
           </a>
         </div>
