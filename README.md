@@ -4,7 +4,13 @@
 
 ## Website Info
 
-The current website (wordpress :vomiting_face:) died at the beginning of this year. So rebuilding it in Astro.
+The old website (wordpress :vomiting_face:) died at the beginning of 2024. So rebuilding it in [Astro](https://astro.build/) :rocket:
+
+### TO-DO
+ - [ ] Contact Form + Cloudflare Turnstile.
+ - [ ] Remove SCSS in favor of tailwind :muscle:
+ - [ ] Update License?
+ - [ ] Update build process to support SSR.
 
 ## Development Info
 
@@ -26,7 +32,7 @@ Any and all changes must be approved by [Alex](https://github.com/alexandzors). 
 
 ## Theme Stuff
 
-Alex's Guardian is built on the Accessible Astro Starter theme.
+https://alexsguardian.net is built on a modified version of the Accessible Astro Starter theme.
 
 > Accessible Astro Starter is a ready to use, SEO and a11y friendly blogging theme. It contains plenty of accessible components to build several page types, Tailwind CSS to help you build faster and example pages such as a dynamic Blog, 404, Markdown and MDX. This theme is designed to help you build your project faster and provide a solid base for accessibility!
 
