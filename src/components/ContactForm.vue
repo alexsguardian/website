@@ -4,7 +4,7 @@ import { ref, onMounted } from "vue";
 // Track form submission state and response message
 const responseMessage = ref<string>();
 const isSubmitting = ref<boolean>(false);
-const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY;
+const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY || process.env.TURNSTILE_SITE_KEY;
 
 // Cloudflare Turnstile
 onMounted(() => {
