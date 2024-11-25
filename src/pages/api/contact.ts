@@ -49,7 +49,7 @@ export const POST: APIRoute = async ({ request }) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
-      secret: TURNSTILE_SECRET_KEY,
+      secret: "2x0000000000000000000000000000000AA",
       response: turnstileToken,
     }),
   });

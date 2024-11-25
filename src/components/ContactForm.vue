@@ -19,7 +19,7 @@ onMounted(() => {
   script.onload = () => {
     if (window.turnstile) {
       window.turnstile.render("#turnstile-container", {
-        sitekey: TURNSTILE_SITE_KEY,
+        sitekey: "3x00000000000000000000FF",
         callback: (token: string) => {
           formData.value.turnstileToken = token;
         },
@@ -162,7 +162,7 @@ function resetForm() {
         <span v-else>Send Message</span>
       </button>
 
-      <div class="mb-[15px]">
+      <div class="mt-5">
         <div id="turnstile-container"></div>
       </div>
 
