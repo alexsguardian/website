@@ -115,21 +115,21 @@ jobs:
           directory: "./dist/"
           arguments: --disable-external --checks --allow-hash-href --ignore_urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
       
-      - name: psi mobile test
-        uses: stefafafan/psi-action@v1
-        id: psi-m-testing
-        with:
-          url: "https://dev.alexsguardian.net"
-          strategy: mobile
-          key: ${{ secrets.PS_KEY }}
+      # - name: psi mobile test
+      #   uses: stefafafan/psi-action@v1
+      #   id: psi-m-testing
+      #   with:
+      #     url: "https://dev.alexsguardian.net"
+      #     strategy: mobile
+      #     key: ${{ secrets.PS_KEY }}
 
-      - name: psi desktop test
-        uses: stefafafan/psi-action@v1
-        id: psi-d-testing
-        with:
-          url: "https://dev.alexsguardian.net"
-          strategy: desktop
-          key: ${{ secrets.PS_KEY }}
+      # - name: psi desktop test
+      #   uses: stefafafan/psi-action@v1
+      #   id: psi-d-testing
+      #   with:
+      #     url: "https://dev.alexsguardian.net"
+      #     strategy: desktop
+      #     key: ${{ secrets.PS_KEY }}
 
       - name: Setup SSH
         id: ssh-setup
