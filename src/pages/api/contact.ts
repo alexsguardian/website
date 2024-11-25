@@ -9,7 +9,7 @@ const emailSenderAddr = import.meta.env.EMAIL_SENDER;
 const emailUser = import.meta.env.EMAIL_USER;
 const emailPass = import.meta.env.EMAIL_PASS;
 const host = import.meta.env.EMAIL_HOST;
-const port = import.meta.env.PORT;
+const port = import.meta.env.EMAIL_PORT;
 const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SEC_KEY;
 
 // Set character limits
@@ -49,7 +49,7 @@ export const POST: APIRoute = async ({ request }) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
-      secret: "2x0000000000000000000000000000000AA",
+      secret: TURNSTILE_SECRET_KEY,
       response: turnstileToken,
     }),
   });

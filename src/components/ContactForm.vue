@@ -19,7 +19,7 @@ onMounted(() => {
   script.onload = () => {
     if (window.turnstile) {
       window.turnstile.render("#turnstile-container", {
-        sitekey: "3x00000000000000000000FF",
+        sitekey: TURNSTILE_SITE_KEY,
         callback: (token: string) => {
           formData.value.turnstileToken = token;
         },
@@ -45,7 +45,6 @@ const formData = ref({
 // Set character limits
 const nameMaxLength = 100;
 const emailMaxLength = 150;
-const phoneMaxLength = 15;
 const titleMaxLength = 50;
 const companyMaxLength = 100;
 const messageMaxLength = 500;
