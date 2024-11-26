@@ -69,7 +69,7 @@ async function submit(e: Event) {
   const dataToSend = new FormData();
   dataToSend.append('name', formData.value.name);
   dataToSend.append('email', formData.value.email);
-  dataToSend.append('phone', formData.value.name);
+  dataToSend.append('phone', formData.value.phone);
   dataToSend.append('title', formData.value.title);
   dataToSend.append('company', formData.value.company);
   dataToSend.append('message', formData.value.message);

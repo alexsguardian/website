@@ -41,7 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (!turnstileToken) {
     return new Response(
-      JSON.stringify({ message: "Turnstile validation token missing." }),
+      JSON.stringify({ message: "Turnstile validation token missing. C-100" }),
       { status: 400 }
     );
   }
@@ -63,7 +63,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (!verifyData.success) {
     return new Response(
-      JSON.stringify({ message: "Turnstile verification failed." }),
+      JSON.stringify({ message: "Turnstile verification failed. C-101" }),
       { status: 400 }
     );
   }
@@ -86,7 +86,7 @@ export const POST: APIRoute = async ({ request }) => {
   // Validate that all fields are provided
   if (!name || !email || !message) {
     return new Response(
-      JSON.stringify({ message: "Missing required fields" }),
+      JSON.stringify({ message: "Missing required fields." }),
       { status: 400 }
     );
   }
@@ -191,7 +191,7 @@ export const POST: APIRoute = async ({ request }) => {
     console.error("Failed to send email:", error);
     return new Response(
       JSON.stringify({
-        message: "Failed to send email",
+        message: "Failed to send email.",
         error: error.message,
       }),
       { status: 500 }
