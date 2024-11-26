@@ -6,8 +6,6 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Announcement from '../components/Announcement.astro'
 
-const GoogleAnalyticsKey = import.meta.env.VITE_GA_ID;
-
 const {
   title = "Alex's Guardian",
   description = "Alex's Guardian is an IT consulting & servicing company that specializes in end users and small businesses.",
@@ -45,7 +43,7 @@ const {
         dataLayer.push(arguments)
       }
       gtag('js', new Date())
-      gtag('config', GoogleAnalyticsKey)
+      gtag('config', '{GA-ID}')
     </script>
     <!-- End Google Analytics Script -->
 
