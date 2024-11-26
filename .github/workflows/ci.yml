@@ -104,7 +104,7 @@ jobs:
         run: |
           sed -i -e 's#{TURNSTILE_SEC_KEY}#'${{ secrets.TURNSTILE_SECRET }}'#g' ./src/pages/api/contact.ts
           sed -i -e 's#{EMAIL_PORT}#'${{ secrets.EMAIL_PORT }}'#g' ./src/pages/api/contact.ts
-          sed -i -e 's#{EMAIL_PASS}#'${{ secrets.EMAIL_HOST }}'#g' ./src/pages/api/contact.ts
+          sed -i -e 's#{EMAIL_HOST}#'${{ secrets.EMAIL_HOST }}'#g' ./src/pages/api/contact.ts
           sed -i -e 's#{EMAIL_PASS}#'${{ secrets.EMAIL_PASS }}'#g' ./src/pages/api/contact.ts
           sed -i -e 's#{EMAIL_USER}#'${{ secrets.EMAIL_USER }}'#g' ./src/pages/api/contact.ts
           sed -i -e 's#{EMAIL_SENDER}#'${{ secrets.EMAIL_SENDER }}'#g' ./src/pages/api/contact.ts
