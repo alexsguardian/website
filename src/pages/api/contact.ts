@@ -4,13 +4,13 @@ import DOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 
 // Fetch environment variables
-const emailRecieverAddr = import.meta.env.EMAIL_RECIEVER || process.env.EMAIL_RECIEVER;
-const emailSenderAddr = import.meta.env.EMAIL_SENDER || process.env.EMAIL_SENDER;
-const emailUser = import.meta.env.EMAIL_USER || process.env.EMAIL_USER;
-const emailPass = import.meta.env.EMAIL_PASS || process.env.EMAIL_PASS;
-const host = import.meta.env.EMAIL_HOST || process.env.EMAIL_HOST;
-const port = import.meta.env.EMAIL_PORT || process.env.EMAIL_PORT;
-const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SEC_KEY || process.env.TURNSTILE_SEC_KEY;
+const emailRecieverAddr = import.meta.env.EMAIL_RECIEVER;
+const emailSenderAddr = import.meta.env.EMAIL_SENDER;
+const emailUser = import.meta.env.EMAIL_USER;
+const emailPass = import.meta.env.EMAIL_PASS;
+const emailHost = import.meta.env.EMAIL_HOST;
+const emailPort = import.meta.env.EMAIL_PORT;
+const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SEC_KEY;
 
 // Set character limits
 const nameMaxLength = 100;
@@ -135,8 +135,8 @@ export const POST: APIRoute = async ({ request }) => {
 
   // Create Nodemailer transporter
   let transporter = nodemailer.createTransport({
-    host: host,
-    port: port,
+    host: emailHost,
+    port: emailPort,
     secure: false,
     auth: {
       user: `${emailUser}`,

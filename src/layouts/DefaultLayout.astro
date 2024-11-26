@@ -6,7 +6,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import Announcement from '../components/Announcement.astro'
 
-const GoogleAnaltyicsKey = import.meta.env.GA_ID || process.env.VITE_GA_ID;
+const GoogleAnalyticsKey = import.meta.env.VITE_GA_ID;
 
 const {
   title = "Alex's Guardian",
@@ -45,7 +45,7 @@ const {
         dataLayer.push(arguments)
       }
       gtag('js', new Date())
-      gtag('config', GoogleAnaltyicsKey)
+      gtag('config', GoogleAnalyticsKey)
     </script>
     <!-- End Google Analytics Script -->
 
