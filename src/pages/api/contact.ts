@@ -35,6 +35,8 @@ export const POST: APIRoute = async ({ request }) => {
 
   const data = await request.formData();
 
+  console.log(data);
+
   const turnstileToken = data.get("turnstileToken") as string;
 
   if (!turnstileToken) {
