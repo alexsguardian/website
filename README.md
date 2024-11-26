@@ -7,7 +7,9 @@
 The old website (wordpress :vomiting_face:) died at the beginning of 2024. So rebuilding it in [Astro](https://astro.build/) :rocket:
 
 ### TO-DO
- - [ ] Contact Form + Cloudflare Turnstile.
+ - [ ] Re-do build process to properly support SSR
+ - [ ] Disable contact api for dev site.
+ - [x] ~~Contact Form + Cloudflare Turnstile.~~
  - [ ] Remove SCSS in favor of tailwind :muscle:
  - [ ] Update License?
  - [ ] Update build process to support SSR.
