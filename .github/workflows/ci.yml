@@ -103,7 +103,7 @@ jobs:
         id: build
         run: |
           sed -i -e 's#{GA-ID}#'${{ secrets.GOOGLE_ANALYTICS_ID_DEV }}'#g' ./src/layouts/DefaultLayout.astro
-          sed -i -e 's#{TURNSTILE_SITE_KEY}#'${{ secrets.TURNSTILE_SITE_KEY }}'#g' ./src/layouts/DefaultLayout.astro
+          sed -i -e 's#{TURNSTILE_SITE_KEY}#'${{ secrets.TURNSTILE_SITE_KEY }}'#g' ./src/components/ContactForm.vue
           sed -i -e 's#alexsguardian.net#dev.alexsugardian.net#g' ./src/components/SiteMeta.astro
           sed -i '51i \ \ \ \ <Announcement />' ./src/layouts/DefaultLayout.astro
           npm install
