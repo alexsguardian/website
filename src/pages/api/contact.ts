@@ -4,13 +4,13 @@ import DOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 
 // Fetch environment variables
-const emailRecieverAddr = import.meta.env.EMAIL_RECIEVER;
-const emailSenderAddr = import.meta.env.EMAIL_SENDER;
-const emailUser = import.meta.env.EMAIL_USER;
-const emailPass = import.meta.env.EMAIL_PASS;
-const emailHost = import.meta.env.EMAIL_HOST;
-const emailPort = import.meta.env.EMAIL_PORT;
-const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SEC_KEY;
+const emailRecieverAddr = import.meta.env.EMAIL_RECIEVER || '{EMAIL_RECIEVER}';
+const emailSenderAddr = import.meta.env.EMAIL_SENDER || '{EMAIL_SENDER}';
+const emailUser = import.meta.env.EMAIL_USER || '{EMAIL_USER}';
+const emailPass = import.meta.env.EMAIL_PASS || '{EMAIL_PASS}';
+const emailHost = import.meta.env.EMAIL_HOST || '{EMAIL_HOST}';
+const emailPort = import.meta.env.EMAIL_PORT || '{EMAIL_PORT}';
+const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SEC_KEY || '{TURNSTILE_SEC_KEY}';
 
 // Set character limits
 const nameMaxLength = 100;

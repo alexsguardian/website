@@ -9,8 +9,6 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "build:dev": "VITE_GA_ID=\"$VITE_GA_ID\" EMAIL_RECIEVER=\"$EMAIL_RECIEVER\" EMAIL_SENDER=\"$EMAIL_SENDER\" EMAIL_USER=\"$EMAIL_USER\" EMAIL_PASS=\"$EMAIL_PASS\" EMAIL_HOST=\"$EMAIL_HOST\" EMAIL_PORT=\"$EMAIL_PORT\" VITE_TURNSTILE_SITE_KEY=\"$VITE_TURNSTILE_SITE_KEY\" TURNSTILE_SECRET=\"$TURNSTILE_SECRET\" npm run build",
-    "build:prod": "VITE_GA_ID=\"$VITE_GA_ID\" EMAIL_RECIEVER=\"$EMAIL_RECIEVER\" EMAIL_SENDER=\"$EMAIL_SENDER\" EMAIL_USER=\"$EMAIL_USER\" EMAIL_PASS=\"$EMAIL_PASS\" EMAIL_HOST=\"$EMAIL_HOST\" EMAIL_PORT=\"$EMAIL_PORT\" VITE_TURNSTILE_SITE_KEY=\"$VITE_TURNSTILE_SITE_KEY\" TURNSTILE_SECRET=\"$TURNSTILE_SECRET\" npm run build",
     "partytown": "partytown copylib public/~partytown"
   },
   "devDependencies": {
@@ -39,9 +37,7 @@
     "@astrojs/node": "^8.3.4",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/vue": "^4.5.3",
-    "@cloudflare/pages-plugin-turnstile": "^1.0.2",
     "dompurify": "^3.2.1",
-    "googleapis": "^144.0.0",
     "jsdom": "^25.0.1",
     "motion": "^11.11.17",
     "nodemailer": "^6.9.16"

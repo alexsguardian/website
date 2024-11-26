@@ -102,6 +102,13 @@ jobs:
       - name: build dev
         id: build
         run: |
+          sed -i -e 's#{TURNSTILE_SEC_KEY}#'${{ secrets.TURNSTILE_SECRET }}'#g' ./src/pages/api/contact.ts
+          sed -i -e 's#{EMAIL_PORT}#'${{ secrets.EMAIL_PORT }}'#g' ./src/pages/api/contact.ts
+          sed -i -e 's#{EMAIL_PASS}#'${{ secrets.EMAIL_HOST }}'#g' ./src/pages/api/contact.ts
+          sed -i -e 's#{EMAIL_PASS}#'${{ secrets.EMAIL_PASS }}'#g' ./src/pages/api/contact.ts
+          sed -i -e 's#{EMAIL_USER}#'${{ secrets.EMAIL_USER }}'#g' ./src/pages/api/contact.ts
+          sed -i -e 's#{EMAIL_SENDER}#'${{ secrets.EMAIL_SENDER }}'#g' ./src/pages/api/contact.ts
+          sed -i -e 's#{EMAIL_RECIEVER}#'${{ secrets.EMAIL_RECIEVER }}'#g' ./src/pages/api/contact.ts
           sed -i -e 's#{GA-ID}#'${{ secrets.GOOGLE_ANALYTICS_ID_DEV }}'#g' ./src/layouts/DefaultLayout.astro
           sed -i -e 's#{TURNSTILE_SITE_KEY}#'${{ secrets.TURNSTILE_SITE_KEY }}'#g' ./src/components/ContactForm.vue
           sed -i -e 's#alexsguardian.net#dev.alexsugardian.net#g' ./src/components/SiteMeta.astro
