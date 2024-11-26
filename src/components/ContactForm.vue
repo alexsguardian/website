@@ -73,6 +73,7 @@ async function submit(e: Event) {
   dataToSend.append('title', formData.value.title);
   dataToSend.append('company', formData.value.email);
   dataToSend.append('message', formData.value.message);
+  dataToSend.append('turnstileToken', formData.value.turnstileToken);
 
   // TODO: Rework this.
   // POST works and message is sent but response is ignored.

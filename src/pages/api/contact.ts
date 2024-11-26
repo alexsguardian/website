@@ -47,10 +47,13 @@ export const POST: APIRoute = async ({ request }) => {
   // Verify the Turnstile token
   const verifyResponse = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
     body: new URLSearchParams({
       secret: TURNSTILE_SECRET_KEY,
       response: turnstileToken,
+      remoteip: request.headers["cf-connecting-ip"] || request.headers["x-forwarded-for"],
     }),
   });
 
