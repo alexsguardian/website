@@ -71,7 +71,7 @@ async function submit(e: Event) {
   dataToSend.append('email', formData.value.email);
   dataToSend.append('phone', formData.value.name);
   dataToSend.append('title', formData.value.title);
-  dataToSend.append('company', formData.value.email);
+  dataToSend.append('company', formData.value.company);
   dataToSend.append('message', formData.value.message);
   dataToSend.append('turnstileToken', formData.value.turnstileToken);
 
