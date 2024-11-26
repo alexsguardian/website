@@ -7,6 +7,17 @@ const isSubmitting = ref<boolean>(false);
 
 const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '{TURNSTILE_SITE_KEY}';
 
+// Data for form inputs with two-way binding
+const formData = ref({
+  name: '',
+  email: '',
+  phone: '',
+  title: '',
+  company: '',
+  message: '',
+  turnstileToken: ''
+});
+
 // Cloudflare Turnstile
 onMounted(() => {
   // Dynamically load the Turnstile widget
@@ -30,17 +41,6 @@ onMounted(() => {
       });
     }
   };
-});
-
-// Data for form inputs with two-way binding
-const formData = ref({
-  name: '',
-  email: '',
-  phone: '',
-  title: '',
-  company: '',
-  message: '',
-  turnstileToken: ''
 });
 
 // Set character limits
