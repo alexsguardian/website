@@ -1,0 +1,17 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import PageTitle from '../components/PageTitle.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+export const prerender = true;
+const pageTitle = "NGO";
+
+---
+<DefaultLayout title="Home">
+    <div class="container">
+        <PageTitle 
+          title={pageTitle} 
+          desc="Alex's Guardian provides IT support to NGOs at discounted -> free rates!" />
+        <div>
+
+</DefaultLayout>
