@@ -1,0 +1,89 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import PageTitle from '../components/PageTitle.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+export const prerender = true;
+const pageTitle = "NGO's";
+
+---
+<DefaultLayout title="NGO's">
+    <div class="container">
+      <PageTitle 
+        title={pageTitle} 
+        desc="Alex's Guardian provides a subset of our services to not for profit organizations at a discounted rate or for free."
+        notice="This page covers the services we offer to NGOs, how to provide proof of not for profit status, and our rates." />
+      <div>
+        <h3>
+          Services and Rates
+        </h3>
+        <sub>
+          Please see the table below for the services and their rates we offer to not for profit organizations.
+        </sub>
+        <section>
+          <div class="bg-[var(--neutral-200)] text-[var(--neutral-100)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)]">
+            <table class="table-fixed">
+              <thead>
+                <tr>
+                  <th scope="col">Service</th>
+                  <th scope"col">Rates</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Basic Remote IT Troubleshooting</th>
+                  <td>FREE</td>
+                </tr>
+                <tr>
+                  <th scope="row">Advanced Remote IT Troubleshooting</th>
+                  <td>$5/hr</td>
+                </tr>
+                <tr>
+                  <th scope="row">Basic Onsite IT Troubleshooting</th>
+                  <td>FREE</td>
+                </tr>
+                <tr>
+                  <th scope="row">Advanced Onsite IT Troubleshooting</th>
+                  <td>$10/hr</td>
+                </tr>
+                <tr>
+                  <th scope="row">Basic Organization Networking</th>
+                  <td>FREE</td>
+                </tr>
+                <tr>
+                  <th scope="row">Advanced Organization Networking</th>
+                  <td>$10/hr</td>
+                </tr>
+                <tr>
+                  <th scope="row">Basic Hardware Purchasing & Setup</th>
+                  <td>FREE</td>
+                </tr>
+                <tr>
+                  <th scope="row">Advanced Hardware Purchasing & Setup</th>
+                  <td>$10/hr</td>
+                </tr>
+                <tr>
+                  <th scope="row">Basic Website Hosting & Management*</th>
+                  <td>FREE</td>
+                </tr>
+                <tr>
+                  <th scope="row">Advanced Website Hosting & Management*</th>
+                  <td>$10/hr</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <sub>Services and or rates are subject to change.</sub>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+        <section>
+
+        </section>
+      </div>
+    <div>
+
+  <CallToAction />
+</DefaultLayout>
