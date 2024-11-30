@@ -1,7 +1,7 @@
 ---
-import Navigation from '../components/Navigation.astro'
-import { SkipLinks } from 'accessible-astro-components'
-import { Icon } from 'astro-icon/components'
+import Navigation from '../components/Navigation.astro';
+import { SkipLinks } from 'accessible-astro-components';
+import { Icon } from 'astro-icon/components';
 ---
 
 <header>
@@ -22,13 +22,15 @@ import { Icon } from 'astro-icon/components'
     <li class="menu-item has-dropdown">
       <button aria-haspopup="true" aria-expanded="false">Extras</button>
       <ul class="dropdown-menu">
+        <li class="menu-item">
+          <a href="/nfp/">Not For Profits</a>
+        </li>
         <li class="submenu-item">
           <a href="/scams/">Scams</a>
         </li>
         <li class="menu-item">
-          <a href="https://blog.alexsguardian.net" title="external link" rel="external noopener noreferrer"
-            >Alex's Blog</a
-          >
+          <a href="https://blog.alexsguardian.net" title="external link" rel="external noopener">Alex's Blog</a>
+          <Icon name="mdi:external-link" class="inline pb-1 text-[var(--action-color)]">
         </li>
         <!-- Add back once the support page is complete.   
         <li class="menu-item">

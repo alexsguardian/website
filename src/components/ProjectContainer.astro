@@ -7,20 +7,7 @@ const { title } = Astro.props
 
 <div class="project-grid-container mb-16">
   <h2 class="px-4 mb-8 text-center">{title}</h2>
-  <div class="project-grid">
+  <div class="flex flex-wrap justify-evenly gap-y-8">
     <slot />
   </div>
 </div>
-
-<style>
-  /* .project-grid-container {
-    outline: dashed 2px yellow;
-  } */
-
-  .project-grid {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 2rem;
-    justify-content: space-evenly;
-  }
-</style>
