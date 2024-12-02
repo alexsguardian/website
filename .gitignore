@@ -3,7 +3,6 @@ dist
 
 # dependencies
 node_modules/
-.snowpack/
 
 # logs
 npm-debug.log*
@@ -19,6 +18,3 @@ yarn-error.log*
 
 # vscode settings and dictionaries
 .vscode
-
-# webstorm settings and dictionaries
-.idea

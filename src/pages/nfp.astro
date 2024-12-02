@@ -74,7 +74,7 @@ const pageTitle = "Not For Profits";
         
         <section class="m-16">
           <!-- Description for Remote IT Troubleshooting -->
-          <div id="remote-it" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)]">
+          <div id="remote-it" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)] target:outline target:outline-pink-500">
             <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
               Remote IT Troubleshooting
             </h2>
@@ -84,7 +84,7 @@ const pageTitle = "Not For Profits";
           </div>
         
           <!-- Description for Onsite IT Troubleshooting -->
-          <div id="onsite-it" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)]">
+          <div id="onsite-it" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
             <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
               Onsite IT Troubleshooting
             </h2>
@@ -94,7 +94,7 @@ const pageTitle = "Not For Profits";
           </div>
         
           <!-- Description for Website Hosting & Management -->
-          <div id="website-hosting" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)]">
+          <div id="website-hosting" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
             <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
               Website Hosting & Management
             </h2>
@@ -103,24 +103,19 @@ const pageTitle = "Not For Profits";
             </p>
           </div>
         </section>
-        
       </div>
     <div>
-
   <CallToAction />
 </DefaultLayout>
 
 <style>
   .anchor-highlight {
-    background-color: var(--highlight-purple-100);
-    transition: background-color 0.3s ease;
+    border-left: 1rem var(--highlight-purple-100) solid;
+    transition: background-color 0.5s ease-in-out;
   }
-  /* .darkmode .anchor-highlight {
-    background-color: var(--highlight-purple-400);
-  } */
 </style>
 
-<script>
+<!-- <script>
   document.addEventListener('DOMContentLoaded', () => {
     // Add click listeners to all rows with data-anchor
     document.querySelectorAll('[data-anchor]').forEach(row => {
@@ -151,4 +146,4 @@ const pageTitle = "Not For Profits";
     target.classList.add('anchor-highlight');
     target.scrollIntoView({ behavior: 'smooth' });
   }
-</script>
+</script> -->
