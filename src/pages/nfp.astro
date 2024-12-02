@@ -2,148 +2,72 @@
 import DefaultLayout from "../layouts/DefaultLayout.astro";
 import PageTitle from '../components/PageTitle.astro';
 import CallToAction from '../components/CallToAction.astro';
-import { Icon } from 'astro-icon/components';
+import ServicesList from "../components/ServicesList.astro";
 
 export const prerender = true;
 const pageTitle = "Not For Profits";
 
+const services = [
+  {
+    id: 'remote-it',
+    title: 'Basic Remote IT Troubleshooting',
+    rate: 'FREE',
+    longDesc: 'Our remote IT troubleshooting service is designed to quickly address technical issues without the need for an onsite visit. Available in both basic and advanced tiers, this service helps you save time and money while resolving IT challenges efficiently.',
+  },
+  {
+    id: 'remote-it-advanced',
+    title: 'Advanced Remote IT Troubleshooting',
+    rate: '$5/hr',
+    longDesc: 'For issues that require a hands-on approach, our onsite IT troubleshooting service ensures prompt and professional assistance at your location. This service includes both basic and advanced support tailored to your specific needs.',
+  },
+  {
+    id: 'onsite-it',
+    title: 'Basic Onsite IT Troubleshooting',
+    rate: 'FREE',
+    longDesc: 'TODO? Does this need content or can this be removed? If this is not needed, delete the line im on.',
+  },
+  {
+    id: 'onsite-it', /*  This ID is the same as the one above! */
+    title: 'Advanced Onsite IT Troubleshooting',
+    rate: '$10/hr',
+    longDesc: 'TODO? Does this need content or can this be removed? If this is not needed, delete the line im on.',
+  },
+  {
+    id: 'website-hosting',
+    title: 'Basic Website Hosting & Management',
+    rate: 'FREE',
+    rateSubtext: '+ hosting fees',
+    asterisk: true,
+    longDesc: 'From basic to advanced, our website hosting and management services provide reliable solutions for maintaining your online presence. Additional hosting fees may apply depending on the chosen plan and requirements.',
+  },
+  {
+    id: 'website-hosting', /*  This ID is the same as the one above! */
+    title: 'Advanced Website Hosting & Management',
+    rate: '$10/hr',
+    rateSubtext: '+ hosting fees',
+    asterisk: true,
+    longDesc: 'TODO? Does this need content or can this be removed? If this is not needed, delete the line im on.',
+  },
+];
 ---
 <DefaultLayout title="Not For Profits">
-    <div class="container">
-      <PageTitle 
-        title={pageTitle} 
-        desc="Alex's Guardian provides a subset of our services to not for profit organizations at a discounted rate or for free."
-        notice="This page covers the services we offer, our rates, and how to provide proof of not for profit status." />
-      <hr class="m-16">
-      <div>
-        <div class="mb-4 text-center">
-          <h3>
-            Services and Rates
-          </h3>
-          <sub>
-            Please see the table below for the services and rates we offer to not for profit organizations.
-          </sub>
-        </div>
-
-        <section>
-          <div class="bg-[var(--neutral-100)] text-[var(--neutral-900)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)] p-8 rounded-md shadow-md border border-spacing-1 dark:border-[var(--neutral-800)]">
-            <table class="table-auto w-full border-collapse border border-[var(--neutral-300)] dark:border-[var(--neutral-800)] m-1">
-              <thead class="text-[var(--neutral-100)] bg-[var(--highlight-blue-600)] dark:bg-[var(--highlight-blue-400)]">
-                <tr>
-                  <th class="border border-[var(--neutral-300)] px-4 py-2 text-left">Service</th>
-                  <th class="border border-[var(--neutral-300)] px-4 py-2 text-left">Rates</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="bg-[var(--neutral-100)] hover:bg-[var(--highlight-purple-100)] dark:bg-[var(--dark-100)] dark:hover:bg-[var(--highlight-purple-400)] cursor-pointer" data-anchor="#remote-it">
-                  <td class="border border-[var(--neutral-300)] px-4 py-2 text-left">Basic Remote IT Troubleshooting</td>
-                  <td class="border border-[var(--neutral-300)] px-4 py-2">FREE</td>
-                </tr>
-                <tr class="text-[var(--neutral-100)] bg-[var(--highlight-blue-600)] dark:bg-[var(--highlight-blue-400)] hover:bg-[var(--highlight-purple-600)] dark:hover:bg-[var(--highlight-purple-400)] cursor-pointer" data-anchor="#remote-it">
-                  <td class="border border-[var(--neutral-300)] px-4 py-2 text-left">Advanced Remote IT Troubleshooting</td>
-                  <td class="border border-[var(--neutral-300)] px-4 py-2">$5/hr</td>
-                </tr>
-                <tr class="bg-[var(--neutral-100)] hover:bg-[var(--highlight-purple-100)] dark:bg-[var(--dark-100)] dark:hover:bg-[var(--highlight-purple-400)] cursor-pointer" data-anchor="#onsite-it">
-                  <td class="border border-[var(--neutral-300)] px-4 py-2 text-left">Basic Onsite IT Troubleshooting</td>
-                  <td class="border border-[var(--neutral-300)] px-4 py-2">FREE</td>
-                </tr>
-                <tr class="text-[var(--neutral-100)] bg-[var(--highlight-blue-600)] dark:bg-[var(--highlight-blue-400)] hover:bg-[var(--highlight-purple-600)] dark:hover:bg-[var(--highlight-purple-400)] cursor-pointer" data-anchor="#onsite-it">
-                  <td class="border border-[var(--neutral-300)] px-4 py-2 text-left">Advanced Onsite IT Troubleshooting</td>
-                  <td class="border border-[var(--neutral-300)] px-4 py-2">$10/hr</td>
-                </tr>
-                <tr class="bg-[var(--neutral-100)] hover:bg-[var(--highlight-purple-100)] dark:bg-[var(--dark-100)] dark:hover:bg-[var(--highlight-purple-400)] cursor-pointer" data-anchor="#website-hosting">
-                  <td class="border border-[var(--neutral-300)] px-4 py-2 text-left">Basic Website Hosting & Management*</td>
-                  <td class="border border-[var(--neutral-300)] px-4 py-2">FREE <p class="text-xs">+ hosting fees</p></td>
-                </tr>
-                <tr class="text-[var(--neutral-100)] bg-[var(--highlight-blue-600)] dark:bg-[var(--highlight-blue-400)] hover:bg-[var(--highlight-purple-600)] dark:hover:bg-[var(--highlight-purple-400)] cursor-pointer" data-anchor="#website-hosting">
-                  <td class="border border-[var(--neutral-300)] px-4 py-2 text-left">Advanced Website Hosting & Management*</td>
-                  <td class="border border-[var(--neutral-300)] px-4 py-2">$10/hr <p class="text-xs">+ hosting fees</p></td>
-                </tr>
-              </tbody>
-              <tfoot class="bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
-                <tr>
-                  <td colspan="2" class="px-4 py-2 text-xs text-center text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
-                    Services and rates are subject to change.
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </section>
-        
-        
-        <section class="m-16">
-          <!-- Description for Remote IT Troubleshooting -->
-          <div id="remote-it" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)] target:outline target:outline-pink-500">
-            <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
-              Remote IT Troubleshooting
-            </h2>
-            <p class="mt-2 text-[var(--neutral-700)] dark:text-[var(--neutral-300)]">
-              Our remote IT troubleshooting service is designed to quickly address technical issues without the need for an onsite visit. Available in both basic and advanced tiers, this service helps you save time and money while resolving IT challenges efficiently.
-            </p>
-          </div>
-        
-          <!-- Description for Onsite IT Troubleshooting -->
-          <div id="onsite-it" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
-            <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
-              Onsite IT Troubleshooting
-            </h2>
-            <p class="mt-2 text-[var(--neutral-700)] dark:text-[var(--neutral-300)]">
-              For issues that require a hands-on approach, our onsite IT troubleshooting service ensures prompt and professional assistance at your location. This service includes both basic and advanced support tailored to your specific needs.
-            </p>
-          </div>
-        
-          <!-- Description for Website Hosting & Management -->
-          <div id="website-hosting" class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
-            <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
-              Website Hosting & Management
-            </h2>
-            <p class="mt-2 text-[var(--neutral-700)] dark:text-[var(--neutral-300)]">
-              From basic to advanced, our website hosting and management services provide reliable solutions for maintaining your online presence. Additional hosting fees may apply depending on the chosen plan and requirements.
-            </p>
-          </div>
-        </section>
+  <PageTitle 
+    title={pageTitle} 
+    desc="Alex's Guardian provides a subset of our services to not for profit organizations at a discounted rate or for free."
+    notice="This page covers the services we offer, our rates, and how to provide proof of not for profit status." />
+  
+  <div class="container">
+    
+    <ServicesList Column1title="Service" Column2title="Rate" services={services}>
+      <div slot="before" class="mb-4 text-center">
+        <h3>Services and Rates</h3>
+        <sub>Please see the table below for the services and rates we offer to not for profit organizations.</sub>
       </div>
-    <div>
+      
+      <p slot="after" class="text-center my-3">Services and rates are subject to change.</p>
+    </ServicesList>
+
+  <div>
+  
   <CallToAction />
 </DefaultLayout>
-
-<style>
-  .anchor-highlight {
-    border-left: 1rem var(--highlight-purple-100) solid;
-    transition: background-color 0.5s ease-in-out;
-  }
-</style>
-
-<!-- <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Add click listeners to all rows with data-anchor
-    document.querySelectorAll('[data-anchor]').forEach(row => {
-      row.addEventListener('click', () => {
-        const anchorId = row.getAttribute('data-anchor');
-        navigateAndHighlight(anchorId);
-      });
-    });
-
-    // Add mouseover listener to all sections
-    document.querySelectorAll('.anchor-section').forEach(section => {
-      section.addEventListener('mouseover', () => {
-        section.classList.remove('anchor-highlight');
-      });
-    });
-  });
-
-  function navigateAndHighlight(anchorId) {
-    console.log(`Navigating to and highlighting: ${anchorId}`);
-
-    // Remove highlight from all sections
-    document.querySelectorAll('.anchor-highlight').forEach(section => {
-      section.classList.remove('anchor-highlight');
-    });
-
-    // Select the target section
-    const target = document.querySelector(anchorId);
-    target.classList.add('anchor-highlight');
-    target.scrollIntoView({ behavior: 'smooth' });
-  }
-</script> -->

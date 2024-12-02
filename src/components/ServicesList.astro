@@ -1,0 +1,131 @@
+---
+import type { Service } from '../types';
+
+interface Props {
+  services: Array<Service>;
+    Column1title: string;
+    Column2title: string;
+}
+const { services = [], Column1title, Column2title } = Astro.props;
+---
+<div class="bg-[var(--neutral-100)] text-[var(--neutral-900)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)] p-8 rounded-md shadow-md border border-spacing-1 dark:border-[var(--neutral-800)]">
+  <slot name="before" />
+  {
+    services && (
+      <ol id="listofservices">
+        <li class="odd:text-slate-100 odd:bg-slate-600">
+          <div class="p-3 font-bold text-xl grid grid-cols-3">
+            <p class="col-span-2">{Column1title}</p>
+            <p>{Column2title}</p>
+          </div>
+        </li>
+        {services.map(({ id, title, rate, rateSubtext, asterisk }) => (
+            <li class="odd:text-slate-100 odd:bg-slate-600">
+              <a href={id && '#'+id} class="!text-inherit">
+                <div class="p-3 font-bold grid grid-cols-3 ">
+                  
+                  {
+                    title && 
+                      <p class="col-span-2">
+                        {title}
+                        {
+                          asterisk &&
+                            <span>*</span>
+                        }
+                      </p>
+                  }
+                  
+                  {
+                    rate && 
+                      <div>
+                        <p>{rate}</p>
+                        {
+                          rateSubtext && 
+                          <p class="text-xs">{rateSubtext}</p>
+                        }
+                      </div>
+                  }
+
+                </div>
+              </a>
+            </li>
+        ))}
+      </ol>
+    )
+  }
+  
+  <slot name="after" />
+</div>
+
+  <section class="mt-16">
+    {
+      services && 
+      (
+        services.map(({ id, title, longDesc }) => (
+          longDesc && (
+            <div id={id} class="target-highlight anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
+              <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
+                {title}
+              </h2>
+              <p class="mt-2 text-[var(--neutral-700)] dark:text-[var(--neutral-300)]">
+                {longDesc}
+              </p>
+            </div>
+          )
+        )
+      )
+    )
+  }
+  </section>
+
+<style>
+  body{
+    scroll-behavior: smooth;
+  }
+  #listofservices li {
+    border: 1px solid var(--neutral-700);
+    margin: 0;
+    p{
+      align-content: center;
+    }
+  }
+
+  :target{
+    /* Styling for the target */
+    outline: 6px dashed hsl(292, 33%, 47%);
+    outline-offset: 2px;
+    animation: 500ms linear 0s infinite alternate target;
+  }
+  .target-highlight{
+    /* Transition parameters .... Probably not needed so I commented it out */
+    /* Im using animation keyframes instead for this example */
+    /* transition: all linear 300ms; */
+  }
+  @keyframes target {
+    from {
+      outline-offset: 2px;
+    }
+    to {
+      outline-offset: 10px;
+    }
+  }
+</style>
+
+<script type="text/javascript">
+  window.onload = function() {
+    document.location.hash = "";
+  
+    const divs = document.querySelectorAll('.target-highlight');
+  
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].addEventListener('mousemove', myFunction);
+    }
+  }
+  
+  function myFunction(e){
+    if ("#" + e.currentTarget.attributes.id.value === document.location.hash) {
+      document.location.hash = '';
+      e.preventDefault();
+    }
+  }
+</script>
