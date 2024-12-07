@@ -6,6 +6,7 @@ interface Props {
     Column1title: string;
     Column2title: string;
 }
+export const prerender = true;
 const { services = [], Column1title, Column2title } = Astro.props;
 ---
 <div class="bg-[var(--neutral-100)] text-[var(--neutral-900)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)] p-8 rounded-md shadow-md border border-spacing-1 dark:border-[var(--neutral-800)]">
@@ -63,7 +64,7 @@ const { services = [], Column1title, Column2title } = Astro.props;
       (
         services.map(({ id, title, longDesc }) => (
           longDesc && (
-            <div id={id} class="target-highlight anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
+            <div id={id} target-highlight class="anchor-section p-8 mb-4 rounded-md border border-[var(--neutral-300)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
               <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
                 {title}
               </h2>
@@ -94,7 +95,7 @@ const { services = [], Column1title, Column2title } = Astro.props;
     outline-offset: 2px;
     animation: 500ms linear 0s infinite alternate target;
   }
-  .target-highlight{
+  [target-highlight]{
     /* Transition parameters .... Probably not needed so I commented it out */
     /* Im using animation keyframes instead for this example */
     /* transition: all linear 300ms; */
@@ -112,18 +113,21 @@ const { services = [], Column1title, Column2title } = Astro.props;
 <script type="text/javascript">
   window.onload = function() {
     document.location.hash = "";
-  
-    const divs = document.querySelectorAll('.target-highlight');
-  
-    for (let i = 0; i < divs.length; i++) {
-      divs[i].addEventListener('mousemove', myFunction);
-    }
   }
+</script>
+
+<script type="text/javascript">
+  divs = document.querySelectorAll('[target-highlight]');
   
-  function myFunction(e){
+  function ClearHighlight(e){
     if ("#" + e.currentTarget.attributes.id.value === document.location.hash) {
       document.location.hash = '';
       e.preventDefault();
     }
   }
+  
+  divs.forEach((div) => {
+    div.addEventListener('mouseover', ClearHighlight);
+  });
+  
 </script>
