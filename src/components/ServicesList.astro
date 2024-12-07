@@ -64,7 +64,7 @@ const { services = [], Column1title, Column2title } = Astro.props;
     (
       services.map(({ id, title, longDesc }) => (
         longDesc && (
-          <div id={id} class="target-highlight anchor-section p-8 mb-4 rounded-md shadow-md border dark:border-[var(--neutral-800)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
+          <div id={id} target-highlight class="anchor-section p-8 mb-4 rounded-md shadow-md border dark:border-[var(--neutral-800)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
             <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
               {title}
             </h2>
