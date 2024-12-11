@@ -78,28 +78,27 @@ const { services = [], Column1title, Column2title } = Astro.props;
 </section>
 
 <style>
-  body{
+  body {
     scroll-behavior: smooth;
   }
   #listofservices li {
     border: 1px solid var(--neutral-700);
     margin: 0;
-    p{
-      align-content: center;
-    }
   }
 
-  :target{
+  :target {
     /* Styling for the target */
     outline: 6px solid var(--highlight-purple-300);
     outline-offset: 2px;
     animation: 500ms ease-in-out 0s infinite alternate target;
   }
-  [target-highlight]{
+
+  [target-highlight] {
     /* Transition parameters .... Probably not needed so I commented it out */
-    /* Im using animation keyframes instead for this example */
+    /* Using animation keyframes instead for this example */
     /* transition: all linear 300ms; */
   }
+
   @keyframes target {
     from {
       outline-offset: 2px;
@@ -117,17 +116,21 @@ const { services = [], Column1title, Column2title } = Astro.props;
 </script>
 
 <script type="text/javascript">
-  divs = document.querySelectorAll('[target-highlight]');
-  
-  function ClearHighlight(e){
-    if ("#" + e.currentTarget.attributes.id.value === document.location.hash) {
-      document.location.hash = '';
+  const divs = document.querySelectorAll('[target-highlight]');
+
+  function ClearHighlight(e) {
+    // Check if the current element is the one targeted by the hash
+    if ("#" + e.currentTarget.id === document.location.hash) {
       e.preventDefault();
+
+      // Introduce a delay before removing the highlight
+      setTimeout(() => {
+        document.location.hash = '';
+      }, 2000); // Delay for 2 seconds (adjust to your preference)
     }
   }
-  
+
   divs.forEach((div) => {
     div.addEventListener('mouseover', ClearHighlight);
   });
-  
 </script>
