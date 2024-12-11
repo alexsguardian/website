@@ -13,7 +13,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://alexsguardian.net',
   compressHTML: true,
-  output: "server",
+  output: "hybrid",
   adapter: node({
     mode: 'standalone',
   }),
