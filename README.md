@@ -9,11 +9,11 @@ The old website (wordpress :vomiting_face:) died at the beginning of 2024. So re
 ### TO-DO
  - [ ] Re-do build process to properly support SSR
  - [ ] Disable contact api for dev site.
- - [x] ~~Contact Form + Cloudflare Turnstile.~~
  - [ ] Remove SCSS in favor of tailwind :muscle:
  - [ ] Update License?
- - [ ] Update build process to support SSR.
-
+ - [x] ~~Contact Form + Cloudflare Turnstile.~~
+ - [x] ~~Add NFP page (Not all info but good enough for v3 push)~~
+ 
 ## Development Info
 
 Clone this theme locally and run any of the following commands in your terminal:

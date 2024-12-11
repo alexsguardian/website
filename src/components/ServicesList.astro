@@ -118,17 +118,16 @@ const { services = [], Column1title, Column2title } = Astro.props;
 <script type="text/javascript">
   const divs = document.querySelectorAll('[target-highlight]');
 
+  // Check if the current element is the one targeted by the hash
+  // Remove highlight after delay
   function ClearHighlight(e) {
-    // Check if the current element is the one targeted by the hash
     if ("#" + e.currentTarget.id === document.location.hash) {
       e.preventDefault();
-
-      // Introduce a delay before removing the highlight
       setTimeout(() => {
         document.location.hash = '';
-      }, 2000); // Delay for 2 seconds (adjust to your preference)
+      }, 2000);
     }
-  }
+  };
 
   divs.forEach((div) => {
     div.addEventListener('mouseover', ClearHighlight);
