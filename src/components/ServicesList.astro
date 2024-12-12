@@ -1,12 +1,12 @@
 ---
 import type { Service } from '../types';
 
+export const prerender = false;
 interface Props {
   services: Array<Service>;
     Column1title: string;
     Column2title: string;
 }
-export const prerender = true;
 const { services = [], Column1title, Column2title } = Astro.props;
 ---
 <div class="bg-[var(--neutral-100)] text-[var(--neutral-900)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)] p-8 rounded-md shadow-md border border-spacing-1 dark:border-[var(--neutral-800)]">
