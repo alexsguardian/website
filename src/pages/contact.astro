@@ -2,7 +2,7 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro';
 import ContactForm from '../components/ContactForm.vue';
 import PageTitle from '../components/PageTitle.astro';
-export const prerender = false;
+
 const pageTitle = "Contact";
 ---
 <!-- TODO: Add Contact form and other contact information to this page -->
@@ -13,7 +13,8 @@ const pageTitle = "Contact";
     <section>
         <div>
             <!-- // Styling Requires Tailwind CSS -->
-            <ContactForm server:defer />
+            <ContactForm server:defer client:load />
+            <p style="display:none;">moo</p>
         </div>
     </section>
 </DefaultLayout>
