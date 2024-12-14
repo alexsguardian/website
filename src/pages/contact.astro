@@ -5,7 +5,7 @@ import PageTitle from '../components/PageTitle.astro';
 
 const pageTitle = "Contact";
 ---
-<!-- TODO: Add Contact form and other contact information to this page -->
+
 <DefaultLayout title={pageTitle}>
 
     <PageTitle title={pageTitle} desc="Ready to get in touch?" />
@@ -14,7 +14,6 @@ const pageTitle = "Contact";
         <div>
             <!-- // Styling Requires Tailwind CSS -->
             <ContactForm server:defer client:load />
-            <p style="display:none;">moo</p>
         </div>
     </section>
 </DefaultLayout>
