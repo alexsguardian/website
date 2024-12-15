@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 
-// Track form submission state and response message
 const responseMessage = ref<string>();
 const isSubmitting = ref<boolean>(false);
+const formVisible = ref<boolean>(true);
 
 const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '{TURNSTILE_SITE_KEY}';
 
-// Data for form inputs with two-way binding
 const formData = ref({
   name: '',
   email: '',
@@ -18,16 +17,13 @@ const formData = ref({
   turnstileToken: ''
 });
 
-// Cloudflare Turnstile
 onMounted(() => {
-  // Dynamically load the Turnstile widget
   const script = document.createElement("script");
   script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
   script.async = true;
   script.defer = true;
   document.head.appendChild(script);
-  
-  // Initialize Turnstile once the script is loaded
+
   script.onload = () => {
     if (window.turnstile) {
       window.turnstile.render("#turnstile-container", {
@@ -40,13 +36,11 @@ onMounted(() => {
         },
       });
     };
-
   };
 });
 
-// Phone number formatting logic
 function formatPhoneNumber(value: string): string {
-  const cleaned = value.replace(/\D/g, ''); // Remove non-digit characters
+  const cleaned = value.replace(/\D/g, ''); 
   const match = cleaned.match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
   if (!match) return '';
   return !match[2] ? match[1] : `${match[1]}-${match[2]}${match[3] ? '-' + match[3] : ''}`;
@@ -57,14 +51,12 @@ function handlePhoneInput(event: Event) {
   formData.value.phone = formatPhoneNumber(input.value);
 };
 
-// Set character limits
 const nameMaxLength = 100;
 const emailMaxLength = 150;
 const titleMaxLength = 50;
 const companyMaxLength = 100;
 const messageMaxLength = 500;
 
-// Handle form submission
 async function submit(e: Event) {
   e.preventDefault();
 
@@ -78,7 +70,7 @@ async function submit(e: Event) {
   };
 
   isSubmitting.value = true;
-  responseMessage.value = '';  // Clear previous response message
+  responseMessage.value = '';
 
   const dataToSend = new FormData();
   dataToSend.append('name', formData.value.name);
@@ -89,10 +81,6 @@ async function submit(e: Event) {
   dataToSend.append('message', formData.value.message);
   dataToSend.append('turnstileToken', formData.value.turnstileToken);
 
-  // TODO: Rework this.
-  // POST works and message is sent but response is ignored.
-  // Make use of the server response!
-  
   try {
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -103,7 +91,8 @@ async function submit(e: Event) {
 
     if (response.ok) {
       responseMessage.value = "Message sent successfully!";
-      resetForm();
+      // Instead of resetting the form, hide it.
+      formVisible.value = false;
     } else {
       responseMessage.value = `Error: ${data.message || "Something went wrong"}`;
     }
@@ -113,27 +102,13 @@ async function submit(e: Event) {
     isSubmitting.value = false;
   };
 };
-
-// Reset form data
-function resetForm() {
-  formData.value = {
-    name: '',
-    phone: '',
-    email: '',
-    title: '',
-    company: '',
-    message: '',
-    turnstileToken: ''
-  };
-  responseMessage.value = '';
-};
 </script>
-
 
 <template>
   <div class="flex flex-col max-w-xl mx-auto rounded-lg backdrop-blur border border-[var(--highlight-blue-200)] dark:border-[var(--highlight-blue-400)] bg-[var(--neutral-100)] dark:bg-[var(--highlight-blue-900)] shadow p-4 sm:p-6 lg:p-8 w-full">
-    <form @submit="submit">
-
+    
+    <!-- Show the form if formVisible is true -->
+    <form v-if="formVisible" @submit="submit">
       <div class="mb-[15px]">
         <label for="name">Name <span class="text-red-600">*</span></label>
         <input 
@@ -170,9 +145,9 @@ function resetForm() {
             class="flex items-center cursor-pointer text-[var(--neutral-400)] dark:text-[var(--neutral-100)]"
             title="Callbacks for US numbers only!"
           >
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-            <path fill="#6388c5" d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m-1 15h2v-6h-2z" />
-          </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+              <path fill="#6388c5" d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m-1 15h2v-6h-2z" />
+            </svg>
           </span>
         </div>
         <div class="mb-[15px]">
@@ -254,5 +229,18 @@ function resetForm() {
 
       <p v-if="responseMessage" class="response-message">{{ responseMessage }}</p>
     </form>
+
+    <!-- Show a success message if formVisible is false -->
+    <div v-else class="success-message">
+      <div class="flex justify-center items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24">
+          <path fill="hsl(136, 48%, 46%)" d="M20 12a8 8 0 0 1-8 8a8 8 0 0 1-8-8a8 8 0 0 1 8-8c.76 0 1.5.11 2.2.31l1.57-1.57A9.8 9.8 0 0 0 12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10M7.91 10.08L6.5 11.5L11 16L21 6l-1.41-1.42L11 13.17z"/>
+        </svg>
+      </div>
+      <h2 class="flex justify-center items-center mb-4">Message Sent!</h2>
+      <p class="flex justify-center text-center mb-2">Thank you for contacting us!</p>
+      <p class="flex justify-center text-center">We will get back to you within 1-2 business days.</p>
+      <p v-if="responseMessage">{{ responseMessage }}</p>
+    </div>
   </div>
 </template>
