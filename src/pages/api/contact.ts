@@ -10,7 +10,7 @@ const emailUser = import.meta.env.EMAIL_USER || '{EMAIL_USER}';
 const emailPass = import.meta.env.EMAIL_PASS || '{EMAIL_PASS}';
 const emailHost = import.meta.env.EMAIL_HOST || '{EMAIL_HOST}';
 const emailPort = import.meta.env.EMAIL_PORT || '{EMAIL_PORT}';
-const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SEC_KEY || '{TURNSTILE_SEC_KEY}';
+const turnstileSec = import.meta.env.TURNSTILE_SEC_KEY || '{TURNSTILE_SEC_KEY}';
 
 // Set character limits
 const nameMaxLength = 100;
@@ -39,7 +39,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (!turnstileToken) {
     return new Response(
-      JSON.stringify({ message: "Turnstile validation token missing. C-100" }),
+      JSON.stringify({ message: "Turnstile validation token missing. C-101" }),
       { status: 400 }
     );
   }
@@ -51,7 +51,7 @@ export const POST: APIRoute = async ({ request }) => {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: new URLSearchParams({
-      secret: TURNSTILE_SECRET_KEY,
+      secret: turnstileSec,
       response: turnstileToken,
       remoteip: request.headers["cf-connecting-ip"] || request.headers["x-forwarded-for"],
     }),
@@ -61,7 +61,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (!verifyData.success) {
     return new Response(
-      JSON.stringify({ message: "Turnstile verification failed. C-101" }),
+      JSON.stringify({ message: "Turnstile verification failed. C-102" }),
       { status: 400 }
     );
   }

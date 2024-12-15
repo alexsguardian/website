@@ -1,12 +1,23 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
 <div class="container">
   <div class="mb-32 mt-24 flex flex-col items-center gap-12 rounded-xl p-12 md:p-24 text-[var(--neutral-900)] bg-gradient-to-r from-[var(--highlight-blue-300)] to-[var(--highlight-purple-200)]">
     <h2 class="text-center text-3xl md:text-5xl">Contact us today!</h2>
-    <a href="/contact">
+    <a href="/contact" class="flex items-center text-center !no-underline">
       <button 
-        class=`rounded-md border border-[var(--neutral-800)] py-2 px-4 text-center text-2xl transition-all shadow-sm hover:shadow-lg text-[var(--neutral-900)] hover:text-[var(--neutral-200)] hover:bg-[var(--highlight-blue-400)] hover:border-[var(--neutral-800)] focus:text-white focus:bg-[var(--highlight-blue-400)] focus:border-[var(--neutral-800)] active:border-[var(--neutral-800)] active:text-[var(--neutral-200)] active:bg-[var(--highlight-blue-400)] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none` 
+        class=`group relative flex items-center rounded-md border border-[var(--neutral-800)] py-2 px-4 text-center text-2xl transition-all shadow-sm hover:shadow-lg text-[var(--neutral-900)] hover:text-[var(--neutral-200)] hover:border-[var(--neutral-200)] focus:text-[var(--neutral-200)] focus:bg-[var(--highlight-blue-400)] focus:border-[var(--neutral-800)] active:border-[var(--neutral-800)] active:text-[var(--neutral-200)] active:bg-[var(--highlight-blue-400)] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`
         type="button"
         >
         Contact Us
+        <span 
+        class="inline-flex items-center pl-2 max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[3rem]"
+      >
+        <Icon
+          name="mdi:keyboard-arrow-right"
+          class="h-8 w-8 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+        />
       </button>
     </a>
   </div>

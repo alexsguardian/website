@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
+import confetti from "canvas-confetti";
 
 const responseMessage = ref<string>();
 const isSubmitting = ref<boolean>(false);
 const formVisible = ref<boolean>(true);
 
-const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '{TURNSTILE_SITE_KEY}';
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '{TURNSTILE_SITE_KEY}';
 
 const formData = ref({
   name: '',
@@ -27,7 +28,7 @@ onMounted(() => {
   script.onload = () => {
     if (window.turnstile) {
       window.turnstile.render("#turnstile-container", {
-        sitekey: TURNSTILE_SITE_KEY,
+        sitekey: turnstileKey,
         callback: (token: string) => {
           formData.value.turnstileToken = token;
         },
@@ -61,7 +62,7 @@ async function submit(e: Event) {
   e.preventDefault();
 
   if (!formData.value.turnstileToken) {
-    responseMessage.value = "Please complete the Turnstile challenge.";
+    responseMessage.value = "Please complete the Turnstile challenge. C-100";
     return;
   };
 
@@ -91,7 +92,7 @@ async function submit(e: Event) {
 
     if (response.ok) {
       responseMessage.value = "Message sent successfully!";
-      formVisible.value = false;
+      formVisible.value = false; // Trigger success state
     } else {
       responseMessage.value = `${data.message || "Something went wrong"}`;
     }
@@ -101,15 +102,27 @@ async function submit(e: Event) {
     isSubmitting.value = false;
   };
 };
+
+// Watch for formVisible changes to trigger confetti
+watch(formVisible, (newVal) => {
+  if (newVal === false) {
+    // Launch confetti
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }
+});
 </script>
 
 <template>
   <div class="flex flex-col max-w-xl mx-auto rounded-lg backdrop-blur border border-[var(--highlight-blue-200)] dark:border-[var(--highlight-blue-400)] bg-[var(--neutral-100)] dark:bg-[var(--highlight-blue-900)] shadow p-4 sm:p-6 lg:p-8 w-full">
     
-    <!-- Show the form if formVisible is true -->
     <form v-if="formVisible" @submit="submit">
+      <!-- Form Inputs -->
       <div class="mb-[15px]">
-        <label for="name">Name <span class="text-red-600">*</span></label>
+        <label for="name">Name <span class="text-[var(--highlight-red-300)]">*</span></label>
         <input 
           type="text" 
           id="name" 
@@ -123,7 +136,7 @@ async function submit(e: Event) {
       </div>
 
       <div class="mb-[15px]">
-        <label for="email">Email <span class="text-red-600">*</span></label>
+        <label for="email">Email <span class="text-[var(--highlight-red-300)]">*</span></label>
         <input 
           type="email" 
           id="email" 
@@ -192,7 +205,7 @@ async function submit(e: Event) {
       </div>
 
       <div class="mb-[15px]">
-        <label for="message">Message <span class="text-red-600">*</span></label>
+        <label for="message">Message <span class="text-[var(--highlight-red-300)]">*</span></label>
         <textarea 
           id="message" 
           name="message" 
@@ -231,7 +244,7 @@ async function submit(e: Event) {
 
     <!-- Show a success message if formVisible is false -->
     <div v-else class="success-message">
-      <div class="flex justify-center items-center">
+      <div class="flex justify-center items-center mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24">
           <path fill="hsl(136, 48%, 46%)" d="M20 12a8 8 0 0 1-8 8a8 8 0 0 1-8-8a8 8 0 0 1 8-8c.76 0 1.5.11 2.2.31l1.57-1.57A9.8 9.8 0 0 0 12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10M7.91 10.08L6.5 11.5L11 16L21 6l-1.41-1.42L11 13.17z"/>
         </svg>
@@ -239,7 +252,6 @@ async function submit(e: Event) {
       <h2 class="flex justify-center items-center mb-4">Message Sent!</h2>
       <p class="flex justify-center text-center mb-2">Thank you for contacting us!</p>
       <p class="flex justify-center text-center">We will get back to you within 1-2 business days.</p>
-      <!-- <p v-if="responseMessage">{{ responseMessage }}</p> -->
     </div>
   </div>
 </template>

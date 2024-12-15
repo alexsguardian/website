@@ -36,6 +36,7 @@
     "@astrojs/node": "^9.0.0",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/vue": "^5.0.2",
+    "canvas-confetti": "^1.9.3",
     "dompurify": "^3.2.2",
     "jsdom": "^25.0.1",
     "motion": "^11.12.0",
