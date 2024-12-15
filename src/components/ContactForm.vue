@@ -91,10 +91,9 @@ async function submit(e: Event) {
 
     if (response.ok) {
       responseMessage.value = "Message sent successfully!";
-      // Instead of resetting the form, hide it.
       formVisible.value = false;
     } else {
-      responseMessage.value = `Error: ${data.message || "Something went wrong"}`;
+      responseMessage.value = `${data.message || "Something went wrong"}`;
     }
   } catch (error) {
     responseMessage.value = 'An error occurred. Please try again later.';
@@ -240,7 +239,7 @@ async function submit(e: Event) {
       <h2 class="flex justify-center items-center mb-4">Message Sent!</h2>
       <p class="flex justify-center text-center mb-2">Thank you for contacting us!</p>
       <p class="flex justify-center text-center">We will get back to you within 1-2 business days.</p>
-      <p v-if="responseMessage">{{ responseMessage }}</p>
+      <!-- <p v-if="responseMessage">{{ responseMessage }}</p> -->
     </div>
   </div>
 </template>
