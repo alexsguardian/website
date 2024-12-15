@@ -8,6 +8,8 @@ const formVisible = ref<boolean>(true);
 
 const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '{TURNSTILE_SITE_KEY}';
 
+const isDarkMode = ref(false);
+
 const formData = ref({
   name: '',
   email: '',
@@ -18,7 +20,32 @@ const formData = ref({
   turnstileToken: ''
 });
 
+
+function renderTurnstile() {
+  const container = document.getElementById('turnstile-container');
+  if (!container) return;
+
+  // Clear any existing widget if present
+  container.innerHTML = '';
+
+  // Render Turnstile widget based on active site theme since auto mode doesn't seem to read the current theme handling properly.
+  if (window.turnstile) {
+    window.turnstile.render("#turnstile-container", {
+      sitekey: turnstileKey,
+      callback: (token: string) => {
+        formData.value.turnstileToken = token;
+      },
+      "error-callback": () => {
+        responseMessage.value = "Turnstile validation failed. Please try again.";
+      },
+      theme: isDarkMode.value ? "dark" : "light"
+    });
+  }
+}
+
 onMounted(() => {
+  isDarkMode.value = document.body.classList.contains('darkmode');
+
   const script = document.createElement("script");
   script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
   script.async = true;
@@ -26,18 +53,12 @@ onMounted(() => {
   document.head.appendChild(script);
 
   script.onload = () => {
-    if (window.turnstile) {
-      window.turnstile.render("#turnstile-container", {
-        sitekey: turnstileKey,
-        callback: (token: string) => {
-          formData.value.turnstileToken = token;
-        },
-        "error-callback": () => {
-          responseMessage.value = "Turnstile validation failed. Please try again.";
-        },
-      });
-    };
+    renderTurnstile();
   };
+});
+
+watch(isDarkMode, () => {
+  renderTurnstile();
 });
 
 function formatPhoneNumber(value: string): string {
@@ -216,12 +237,13 @@ watch(formVisible, (newVal) => {
           aria-label="Message Input (Required)" 
           class="py-3 px-4 block w-full text-md rounded-lg border border-[var(--highlight-blue-200)] dark:border-[var(--highlight-blue-400)] bg-[var(--neutral-100)] dark:bg-[var(--highlight-blue-700)]"
         />
+        <p class="text-sm text-right">{{ formData.message.length }} / {{ messageMaxLength }}</p>
       </div>
 
       <div class="mt-3 flex">
-        <div class="ml-3 mb-3">
+        <div class="ml-3 mb-4">
           <p class="text-sm text-[var(--neutral-600)] dark:[var(--neutral-400)]">
-            By submitting this contact form, you acknowledge and agree to the collection of your personal information per our <a href="/privacy">privacy policy</a>.
+            By submitting this contact form, you acknowledge and agree to the collection of your information per our <a href="/privacy">privacy policy</a>.
           </p>
         </div>
       </div>
