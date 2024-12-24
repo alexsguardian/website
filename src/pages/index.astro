@@ -1,180 +1,191 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro';
-import Hero from '../components/Hero.astro';
-import Feature from '../components/Feature.astro';
-import Counter from '../components/Counter.astro';
-import TestimonialCarousel from '../components/TestimonialCarousel.astro';
-import CallToAction from '../components/CallToAction.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import { Icon } from 'astro-icon/components';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Button from '~/components/ui/Button.astro';
+
+
+const metadata = {
+  title: `Alex's Guardian`,
+  ignoreTitleTemplate: true,
+};
 
 export const prerender = true;
 ---
 
-<DefaultLayout title="Home">
-  <Hero />
-  <section class="mb-32 mt-64">
-    <div class="container">
-      <h2 class="mb-10 text-6xl text-center">Services</h2>
-      <p class="mb-2 text-lg text-center">
-        We offer a lot of different services for end users and small businesses. Don't see something listed here? Reach
-        out anyway and we can see about helping or point you in the right direction!
-      </p>
-      <br />
-        <div class="flex flex-wrap gap-12 justify-center">
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="ion:call" 
-              title="Remote Support" 
-              color="blue" 
-              desc="Fast and reliable remote troubleshooting and support to resolve your IT issues without needing a site visit." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature
-              icon="ion:wrench"
-              title="Device Maintenance" 
-              color="blue" 
-              desc="Ensure your devices run smoothly and efficiently with our comprehensive maintenance services. Extend the life of your devices!" 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="mdi:wallet" 
-              title="Device Consultancy" 
-              color="blue" 
-              desc="Expert advice on selecting, setting up, and optimizing devices to meet your specific needs, ensuring seamless integration and enhanced performance." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="mdi:virus" 
-              title="Virus and Malware Removal" 
-              color="blue" 
-              desc="Is your PC infected with malware or viruses? We can help eliminate threats and secure your system!" 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="mdi:server" 
-              title="Home Server Setup" 
-              color="blue" 
-              desc="Host your own services at home or decouple from the cloud with our expert home server solutions." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="mdi:cable-data" 
-              title="Network Design, Upgrade, and Installation" 
-              color="blue" 
-              desc="Upgrade your network with our tailored design and optimization services for better connectivity and performance." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature
-              icon="mdi:hammer-screwdriver" 
-              title="Custom PC Builds" 
-              color="blue" 
-              desc="Whether you need a high-performance PC or one that fits your budget, we can build it for you!" 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="mdi:data"
-              title="Data Recovery Services" 
-              color="blue" 
-              desc="Recover lost data from failed or broken devices with our specialized recovery solutions." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="mdi:cctv" 
-              title="Home & SMB Surveillance Solutions" 
-              color="blue" 
-              desc="Secure your home or business with our comprehensive security camera systems, providing peace of mind while you’re away." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="ion:md-cloud-upload" 
-              title="Backup Solutions" 
-              color="blue" 
-              desc="Protect your data with automated onsite or cloud backup services. Ensure your information is safe and easily recoverable in the event of a disaster." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="ion:ios-settings" 
-              title="Software Installation and Configuration" 
-              color="blue" 
-              desc="Assistance with installing and configuring software to ensure it runs optimally on your devices." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="ion:hardware-chip" 
-              title="Hardware Upgrades" 
-              color="blue" 
-              desc="Boost the performance of your existing devices with our hardware upgrade services." 
-            />
-          </div>
-          <div class="max-w-80 sm:w-1/2 lg:w-1/3">
-            <Feature 
-              icon="mdi:printer-wireless" 
-              title="Printer Setup and Troubleshooting" 
-              color="blue" 
-              desc="Ensure your printers are correctly set up and maintained for hassle-free printing." 
-            />
-          </div>
-      </div>
-    </div>
-  </section>
+<Layout metadata={metadata}>
 
-  <!-- <section class="mb-[5rem] mt-[5rem]">
-    <div class="container border-4 rounded border-[#95509f] bg-[var(--neutral-200)] text-[var(--neutral-900)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-200)]">
-      <div class="p-12">
-        <h3 class="mb-10 text-6xl text-center">NGO's</h3>
-        <p class="mb-2 text-lg text-center">
-          Do you run or particiapte in a not-for-profit organization? Are you looking for IT help? Let us help you!
-          <a href="/ngo">Click here for more info.</a>
-        </p>
-      </div>
-    </div>
-  </section> -->
+  <!-- Hero Widget ******************* -->
+  <Hero>
+    <Fragment slot="actions">
+      <Button 
+        variant='secondary',
+        text="Learn more",
+        class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+        href="#us"
+      />
+      <a href="/contact" class="flex items-center text-center !no-underline">
+        <button 
+          class='group relative flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-primary)]'
+          type="button"
+          >
+          Contact us
+          <span class="inline-flex items-center pl-2 max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[3rem]">
+          <Icon
+            name="mdi:arrow-right"
+            class="h-4 w-4 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+          />
+        </button>
+      </a>
+      <Button
+        variant='primary',
+        class="group flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+        href="#us"
+      >
+        Contact us
+        <span class="hidden group-hover:inline-flex items-center pl-2 max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[3rem]">
+          <Icon
+            name="mdi:arrow-right"
+            class="h-4 w-4 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+          />
+        </span>
+      </Button>
+    </Fragment>
+    <Fragment slot="title">
+      Alex's Guardian
+    </Fragment>
 
-  <section class="mb-32 mt-64">
-    <div class="container">
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <Counter 
-          count="20+" 
-          title="Happy" 
-          sub="end users" 
-          color="green" 
-        />
-        <Counter 
-          count="6+" 
-          title="Happy" 
-          sub="small businesses" 
-          color="green" 
-        />
-        <Counter 
-          count="7+" 
-          title="Years" 
-          sub="in service" 
-          color="green" 
-        />
-        <Counter 
-          count="4.9" 
-          title="Rating" 
-          sub="Based on user Feedback" 
-          color="green" 
-        />
-      </div>
-    </div>
-  </section>
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Transparent IT, No Suprises.
+      </span>
+    </Fragment>
+    <!-- <Fragment slot="image">
+      <img src="/src/assets/images/low_poly_banner_design_2203.jpg" />
+    </Fragment> -->
+  </Hero>
 
-  <section class="mb-16 mt-16">
-    <div class="container">
-      <TestimonialCarousel />
-    </div>
-  </section>
+  <!-- Features Widget *************** -->
+  <Features
+    id="services"
+    title="Services"
+    subtitle="Below are a few of the services we offer to our clients. Both end users and small businesses."
+    items={[
+      {
+        title: 'Remote Support',
+        description:
+          `Fast and reliable remote troubleshooting support to resolve your IT issues without needing a site visit. Don't let an issue ruin your day!`,
+        icon: 'mdi:phone',
+      },
+      {
+        title: 'Device Maintenance',
+        description:
+          'Ensure your devices run smoothly and efficiently with our comprehensive maintenance services. Extend the life of your devices so you can keep doing what you do best!',
+        icon: 'mdi:wrench',
+      },
+      {
+        title: 'Infection Removal',
+        description:
+          'Is your PC infected with malware or viruses? We can help eliminate threats and secure your system!',
+        icon: 'mdi:virus',
+      },
+      {
+        title: 'Networking',
+        description:
+          'Whether you are looking to upgrade or build out an entirely new network, we got you covered!',
+        icon: 'mdi:cable-data',
+      },
+      {
+        title: 'Security',
+        description:
+          "Looking to secure your home our business with cameras or badge access? With our tailored security services you can rest easy knowning your place of residence or business is secure!",
+        icon: 'mdi:cctv',
+      },
+      {
+        title: 'Custom PCs',
+        description:
+          'Upgrade your battlestation or workstation with our tailed building services!',
+        icon: 'mdi:hammer',
+      },
+    ]}
+  />
+
+  <div class="flex items-center justify-center gap-2">
+    <Button 
+      variant='secondary',
+      text="SMB Services",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+      href="/services#smb"
+    />
+    <Button 
+      variant='secondary',
+      text="End User Services",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+      href="/services#eus"
+    />
+    <Button 
+      variant='secondary',
+      text="Not For Profits",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+      href="/nfp"
+    />
+  </div>
+
+  <!-- Content Widget **************** -->
+  <Content
+    isReversed
+    tagline=""
+    id="us"
+    title="What Sets Us Apart"
+    items={[
+      {
+        title: "Our Clients Come First.",
+        description:
+          'When you reach out for help. You want someone who will think of you first before profit.',
+      },
+      {
+        title: 'No Sales Pitches.',
+        description:
+          `Don't you hate when tech companies constantly bug you with sales pitches? So do we.`,
+      },
+      {
+        title: 'No Surprises.',
+        description:
+          `A lot of companies obfuscate invoices and documents. We strive to be as transparent as possible so you aren't surprised.`,
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1634&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Server Racks',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Built on solid foundations</h3>
+      Alex's Guardian was created to put clients above profit. The tech industry is full of companies that either scam or over charge for help.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Stats
+    stats={[
+      { title: 'Happy Clients', amount: '20+' },
+      { title: "Happy SMB's", amount: '6+' },
+      { title: 'Years Served', amount: '7+' },
+      { title: 'User Rating', amount: '4.9' },
+    ]}
+  />
+
+  <Testimonials /> 
+
+  <!-- CallToAction Widget *********** -->
   <CallToAction />
-</DefaultLayout>
+</Layout>

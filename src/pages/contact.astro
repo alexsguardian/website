@@ -1,19 +1,20 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro';
-import ContactForm from '../components/ContactForm.vue';
-import PageTitle from '../components/PageTitle.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactForm from '~/components/ui/ContactForm.vue';
 
-const pageTitle = "Contact";
+const metadata = {
+  title: 'Contact',
+};
 ---
 
-<DefaultLayout title={pageTitle}>
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
 
-    <PageTitle title={pageTitle} desc="Ready to get in touch?" />
+  <HeroText tagline="Contact" title="Let's Connect!" />
 
-    <section>
-        <div>
-            <!-- // Styling Requires Tailwind CSS -->
-            <ContactForm server:defer client:load />
-        </div>
-    </section>
-</DefaultLayout>
+  <ContactForm server:defer client:load/>
+
+  <br>
+
+</Layout>

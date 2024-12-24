@@ -39,31 +39,44 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (!turnstileToken) {
     return new Response(
-      JSON.stringify({ message: "Turnstile validation token missing. C-101" }),
+      JSON.stringify({ message: "Turnstile validation token missing. C-101"}),
       { status: 400 }
     );
   }
 
   // Verify the Turnstile token
-  const verifyResponse = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      secret: turnstileSec,
-      response: turnstileToken,
-      remoteip: request.headers["cf-connecting-ip"] || request.headers["x-forwarded-for"],
-    }),
-  });
+  const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
 
-  const verifyData = await verifyResponse.json();
+  const verifyResponse = async ({ turnstileToken, turnstileSec }) => {
+    const formData = new FormData()
 
-  if (!verifyData.success) {
-    return new Response(
-      JSON.stringify({ message: "Turnstile verification failed. C-102" }),
-      { status: 400 }
-    );
+    formData.append('secret', turnstileSec)
+    formData.append('response', turnstileToken)
+    formData.append('remoteip', request.headers["cf-connecting-ip"] || request.headers["x-forwarded-for"])
+
+    try {
+      const result = await fetch(url, {
+       body: formData,
+       method: 'POST'
+      })
+
+    const outcome = await result.json()
+
+    if (!outcome.success) {
+      return new Response(
+        JSON.stringify({ message: "Turnstile verification failed. C-102"}),
+        { status: 400 }
+      );
+    };
+
+   } 
+   catch (error) {
+    return false
+   };
+  }
+
+  if (!verifyResponse) {
+    console.error("Turnstile failed to verify " + verifyResponse)
   }
 
   let name = data.get("name") as string;

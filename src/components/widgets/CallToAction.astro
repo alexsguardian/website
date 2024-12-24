@@ -1,0 +1,41 @@
+---
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import type { CallToAction, Widget } from '~/types';
+import { Icon } from 'astro-icon/components';
+
+interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  callToAction?: CallToAction;
+  actions?: string | CallToAction[];
+}
+
+const {
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class="mb-32 mt-24 flex flex-col items-center gap-12 rounded-xl p-12 md:p-24 shadow-xl dark:shadow-none text-white bg-gradient-to-r from-[var(--aw-color-primary)] to-[var(--aw-color-accent)] dark:from-[var(--aw-color-primary)] dark:to-[var(--aw-color-accent)]">
+    <h2 class="text-center text-3xl md:text-5xl">Contact us today!</h2>
+    <a href="/contact" class="flex items-center text-center !no-underline">
+      <button 
+        class='group relative flex items-center rounded-md border border-white py-2 px-4 text-center text-2xl transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
+        type="button"
+        >
+        Contact Us
+        <span 
+        class="inline-flex items-center pl-2 max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[3rem]"
+      >
+        <Icon
+          name="mdi:arrow-right"
+          class="h-6 w-6 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+        />
+      </button>
+    </a>
+  </div>
+</WidgetWrapper>

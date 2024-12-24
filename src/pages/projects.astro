@@ -1,59 +1,23 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import PageTitle from '../components/PageTitle.astro';
-import ProjectContainer from '../components/ProjectContainer.astro';
-import CallToAction from '../components/CallToAction.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
 
-import CustomPC1 from '../assets/img/custom-pc-1.webp';
-import CustomPC2 from '../assets/img/custom-pc-2.webp';
-import CamInstall1 from '../assets/img/camera-install-1.webp';
-import NetInstall1 from '../assets/img/network-install-1.webp'
-
-const pageTitle = "Projects";
+const metadata = {
+  title: 'Projects',
+};
 
 export const prerender = true;
 ---
 
-<DefaultLayout title={pageTitle}>
-  <div class="container">
-
-    <PageTitle title={pageTitle} desc="This page contains some examples of projects Alex's Guardian has done." notice="To protect the privacy of clients some images are cropped or edited." />
-    
-    <hr class="py-4">
-
-    <ProjectContainer title="Custom PCs">
-      <ProjectCard
-        title="Chris V.'s PC"
-        body='A custom highend build for Chris V. This was a fun build and we think it turned out great!'
-        aux="System specs: i7-13700KF, 32GB RAM, and a RTX 4090. With Corsair iCue all in a Lian Li 011 Dynamic Evo."
-        img={CustomPC1}
-      />
-      <ProjectCard 
-        title="Geoffery S.'s PC"
-        body="Another custom highend build for Geoffery S. The Deep Cool AIO's infinity mirror CPU block looks sweet!"
-        aux="System specs: i7-14700K, 32GB RAM, and a RTX 4070TI. All in a NZXT H9 Flow."
-        img={CustomPC2}
-      />
-    </ProjectContainer>
-
-    <ProjectContainer title="Camera Installs">
-      <ProjectCard 
-        title="A Full 360"
-        body="A client wanted to have a full 360 view of their property. We also got to install Reolink's new color nightvision cameras!"
-        aux="System Specs: 6x CX810, PoE Doorbell, 3x Duo 3, 2x RLC-520A, and a RLN36. Powered by Ubiquiti!"
-        img={CamInstall1}
-      />
-    </ProjectContainer>
-
-    <ProjectContainer title="Network Installs">
-      <ProjectCard
-        title="Faster Garage Network"
-        body="A client wanted networking to/from their detached garage, but getting a cable to it was not possible."
-        aux="2x Ubiquiti airMAX NanoStation 5AC Loco"
-        img={NetInstall1}
-      />
-    </ProjectContainer>
-  </div>
-  <CallToAction />
-</DefaultLayout>
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Projects"
+    title="Examples of our work"
+    subtitle="Check out some examples of things we do."
+    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'AstroWind Hero Image',
+    }}
+  />
+</Layout>
