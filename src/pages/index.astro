@@ -27,7 +27,7 @@ export const prerender = true;
       <Button 
         variant='secondary',
         text="Learn more",
-        class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+        class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:text-[var(--aw-color-text-default)] hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
         href="#us"
       />
       <a href="/contact" class="flex items-center text-center !no-underline">
@@ -43,7 +43,7 @@ export const prerender = true;
           />
         </button>
       </a>
-      <Button
+      <!-- <Button
         variant='primary',
         class="group flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
         href="#us"
@@ -55,7 +55,7 @@ export const prerender = true;
             class="h-4 w-4 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
           />
         </span>
-      </Button>
+      </Button> -->
     </Fragment>
     <Fragment slot="title">
       Alex's Guardian
@@ -63,7 +63,7 @@ export const prerender = true;
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        Transparent IT, No Suprises.
+        Transparent IT, No Surprises.
       </span>
     </Fragment>
     <!-- <Fragment slot="image">
@@ -84,12 +84,6 @@ export const prerender = true;
         icon: 'mdi:phone',
       },
       {
-        title: 'Device Maintenance',
-        description:
-          'Ensure your devices run smoothly and efficiently with our comprehensive maintenance services. Extend the life of your devices so you can keep doing what you do best!',
-        icon: 'mdi:wrench',
-      },
-      {
         title: 'Infection Removal',
         description:
           'Is your PC infected with malware or viruses? We can help eliminate threats and secure your system!',
@@ -98,41 +92,47 @@ export const prerender = true;
       {
         title: 'Networking',
         description:
-          'Whether you are looking to upgrade or build out an entirely new network, we got you covered!',
+        'Whether you are looking to upgrade or build out an entirely new network, we got you covered!',
         icon: 'mdi:cable-data',
       },
       {
         title: 'Security',
         description:
-          "Looking to secure your home our business with cameras or badge access? With our tailored security services you can rest easy knowning your place of residence or business is secure!",
+          "Looking to secure your home our business with cameras or badge access? With our tailored security services you can rest easy knowing your place of residence or business is secure!",
         icon: 'mdi:cctv',
+      },
+      {
+        title: 'Device Maintenance',
+        description:
+          'Ensure your devices run smoothly and efficiently with our comprehensive maintenance services. Extend the life of your devices so you can keep doing what you do best!',
+        icon: 'mdi:wrench',
       },
       {
         title: 'Custom PCs',
         description:
-          'Upgrade your battlestation or workstation with our tailed building services!',
+          'Upgrade your battle station or workstation with our tailed building services!',
         icon: 'mdi:hammer',
       },
     ]}
   />
 
-  <div class="flex items-center justify-center gap-2">
+  <div class="flex items-center justify-center gap-2 dark:mb-0 mb-4">
     <Button 
       variant='secondary',
       text="SMB Services",
-      class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
       href="/services#smb"
     />
     <Button 
       variant='secondary',
       text="End User Services",
-      class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
       href="/services#eus"
     />
     <Button 
       variant='secondary',
       text="Not For Profits",
-      class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
       href="/nfp"
     />
   </div>
@@ -143,6 +143,7 @@ export const prerender = true;
     tagline=""
     id="us"
     title="What Sets Us Apart"
+    color="white"
     items={[
       {
         title: "Our Clients Come First.",
@@ -166,12 +167,12 @@ export const prerender = true;
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Built on solid foundations</h3>
-      Alex's Guardian was created to put clients above profit. The tech industry is full of companies that either scam or over charge for help.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-[var(--aw-color-text-default)] sm:text-3xl mb-2">Built on solid foundations</h3>
+      Alex's Guardian was created to put clients above profit. The tech industry is full of companies that either scam or over charge for help. We are one of the few trying to change that.
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-[var(--aw-color-secondary)] dark:bg-transparent"></div>
     </Fragment>
   </Content>
 

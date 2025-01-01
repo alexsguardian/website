@@ -1,6 +1,7 @@
 ---
 import testimonials from '../../../public/testimonials.json';
 import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
 ---
 
 <style>
@@ -24,7 +25,7 @@ import { Icon } from 'astro-icon/components';
     min-width: 80%;
     box-sizing: border-box;
     padding: 1rem 6rem;
-    color: var(--font-color);
+    color: var(--aw-color-text-default);
     text-align: center;
     flex: 0 0 100%;
     gap: 0.5rem;
@@ -35,13 +36,12 @@ import { Icon } from 'astro-icon/components';
     top: 50%;
     transform: translateY(-50%);
     border: none;
-    color: var(--font-color);
+    color: var(--aw-color-text-default);
     padding: 0.5rem;
     cursor: pointer;
     z-index: 10;
     font-size: 1.5rem;
   }
-
   .carousel-button.prev {
     left: 10px;
   }
@@ -72,43 +72,45 @@ import { Icon } from 'astro-icon/components';
 
   /* Dark Mode Styles */
   .dark-mode .carousel-slide {
-    background: var(--background);
-    color: var(--font-color);
+    background: var(--aw-color-bg-page);
+    color: var(--aw-color-text-default);
   }
 
   .dark-mode .carousel-button {
-    background: var(--background);
-    color: var(--font-color);
+    background: var(--aw-color-bg-page);
+    color: var(--aw-color-text-default);
   }
 
   .dark-mode .star {
-    color: var(--hl-yellow);
+    color: var(--aw-color-text-default);
   }
 </style>
 
-<!-- Json file lives on the cloud host only and is updated via an api call -->
-<div class="carousel" aria-roledescription="carousel">
-  <div class="carousel-track" id="carousel-track">
-    {testimonials.map((testimonial, index) => (
-      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label={`Slide ${index + 1} of ${testimonials.length}`} key={index}>
-        <strong>{testimonial.title}</strong>
-        <p>{testimonial.testimonial}</p>
-        <p>- {testimonial.name}</p>
-        <div class="stars">
-          {Array.from({ length: 5 }, (_, i) => (
-            <Icon
-              key={i}
-              name={i < testimonial.rating ? 'mdi:star' : 'mdi:star-outline'}
-              class="star"
-            />
-          ))}
+<WidgetWrapper id="testimonials">
+  <!-- Json file lives on the cloud host only and is updated via an api call -->
+  <div class="carousel" aria-roledescription="carousel">
+    <div class="carousel-track" id="carousel-track">
+      {testimonials.map((testimonial, index) => (
+        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label={`Slide ${index + 1} of ${testimonials.length}`} key={index}>
+          <strong>{testimonial.title}</strong>
+          <p>{testimonial.testimonial}</p>
+          <p>- {testimonial.name}</p>
+          <div class="stars">
+            {Array.from({ length: 5 }, (_, i) => (
+              <Icon
+                key={i}
+                name={i < testimonial.rating ? 'mdi:star' : 'mdi:star-outline'}
+                class="star"
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
+    <button class="carousel-button prev" id="prevButton" aria-label="Previous slide">&#10094;</button>
+    <button class="carousel-button next" id="nextButton" aria-label="Next slide">&#10095;</button>
   </div>
-  <button class="carousel-button prev" id="prevButton" aria-label="Previous slide">&#10094;</button>
-  <button class="carousel-button next" id="nextButton" aria-label="Next slide">&#10095;</button>
-</div>
+</WidgetWrapper>
 
 <script is:inline>
   (function() {
