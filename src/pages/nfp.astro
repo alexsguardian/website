@@ -1,10 +1,30 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import { Icon } from 'astro-icon/components';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ServicesList from "~/components/widgets/ServicesList.astro";
 
 const metadata = {
   title: 'Not For Profit',
 };
+
+const services = [
+  {
+    id: 'it-support',
+    title: 'IT Support Services',
+    rate: 'FREE',
+    rateSubtext: '+ hardware/software fees',
+    longDesc: '<div><p class="mb-4">We understand that non-profit organizations often operate under tight budgets and require reliable, efficient technology to achieve their mission. That is why we offer comprehensive IT support tailored specifically to meet the needs of non-profits. Our services ensure your technology is always working for you, not against you.</p><strong class="mb-4">Remote Support</strong><p class="mb-4">Our remote IT support service is ideal for organizations that need fast and effective problem-solving without the delay of an on-site visit. Using secure remote access tools, our team can diagnose and resolve technical issues, perform software updates, and provide troubleshooting assistance—all from the comfort of your office. Remote support includes:</p><ul style="margin-bottom: 1rem;"><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Help Desk</strong>: Quick response to critical issues.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Troubleshooting and Diagnostics</strong>: From software issues to network connectivity problems.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>System Updates</strong>: Keeping your software and security protocols up to date.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>User Support</strong>: Assisting your staff with everyday technology questions and challenges.</li></ul><strong class="mb-1">On-Site Support</strong><p class="mb-4">For non-profits in our local service area, we offer on-site IT support to address more complex issues that require hands-on attention. Our team will come directly to your location to ensure your systems are functioning optimally. On-site support services include:</p><ul style="margin-bottom: 1rem;"><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Hardware Repairs and Installations</strong>: Addressing issues with servers, workstations, or other equipment.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Network Setup and Maintenance</strong>: Ensuring your internet and intranet systems are secure and efficient.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Training Sessions</strong>: Educating your staff on using new software or systems.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Technology Assessments</strong>: Identifying areas forimprovement to help your organization run more smoothly.</li></ul><p class="mb-2">Whether remotely or in person, our IT support services are designed to minimize downtime, improve efficiency, and allow you to focus on what matters most—serving your community. Contact us today to learn how we can support your mission through reliable, affordable technology solutions.</p><p class="text-sm">* Any hardware or software purchases are provided at cost.</p></div>',
+  },
+  {
+    id: 'web-hosting',
+    title: 'Website Hosting & Management Services',
+    rate: '$5/hr',
+    rateSubtext: '+ hosting fees',
+    longDesc: '<div><p class="mb-4">For non-profit organizations, having a reliable and well-maintained website is essential to engage supporters, communicate your mission, and streamline operations. Our Website Hosting & Management Services are tailored to suit the needs of organizations both small and large. We offer two comprehensive levels of service, ensuring that you receive the functionality and support that best aligns with your goals and budget:</p><strong class="mb-4">Basic Website Hosting</strong><p class="mb-4">Our basic website hosting service is ideal for organizations seeking a simple yet professional online presence. This package includes:</p><ul style="margin-bottom: 1rem;"><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Deployment of a Static Website</strong>: We\'ll deploy a website that delivers key information about your organization in a clean, visually appealing format.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Basic Contact Form Integration</strong>: A user-friendly contact form that allows visitors to easily reach out to your organization via email.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Maintenance</strong>: Regular updates to ensure your website remains functional and secure.</li></ul><p class="text-sm mb-4">* Organizations will be responsible for hosting fees, which will be billed at cost.</p><strong class="mb-1">Advanced Website Hosting</strong><p class="mb-4">For non-profits with more complex needs, our advanced hosting package provides the tools and features to create an interactive and robust web presence. This package includes:</p><ul style="margin-bottom: 1rem;"><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Dynamic Website Functionality</strong>: A website that adapts to user input and provides customized content and experiences.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Database Integration</strong>: Store and manage donor data, event registrations, volunteer applications, and other essential information seamlessly.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Enhanced Features</strong>: Options for e-commerce, member portals, event calendars, or any custom functionality tailored to your mission.</li><li><Icon name="mdi:dots-circle" class="inline pr-1 pb-1" /><strong>Maintenance and Updates</strong>: Comprehensive support to ensure your website runs smoothly and stays up-to-date with the latest technology.</li></ul><p class="text-sm mb-4">* Advanced website hosting also requires the organization to cover hosting fees, which will be billed at cost.</p><strong>Design Services</strong><p class="mb-4">We do not handle website design directly. Instead, we collaborate with trusted third-party web design professionals to ensure your website meets your expectations. Design services are subject to the third party\'s rates, which will be provided and agreed upon separately. We coordinate closely with these designers to ensure seamless integration into our hosting and management services.</p></div>',
+  }
+];
 
 export const prerender = true;
 ---
@@ -14,10 +34,49 @@ export const prerender = true;
     tagline="Not For Profits"
     title="Elevate your organization with proper technology support"
     subtitle="Let us worry about your tech needs so you can keep doing what you do best!"
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
       alt: 'AstroWind Hero Image',
     }}
   />
+
+  <ServicesList Column1title="Service" Column2title="Rate" services={services}>
+    <div slot="before" class="mb-4 text-center">
+      <h2>Services and Rates</h2>
+      <p class="text-sm">Please see the table below for the services and rates we offer to not for profit organizations.</p>
+    </div>
+    
+    <p slot="after" class="text-center text-sm my-3">Services and rates are subject to change.</p>
+  </ServicesList>
+
+  <div>
+    <h3 class="text-center mt-10 mb-1">Providing Proof of Not For Profit Status</h3>
+    <p class="text-center mb-4">
+      After contacting us we will ask for proof of nonprofit status. Any of the following is acceptable evidence of nonprofit status: 
+      <ol class="ml-40 mr-40">
+        <li class="m-2">
+          <Icon name="mdi:dots-circle" class="inline pr-1 pb-1" />
+          A reference to the applicant organization’s listing in the Internal Revenue Service’s (IRS) most recent list of tax-exempt organizations described in section 501(c)(3) of the IRS Code.
+        </li>
+        <li class="m-2">
+          <Icon name="mdi:dots-circle" class="inline pr-1 pb-1" />
+          A copy of a currently valid IRS tax exemption certificate.
+        </li>
+        <li class="m-2">
+          <Icon name="mdi:dots-circle" class="inline pr-1 pb-1" />
+          A statement from a State taxing body, State Attorney General, or other appropriate State Official certifying that the applicant organization has a nonprofit status and that none of the net earnings accrue to any private shareholders or individuals.
+        </li>
+        <li class="m-2">
+          <Icon name="mdi:dots-circle" class="inline pr-1 pb-1" />
+          A certified copy of the organization’s certificate of incorporation or similar document that clearly establishes nonprofit status.
+        </li>
+        <li class="m-2">
+          <Icon name="mdi:dots-circle" class="inline pr-1 pb-1" />
+          Any of the above proof for a State or national parent organization and a statement signed by the parent organization that the applicant organization is a local nonprofit affiliate.
+        </li>
+      </ol>
+    </p>
+  </div>
+  
+  <CallToAction />
 </Layout>

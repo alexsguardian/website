@@ -285,3 +285,12 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+export interface Service {
+  id?: string;
+  title?: string;
+  rate?: string;
+  rateSubtext?: string;
+  longDesc?: string;
+  asterisk?: boolean;
+}

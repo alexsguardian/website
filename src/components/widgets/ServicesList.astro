@@ -1,0 +1,132 @@
+---
+import type { Service } from '../../types';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+
+export const prerender = false;
+interface Props {
+  services: Array<Service>;
+    Column1title: string;
+    Column2title: string;
+}
+const { services = [], Column1title, Column2title } = Astro.props;
+---
+<WidgetWrapper>
+  <div class="bg-[var(--neutral-100)] text-[var(--neutral-900)] dark:bg-[var(--dark-100)] dark:text-[var(--neutral-100)] p-8 rounded-md shadow-md border border-spacing-1 dark:border-[var(--neutral-800)]">
+    <slot name="before" />
+    {
+      services && (
+        <ol id="listofservices">
+          <li class="odd:text-[var(--neutral-100)] odd:bg-[var(--highlight-purple-400)]">
+            <div class="p-3 font-bold text-xl grid grid-cols-3">
+              <p class="col-span-2">{Column1title}</p>
+              <p>{Column2title}</p>
+            </div>
+          </li>
+          {services.map(({ id, title, rate, rateSubtext, asterisk }) => (
+              <li class="odd:text-white odd:bg-[var(--aw-color-secondary)] odd:hover:bg-[var(--highlight-purple-400)] hover:bg-[var(--highlight-blue-100)] dark:hover:bg-[var(--highlight-blue-400)] odd:dark:hover:bg-[var(--highlight-purple-400)]">
+                <a href={id && '#'+id} class="!text-inherit !no-underline">
+                  <div class="p-3 font-bold grid grid-cols-3 ">
+                    
+                    {
+                      title && 
+                        <p class="col-span-2">
+                          {title}
+                          {
+                            asterisk &&
+                              <span>*</span>
+                          }
+                        </p>
+                    }
+                    
+                    {
+                      rate && 
+                        <div>
+                          <p>{rate}</p>
+                          {
+                            rateSubtext && 
+                            <p class="text-xs">{rateSubtext}</p>
+                          }
+                        </div>
+                    }
+
+                  </div>
+                </a>
+              </li>
+          ))}
+        </ol>
+      )
+    }
+    
+    <slot name="after" />
+  </div>
+
+  <section class="mt-16">
+    {
+      services && 
+      (
+        services.map(({ id, title, longDesc }) => (
+          longDesc && (
+            <div id={id} target-highlight class="anchor-section p-8 mb-4 rounded-md shadow-md border dark:border-[var(--neutral-800)] bg-[var(--neutral-100)] dark:bg-[var(--dark-100)]">
+              <h2 class="text-xl font-bold text-[var(--neutral-900)] dark:text-[var(--neutral-100)]">
+                {title}
+              </h2>
+              <div class="mt-2 text-[var(--neutral-700)] dark:text-[var(--neutral-300)]" set:html={longDesc} />
+            </div>
+          )
+        )
+      )
+    )
+  }
+  </section>
+</WidgetWrapper>
+
+<style>
+  body {
+    scroll-behavior: smooth;
+  }
+  #listofservices li {
+    border: 1px solid var(--neutral-700);
+    margin: 0;
+  }
+
+  :target {
+    outline: 6px solid var(--highlight-purple-300);
+    outline-offset: 2px;
+    animation: 500ms ease-in-out 0s infinite alternate target;
+  }
+
+  [target-highlight] {
+  }
+
+  @keyframes target {
+    from {
+      outline-offset: 2px;
+    }
+    to {
+      outline-offset: 8px;
+    }
+  }
+</style>
+
+<script type="text/javascript">
+  window.onload = function() {
+    document.location.hash = "";
+  }
+</script>
+
+<script type="text/javascript">
+  divs = document.querySelectorAll('[target-highlight]');
+  function ClearHighlight(e){
+    if (`#${e.currentTarget.id}` === document.location.hash) {
+      setTimeout(() => {
+        document.location.hash = '';
+        e.preventDefault();
+      }, 2000);
+    }
+  }
+  
+  divs.forEach((div) => {
+    div.addEventListener('mouseover', ClearHighlight);
+  });
+  
+</script>
