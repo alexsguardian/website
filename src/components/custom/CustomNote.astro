@@ -1,0 +1,17 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  pre?: string;
+  text?: string;
+  icon?: string;
+}
+
+const { pre, text, icon } = Astro.props;
+---
+
+<section class="text-white bg-[var(--aw-color-secondary)] dark:[var(--aw-color-secondary-50)] not-prose">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
+    <span class="font-bold">{icon && <Icon name={icon} class="w-5 h-5 inline-block align-text-bottom" />}{pre} </span>{text}
+  </div>
+</section>

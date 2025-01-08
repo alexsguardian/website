@@ -1,0 +1,51 @@
+---
+// Pulled from starlight and edited to fit this theme. https://starlight.astro.build/components/asides/
+import { AstroError } from 'astro/errors';
+import { Icon } from 'astro-icon/components';
+
+const asideVariants = ['note', 'tip', 'caution', 'danger'] as const;
+const icons = { note: 'mdi:information-outline', tip: 'mdi:head-lightbulb-outline', caution: 'mdi:alert-outline', danger: 'mdi:alert-circle-outline' } as const;
+
+// Default titles for each type of aside
+const defaultTitles = {
+	note: 'Note',
+	tip: 'Tip',
+	caution: 'Caution',
+	danger: 'Danger',
+} as const;
+
+interface Props {
+	type?: (typeof asideVariants)[number];
+	title?: string;
+}
+
+let { type = 'note', title } = Astro.props;
+
+if (!asideVariants.includes(type)) {
+	throw new AstroError(
+		'Invalid `type` prop passed to the `<Aside>` component.\n',
+		`Received: ${JSON.stringify(type)}\n` +
+			`Expected one of ${asideVariants.map((i) => JSON.stringify(i)).join(', ')}`
+	);
+}
+
+// Fallback to default titles if no title is provided
+if (!title) {
+	title = defaultTitles[type];
+}
+---
+
+<aside aria-label={title} 
+    class={`p-4 border-l-4 text-[var(--neutral-900)] rounded-[.25rem]
+    ${type === 'note' ? 'border-[var(--highlight-blue-400)] bg-[var(--highlight-blue-100)]' : ''}
+    ${type === 'tip' ? 'border-[var(--highlight-green-400)] bg-[var(--highlight-green-100)]' : ''}
+    ${type === 'caution' ? 'border-[var(--highlight-yellow-400)] bg-[var(--highlight-yellow-100)]' : ''}
+    ${type === 'danger' ? 'border-[var(--highlight-red-400)] bg-[var(--highlight-red-100)]' : ''}`}>
+    <p class="flex items-center gap-2 font-semibold text-lg text-[var(--color-asides-text-accent)]">
+        <Icon name={icons[type]} class="text-xl" />
+        {title}
+    </p>
+    <section class="mt-2">
+        <slot />
+    </section>
+</aside>
