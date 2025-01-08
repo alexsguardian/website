@@ -8,6 +8,7 @@ interface Link {
   href?: string;
   ariaLabel?: string;
   icon?: string;
+  external?: boolean;
 }
 
 interface Links {
@@ -58,14 +59,16 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
             <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
+                {links.map(({ text, href, ariaLabel, external }) => (
                   <li class="mb-2">
                     <a
                       class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
                       href={href}
                       aria-label={ariaLabel}
+                      target={`${external ? '_blank' : '_self'}`}
                     >
                       <Fragment set:html={text} />
+                      {external && <Icon name="mdi:external-link" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 inline" />}
                     </a>
                   </li>
                 ))}

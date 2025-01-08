@@ -14,6 +14,7 @@ interface Link {
   href?: string;
   ariaLabel?: string;
   icon?: string;
+  external?: boolean;
 }
 
 interface MenuLink extends Link {
@@ -86,7 +87,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
       >
         {
-          links.map(({ text, href, links }) => (
+          links.map(({ text, href, links, external }) => (
             <li class={links?.length ? 'dropdown' : ''}>
               {links?.length ? (
                 <>
@@ -95,10 +96,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
                   >
                     {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+                    <Icon name="mdi:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
                   </button>
                   <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                    {links.map(({ text: text2, href: href2 }) => (
+                    {links.map(({ text: text2, href: href2, external }) => (
                       <li>
                         <a
                           class:list={[
@@ -106,8 +107,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                             { 'aw-link-active': href2 === currentPath },
                           ]}
                           href={href2}
+                          target={`${external ? '_blank' : '_self'}`}
                         >
                           {text2}
+                          {external && <Icon name="mdi:external-link" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 inline" />}
                         </a>
                       </li>
                     ))}
@@ -120,8 +123,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     { 'aw-link-active': href === currentPath },
                   ]}
                   href={href}
+                  target={`${external ? '_blank' : '_self'}`}
                 >
                   {text}
+                  {external && <Icon name="mdi:external-link" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 inline" />}
                 </a>
               )}
             </li>
