@@ -9,6 +9,7 @@ import ContentWrapper from '~/components/custom/ContentWrapper.astro';
 import { Icon } from 'astro-icon/components';
 import Note from '~/components/widgets/Note.astro';
 import CustomNote from '~/components/custom/CustomNote.astro';
+import Brands from '~/components/widgets/Brands.astro';
 
 
 const metadata = {
@@ -27,6 +28,10 @@ export const prerender = true;
       src: 'https://images.unsplash.com/photo-1722963220475-979db2dbf216?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       alt: 'Group of people placing hands in a circle',
     }}
+  />
+
+  <CustomNote
+    text=`Alex's Guardian offers services to not for profits for free or at a discounted rate. Depending on the service needed.`
   />
 
  <!--- IT SERVICES ---->
@@ -244,6 +249,17 @@ export const prerender = true;
       </span>
     </div>
   </div>
+
+  <Brands 
+    title='Organizations We Work With'
+    images={[
+      {
+        src: '~/assets/images/brands/MLC_CentennialLogo.webp',
+        alt: 'Manheim Lions Club',
+        link: 'https://manheimlions.org'
+      }
+    ]}
+  />
 
   <CallToAction />
 </Layout>

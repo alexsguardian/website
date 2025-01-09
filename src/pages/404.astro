@@ -1,6 +1,8 @@
 ---
-import Layout from '~/layouts/Layout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import '~/components/CustomStyles.astro';
 import { getHomePermalink } from '~/utils/permalinks';
+import Button from '~/components/ui/Button.astro';
 
 const title = `Error 404`;
 
@@ -10,16 +12,43 @@ export const prerender = true;
 <Layout metadata={{ title }}>
   <section class="flex items-center h-full p-16">
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+      <div class="max-w-md text-center mb-4">
+        <span>
+          <svg width="598" height="214" viewBox="0 0 598 214" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M320.76 107H277.667V96.3333H229.667C219.765 96.3333 210.269 92.4 203.268 85.3986C196.267 78.3973 192.333 68.9014 192.333 59C192.333 49.0986 196.267 39.6027 203.268 32.6013C210.269 25.6 219.765 21.6667 229.667 21.6667C240.653 21.6667 250.467 26.36 257.293 33.9333C261.667 14.7333 278.52 0.333328 299 0.333328C319.48 0.333328 336.333 14.7333 340.707 33.9333C347.533 26.36 357.347 21.6667 368.333 21.6667C378.235 21.6667 387.731 25.6 394.732 32.6013C401.733 39.6027 405.667 49.0986 405.667 59C405.667 68.9014 401.733 78.3973 394.732 85.3986C387.731 92.4 378.235 96.3333 368.333 96.3333H320.76V107ZM277.667 159.267V147.107H224.333V125.773H373.667V147.107H320.76V159.48L384.333 182.52C390.52 184.76 395 190.627 395 197.667C395 201.91 393.314 205.98 390.314 208.98C387.313 211.981 383.243 213.667 379 213.667H219C214.757 213.667 210.687 211.981 207.686 208.98C204.686 205.98 203 201.91 203 197.667C203 190.627 207.48 184.76 213.667 182.52L277.667 159.267Z" fill="url(#myGradient)"/>
+            <line x1="427.153" y1="160.524" x2="530.153" y2="193.524" stroke="black"/>
+            <line x1="427" y1="133.5" x2="598" y2="133.5" stroke="black"/>
+            <line x1="170.847" y1="108.476" x2="67.8474" y2="75.4762" stroke="black"/>
+            <line y1="-0.5" x2="108.157" y2="-0.5" transform="matrix(-0.952317 0.305111 0.305111 0.952317 530 74)" stroke="black"/>
+            <line y1="-0.5" x2="108.157" y2="-0.5" transform="matrix(-0.952317 0.305111 0.305111 0.952317 172 161)" stroke="black"/>
+            <line x1="171" y1="135.5" x2="-4.37114e-08" y2="135.5" stroke="black"/>
+            <defs>
+              <linearGradient id="myGradient" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" style="stop-color: var(--aw-color-primary)" />
+                <stop offset="60%" style="stop-color: var(--aw-color-accent)" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+      </div>
       <div class="max-w-md text-center">
-        <h2 class="mb-8 font-bold text-9xl">
-          <span class="sr-only">Error</span>
-          <span class="text-primary">404</span>
-        </h2>
-        <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          But dont worry, you can find plenty of other things on our homepage.
+        <h1 class="mb-8 text-6xl">
+          <span class="font-semibold font-heading">KABOOM!</span>
+        </h1>
+        <p class="mb-8 text-2xl font-heading">
+          The page you are looking for doesn't seem to exist.
         </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+        <p class="mb-8 font-serif">
+          If the page did exist and this is an error, please email <a href="mailto:webmaster@alexsguardian.net" target="_blank" class="underline" >webmaster@alexsguardian.net</a> with the url you are trying to use.
+        </p>
+        <Button
+        variant='secondary',
+        class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:text-[var(--aw-color-text-default)] hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+        href={getHomePermalink()}
+        rel="noopener noreferrer"
+      >
+        Return home
+      </Button>
       </div>
     </div>
   </section>
