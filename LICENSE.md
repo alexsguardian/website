@@ -27,13 +27,13 @@ Brand Assets (2025)
 The term “Brand Assets” includes, but is not limited to, any names, logos, trademarks, service marks, trade dress, designs, color schemes, or other brand identifying features owned by Alex's Guardian.
 
 Ownership of Brand Assets 
-Alex's Guardian retains exclusive ownership of the Brand Assets. Nothing in the above MIT License, nor in any other part of these license terms, shall be interpreted to grant you any right, title, or interest in the Brand Assets.
+- Alex's Guardian retains exclusive ownership of the Brand Assets. Nothing in the above MIT License, nor in any other part of these license terms, shall be interpreted to grant you any right, title, or interest in the Brand Assets.
 
-Prohibited Use 
-You may not use, display, modify, sublicense, sell, or distribute the Brand Assets without express prior written permission from Alex's Guardian. Any unauthorized use of the Brand Assets constitutes infringement of Alex's Guardian’s rights.
+Prohibited Use
+- You may not use, display, modify, sublicense, sell, or distribute the Brand Assets without express prior written permission from Alex's Guardian. Any unauthorized use of the Brand Assets constitutes infringement of Alex's Guardian’s rights.
 
 No Endorsement
-You shall not use the Brand Assets in any manner that implies endorsement, sponsorship, or affiliation by Alex's Guardian unless you have an explicit written agreement to do so.
+- You shall not use the Brand Assets in any manner that implies endorsement, sponsorship, or affiliation by Alex's Guardian unless you have an explicit written agreement to do so.
 
 Reservation of Rights
-All rights not expressly granted here are reserved by Alex's Guardian. The permission granted under the above MIT License for the code portion does not extend to the Brand Assets.
+- All rights not expressly granted here are reserved by Alex's Guardian. The permission granted under the above MIT License for the code portion does not extend to the Brand Assets.
