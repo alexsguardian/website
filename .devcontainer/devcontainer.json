@@ -1,0 +1,30 @@
+{
+	"name": "AGNET Website",
+	"build": {
+	  "dockerfile": "Dockerfile",
+	  "context": ".."
+	},
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"mikestead.dotenv",
+				"astro-build.astro-vscode",
+				"matthewpi.caddyfile-support",
+				"ms-azuretools.vscode-docker",
+				"ltex-plus.vscode-ltex-plus",
+				"unifiedjs.vscode-mdx",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss",
+				"wdhongtw.gpg-indicator"
+			]
+		}
+	},
+	"forwardPorts": [4321, 3000],
+	"containerEnv": {
+			"CHOKIDAR_USEPOLLING": "true"
+	},
+	"postCreateCommand": "npm install && npm run dev",
+	"remoteUser": "node"
+}

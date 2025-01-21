@@ -36,11 +36,11 @@ if (!title) {
 ---
 
 <aside aria-label={title} 
-    class={`p-4 border-l-4 text-[var(--neutral-900)] rounded-[.25rem]
-    ${type === 'note' ? 'border-[var(--highlight-blue-400)] bg-[var(--highlight-blue-100)]' : ''}
-    ${type === 'tip' ? 'border-[var(--highlight-green-400)] bg-[var(--highlight-green-100)]' : ''}
-    ${type === 'caution' ? 'border-[var(--highlight-yellow-400)] bg-[var(--highlight-yellow-100)]' : ''}
-    ${type === 'danger' ? 'border-[var(--highlight-red-400)] bg-[var(--highlight-red-100)]' : ''}`}>
+    class={`p-4 border-l-4 text-[var(--aw-color-text-default)] rounded-[.25rem]
+    ${type === 'note' ? 'border-[var(--aw-color-accent)] bg-[var(--aw-color-accent-50)] ' : ''}
+    ${type === 'tip' ? 'border-[var(--aw-color-primary)] bg-[var(--aw-color-primary-50)]' : ''}
+    ${type === 'caution' ? 'border-[var(--aw-color-yellow)] bg-[var(--aw-color-yellow-50)]' : ''}
+    ${type === 'danger' ? 'border-[var(--aw-color-red)] bg-[var(--aw-color-red-50)]' : ''}`}>
     <p class="flex items-center gap-2 font-semibold text-lg text-[var(--color-asides-text-accent)]">
         <Icon name={icons[type]} class="text-xl" />
         {title}

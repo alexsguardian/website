@@ -1,4 +1,4 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -7,45 +7,36 @@ export const headerData = {
       href: "/",
     },
     {
-      text: 'Servicing',
-      links: [
-        {
-          text: 'Small Business',
-          href: getPermalink('/services#smb'),
-        },
-        {
-          text: 'End Users',
-          href: getPermalink('/services#eus'),
-        },
-        {
-          text: 'Not For Profits',
-          href: getPermalink('/nfp'),
-        },
-      ]
+      text: 'Services',
+      href: getPermalink('/services'),
     },
     {
       text: 'Projects',
-      href: "/projects",
+      href: getPermalink('/projects'),
     },
     {
       text: 'About',
-      href: "/about",
+      href: getPermalink('/about'),
     },
     {
       text: 'Contact',
-      href: "/contact",
+      href: getPermalink('/contact'),
     },
     {
       text: 'Extras',
       links: [
         {
-          text: 'Scams',
-          href: getPermalink('/scams'),
-        },
-        {
           text: "Alex's Blog",
           external: true,
           href: "https://blog.alexsguardian.net",
+        },
+        {
+          text: 'Not For Profits',
+          href: getPermalink('/nfp'),
+        },
+        {
+          text: 'Scams',
+          href: getPermalink('/scams'),
         },
         {
           text: 'Privacy Policy',
@@ -62,7 +53,7 @@ export const footerData = {
       title: 'External',
       links: [
         { text: `Alex's Blog`, href: 'https://blog.alexsguardian.net', external: true, },
-        { text: 'WISP Portal', href: 'https://uisp.alexsguardian.net/crm', external: true, }
+        { text: 'WISP Portal', href: 'https://uisp.alexsguardian.net/crm/login', external: true, }
       ]
     },
     {
@@ -75,7 +66,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Company',
+      title: 'Company', 
       links: [
         { text: 'About', href: '/about' },
         { text: 'Contact', href: '/contact' },

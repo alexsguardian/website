@@ -27,7 +27,7 @@ export const prerender = true;
       <Button 
         variant='secondary',
         text="Learn more",
-        class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:text-[var(--aw-color-text-default)] hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+        class="flex items-center rounded-md py-2 px-4 text-center text-white text-md transition-all shadow-sm hover:text-[var(--aw-color-text-default)] hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-accent)]",
         href="#us"
       />
       <Button
@@ -62,43 +62,37 @@ export const prerender = true;
   <Features
     id="services"
     title="Services"
-    subtitle="Below are a few of the services we offer to our clients. Both end users and small businesses."
+    subtitle="Below are a few of the popular services we offer to our clients. Both end users and small businesses."
     color="[#043792]"
     items={[
       {
-        title: 'Remote Support',
-        description:
-          `Fast and reliable remote troubleshooting support to resolve your IT issues without needing a site visit. Don't let an issue ruin your day!`,
+        title: 'Remote & Onsite Support',
+        description: `Fast and reliable remote or onsite troubleshooting support to resolve your IT issues. Don't let an issue ruin your day!`,
         icon: 'mdi:phone',
       },
       {
         title: 'Infection Removal',
-        description:
-          'Is your PC infected with malware or viruses? We can help eliminate threats and secure your system!',
+        description: 'Is your PC infected with malware or viruses? We can help eliminate threats and secure your system!',
         icon: 'mdi:virus',
       },
       {
         title: 'Networking',
-        description:
-        'Whether you are looking to upgrade or build out an entirely new network, we got you covered!',
+        description: 'Whether you are looking to upgrade or build out an entirely new network, we got you covered!',
         icon: 'mdi:cable-data',
       },
       {
         title: 'Security',
-        description:
-          "Looking to secure your home our business with cameras or badge access? With our tailored security services you can rest easy knowing your place of residence or business is secure!",
+        description: "Looking to secure your home or business with cameras or badge access? With our tailored security services you can rest easy knowing your place of residence or business is secure!",
         icon: 'mdi:cctv',
       },
       {
         title: 'Device Maintenance',
-        description:
-          'Ensure your devices run smoothly and efficiently with our comprehensive maintenance services. Extend the life of your devices so you can keep doing what you do best!',
+        description: 'Ensure your devices run smoothly and efficiently with our comprehensive maintenance services. Extend the life of your devices so you can keep doing what you do best!',
         icon: 'mdi:wrench',
       },
       {
         title: 'Custom PCs',
-        description:
-          'Upgrade your battle station or workstation with our tailed building services!',
+        description: 'Upgrade your battle station or workstation with our tailed building services!',
         icon: 'mdi:hammer',
       },
     ]}
@@ -107,20 +101,14 @@ export const prerender = true;
   <div class="flex items-center justify-center gap-2 dark:mb-0 mb-4">
     <Button 
       variant='secondary',
-      text="SMB Services",
-      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
-      href="/services#smb"
-    />
-    <Button 
-      variant='secondary',
-      text="End User Services",
-      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
-      href="/services#eus"
+      text="See all services",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-green)]",
+      href="/services"
     />
     <Button 
       variant='secondary',
       text="Not For Profits",
-      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-text-muted)]",
+      class="flex items-center rounded-md py-2 px-4 text-center text-white hover:text-[var(--aw-color-text-default)] text-md transition-all shadow-sm hover:shadow-lg disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-[var(--aw-color-green)]",
       href="/nfp"
     />
   </div>

@@ -2,6 +2,7 @@
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
@@ -17,28 +18,54 @@ export const prerender = true;
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
+    tagline=""
+    title="Explore Our Services"
+    subtitle=""
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
       alt: 'AstroWind Hero Image',
     }}
   />
 
+  <Features2
+    columns={2}
+    items={[
+      {
+        title: "Remote & Onsite Support",
+        description: "test desc",
+        icon: "mdi:home"
+      },
+      {
+        title: "test",
+        description: "test desc",
+        icon: "mdi:home"
+      },
+      {
+        title: "test",
+        description: "test desc",
+        icon: "mdi:home"
+      },
+      {
+        title: "test",
+        description: "test desc",
+        icon: "mdi:home"
+      },
+    ]}
+  >
+  </Features3>
+
   <!-- Features2 Widget ************** -->
 
   <Features2
-    id="smb"
-    title="SMB"
-    subtitle="Discover our selection below to streamline and elevate your projects."
+    id="consult"
+    title="Consultancy Services"
+    subtitle="Discover our selection of consultancy services."
     columns={3}
     items={[
       {
-        title: 'Educational',
+        title: 'Device Replacement',
         description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
+          'Looking for help with replacing or upgrading an older device?',
         icon: 'tabler:school',
       },
       {
