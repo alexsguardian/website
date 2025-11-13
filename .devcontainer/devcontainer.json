@@ -1,0 +1,33 @@
+{
+  "name": "agnet-web",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "mikestead.dotenv",
+        "astro-build.astro-vscode",
+        "matthewpi.caddyfile-support",
+        "ms-azuretools.vscode-docker",
+        "ltex-plus.vscode-ltex-plus",
+        "unifiedjs.vscode-mdx",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "wdhongtw.gpg-indicator",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+  "forwardPorts": [4321, 3000],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.gitconfig.personal,target=/home/node/.gitconfig.personal,type=bind,consistency=cached"
+  ]
+}
