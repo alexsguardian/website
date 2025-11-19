@@ -1,0 +1,27 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Link, Notification } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+---
+
+<DefaultLayout title="Form Success" showCallToAction={false}>
+  <PageHeader title="Thank You!" subtitle="Your message has been received." bgType="gradient" showBreadcrumbs={false} />
+  <section class="container my-16">
+    <div class="space-content">
+      <Notification type="info">
+        <p>Your message has been successfully sent! Please allow us 1-2 business days to respond.</p>
+      </Notification>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <Link href="/" isButton type="primary" animateOnHover animation="boop" pulse>
+          <Icon aria-hidden="true" name="lucide:home" size={24} />
+          Home
+        </Link>
+        <Link href="/contact" isButton type="default" animateOnHover animation="boop" pulse>
+          <Icon aria-hidden="true" name="lucide:mail" size={24} />
+          Send another message
+        </Link>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>

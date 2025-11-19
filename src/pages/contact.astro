@@ -1,125 +1,135 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading, Link, Radio } from 'accessible-astro-components'
-import { Icon } from 'astro-icon/components'
+import { Form, Input, Button, Textarea } from 'accessible-astro-components'
+
+const isLocalhost = import.meta.env.IS_LOCAL
+const isDev = import.meta.env.DEV
+
+let baseURL: string
+if (isLocalhost) {
+  baseURL = 'http://localhost:4321'
+} else if (isDev) {
+  baseURL = `https://dev.${Astro.site?.toString().replace(/^https?:\/\//, '') || 'alexsguardian.net'}`
+} else {
+  baseURL = `${Astro.site}`
+}
+
+if (isLocalhost || isDev) {
+  console.log('Running in development mode, baseURL:', baseURL)
+}
+
+const FORM_URL = import.meta.env.PUBLIC_CONTACT_FORM_URL
+const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
 ---
 
-<DefaultLayout title="Contact">
-  <PageHeader title="Contact" subtitle="Have a question? Get in touch with us!" bgType="gradient" />
-  <section class="my-16">
-    <div class="container">
-      <Heading level="h2">Let's talk</Heading>
-    </div>
-  </section>
-  <section class="container">
-    <div class="grid grid-cols-1 gap-32 md:grid-cols-2">
-      <div class="space-content">
-        <Form name="contact" action="/thank-you" method="post">
-          <!-- Input field with custom validation message -->
+<DefaultLayout title="Contact" showCallToAction={false}>
+  <PageHeader
+    title="Contact"
+    subtitle="Ready to get in touch? Fill out the form below and we'll respond as soon as possible!"
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+  <section class="mx-auto mb-12 max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div>
+      <div class="space-content p-4 sm:p-6">
+        <Form name="contact" action={FORM_URL} method="POST">
+          <!-- Formspark stuff -->
+          <input type="hidden" name="_redirect" value={`${baseURL}form-success/`} />
+          <input type="hidden" name="_error" value={`${baseURL}form-error/`} />
+          <input type="hidden" name="_append" value="false" />
+          <input type="hidden" name="_email.subject" value="New Website Contact Form Submission" />
+          <input type="checkbox" name="_honeypot" value="Are you real?" style="display:none" tabindex="-1" autocomplete="off" />
+          <!-- End Formspark stuff -->
           <Input
-            name="firstname"
-            label="First name"
+            id="name"
+            type="name"
+            name="name"
+            label="Name"
             required
-            data-validation="We need your first name to address you correctly"
-            autocomplete="given-name"
+            data-validation="We need your name to address you correctly"
+            autocomplete="name"
           />
 
-          <Input name="email" label="Email address" type="email" required autocomplete="email" />
+          <Input name="email" type="email" id="email" label="Email address" required autocomplete="email" />
 
-          <!-- Custom validation with pattern -->
-          <Input name="phone" label="Phone number" type="tel" required data-validation-pattern="^[0-9]{10}$" />
+          <Input
+            name="phone"
+            id="phone"
+            label="Phone number (123-456-7890)"
+            type="tel"
+            data-validation-pattern="^(?:[0-9]{10}|1-[0-9]{3}-[0-9]{3}-[0-9]{4})$"
+          />
 
-          <Textarea name="message" label="Message" required />
+          <Textarea name="message" id="message" label="Message" required />
 
-          <!-- Checkbox group with validation -->
-          <Fieldset
-            name="interests"
-            legend="What are you interested in?"
-            required
-            data-validation="Please select at least one area of interest"
-          >
-            <Checkbox name="accessibility" value="a11y" label="Accessibility and inclusive design" />
-            <Checkbox name="wcag-compliance" value="wcag" label="WCAG compliance and testing" />
-            <Checkbox name="screen-reader" value="sr" label="Screen reader optimization" />
-            <Checkbox name="keyboard-nav" value="keyboard" label="Keyboard navigation" />
-          </Fieldset>
-
-          <!-- Radio group (shared names) -->
-          <Fieldset name="experience" legend="Your experience level" required>
-            <Radio name="experience" value="beginner" label="Beginner" />
-            <Radio name="experience" value="intermediate" label="Intermediate" />
-            <Radio name="experience" value="advanced" label="Advanced" />
-          </Fieldset>
-
-          <Button htmlType="submit" type="primary">Send Message</Button>
+          <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
+            <Button id="submit-btn" htmlType="submit" type="primary" size="md" data-dev={isDev}>Send Message</Button>
+            <div id="cf-turnstile" class="max-w-full pt-2" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1">
+            </div>
+          </div>
         </Form>
-      </div>
-      <div class="space-content">
-        <Heading level="h3">Contact us</Heading>
-        <p class="text-lg">
-          Experience the power of Accessible Astro Starter's Form components! This contact form showcases our
-          comprehensive form validation system with built-in accessibility features and WCAG 2.2 compliance.
-        </p>
-        <p>
-          Our Form component includes automatic validation, proper error handling, semantic HTML structure, and screen
-          reader support. Test out the various input types, validation patterns, and interactive elements to see how
-          accessibility and usability work together seamlessly.
-        </p>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:phone" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Phone:</span>
-            <Link href="tel:+12345678900">+1 (234) 567-8900</Link>
-          </p>
-        </div>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:mail" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Email:</span>
-            <Link href="mailto:hello@accessibleastro.dev">hello@accessibleastro.dev</Link>
-          </p>
-        </div>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:map-pin" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Address:</span>
-            123 Accessibility Lane, Web Standards City
-          </p>
-        </div>
-
-        <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:clock" size={20} class="flex-shrink-0" />
-          <p>
-            <span class="font-bold">Business Hours:</span>
-            Monday - Friday, 9:00 AM - 5:00 PM EST
-          </p>
-        </div>
-
-        <ul class="flex flex-wrap gap-2">
-          <li>
-            <Link href="/" isButton isExternal hideIcon animateOnHover animationType="boop">
-              <Icon aria-hidden="true" name="lucide:facebook" size={32} />
-              <span class="sr-only">Go to our Facebook page, opens in a new tab</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/" isButton isExternal hideIcon animateOnHover animationType="boop">
-              <Icon aria-hidden="true" name="lucide:twitter" size={32} />
-              <span class="sr-only">Go to our Twitter page, opens in a new tab</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/" isButton isExternal hideIcon animateOnHover animationType="boop">
-              <Icon aria-hidden="true" name="lucide:linkedin" size={32} />
-              <span class="sr-only">Go to our LinkedIn page, opens in a new tab</span>
-            </Link>
-          </li>
-        </ul>
       </div>
     </div>
   </section>
 </DefaultLayout>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    // Initialize state
+    let turnstileCompleted = false
+
+    const btn = document.getElementById('submit-btn')
+
+    if (!btn) return
+
+    const container = document.getElementById('submit-btn')
+
+    function updateButtonState() {
+      if (container.dataset.dev === 'true') {
+        console.log('Form disabled on Dev')
+        btn.disabled = true
+      } else if (btn) {
+        btn.disabled = !turnstileCompleted
+      } else {
+        console.warn('Form initialization error.')
+      }
+    }
+
+    // Wait for Turnstile API to be available and render
+    function initTurnstile() {
+      if (typeof window.turnstile !== 'undefined') {
+        const container = document.getElementById('cf-turnstile')
+        if (container && !container.hasChildNodes()) {
+          // Determine size based on screen width
+          const isMobile = window.innerWidth < 768 // 768px is your 'm' breakpoint
+          const turnstileSize = isMobile ? 'compact' : 'flexible'
+
+          window.turnstile.render('#cf-turnstile', {
+            sitekey: container.dataset.sitekey,
+            size: turnstileSize,
+            callback: function (token) {
+              console.log('Turnstile Challenge Success:', token)
+              turnstileCompleted = true
+              updateButtonState()
+            },
+            'error-callback': function () {
+              console.error('Turnstile challenge failed')
+              turnstileCompleted = false
+              updateButtonState()
+            },
+          })
+        }
+      } else {
+        // Retry after a short delay if Turnstile isn't loaded yet
+        setTimeout(initTurnstile, 100)
+      }
+    }
+
+    // Initialize everything
+    updateButtonState()
+    initTurnstile()
+  })
+</script>
