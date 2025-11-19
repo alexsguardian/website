@@ -1,0 +1,26 @@
+[
+  {
+    "name": "John Doe",
+    "title": "Title",
+    "testimonial": "This is a great service! Highly recommended.",
+    "rating": 5
+  },
+  {
+    "name": "Jane Smith",
+    "title": "Title",
+    "testimonial": "Fantastic experience, very professional.",
+    "rating": 4
+  },
+  {
+    "name": "Sam Wilson",
+    "title": "Title",
+    "testimonial": "They went above and beyond my expectations.",
+    "rating": 5
+  },
+  {
+    "name": "Sam Big",
+    "title": "Title",
+    "testimonial": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "rating": 5
+  } 
+]

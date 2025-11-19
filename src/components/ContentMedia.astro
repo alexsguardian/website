@@ -16,19 +16,174 @@ interface Props {
    * @default false
    */
   reverseImg?: boolean
+  /**
+   * Whether to allow the image to be enlarged when clicked
+   * @default true
+   */
+  allowEnlarge?: boolean
 }
 
-const { imgSrc, reverseImg = false }: Props = Astro.props
+const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
 ---
 
-<section class="my-64">
-  <div class="container">
-    <div class="grid grid-cols-1 gap-24 md:grid-cols-2">
-      {!reverseImg ? <Media class="rounded-lg" src={imgSrc} /> : ''}
-      <div class="space-content flex flex-col justify-center">
+<section>
+  <div class="container my-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-24">
+      {allowEnlarge ? (
+        <button
+          type="button"
+          class={`image-modal-trigger rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity ${reverseImg ? 'md:order-2' : ''}`}
+          data-image-src={imgSrc}
+          aria-label="Click to view larger image"
+        >
+          <Media class="rounded-lg" src={imgSrc} />
+        </button>
+      ) : (
+        <div class={`rounded-lg ${reverseImg ? 'md:order-2' : ''}`}>
+          <Media class="rounded-lg" src={imgSrc} />
+        </div>
+      )}
+      <div class={`space-content flex flex-col justify-center ${reverseImg ? 'md:order-1' : ''}`}>
         <slot />
       </div>
-      {reverseImg ? <Media class="rounded-lg" src={imgSrc} /> : ''}
     </div>
   </div>
 </section>
+
+{allowEnlarge && (
+  <div id="image-modal" class="fixed inset-0 hidden" role="dialog" aria-labelledby="modal-title" aria-modal="true" style="z-index: 99999; isolation: isolate;">
+    <div class="absolute inset-0 bg-black/20" style="backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);" />
+    <div class="absolute inset-0 flex items-center justify-center p-4 md:p-8" id="modal-backdrop">
+      <div class="relative inline-block max-w-[95vw] max-h-[95vh] sm:max-w-[90vw] sm:max-h-[90vh] md:max-w-[85vw] md:max-h-[85vh]">
+        <button
+          type="button"
+          id="close-modal"
+          class="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 text-white text-2xl sm:text-3xl font-bold hover:text-gray-300 z-20 bg-black/70 backdrop-blur-sm rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-xl transition-all duration-200 hover:bg-black/90 hover:scale-110"
+          aria-label="Close enlarged image view"
+          title="Close"
+        >
+          &times;
+        </button>
+        <img
+          id="modal-image"
+          class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+          alt="Enlarged view"
+        />
+      </div>
+    </div>
+  </div>
+)}
+
+{allowEnlarge && (
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const triggers = document.querySelectorAll('.image-modal-trigger');
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+      const closeButton = document.getElementById('close-modal');
+
+      // Function to handle modal opening with responsive sizing
+      const openModal = (imageSrc: string) => {
+        if (modalImage && modal && imageSrc) {
+          modalImage.src = imageSrc;
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+          // Handle image load to ensure proper sizing
+          modalImage.onload = () => {
+            // Force a reflow to ensure proper dimensions are calculated
+            modalImage.style.maxWidth = '100%';
+            modalImage.style.maxHeight = '100%';
+          };
+        }
+      };
+
+      // Function to close modal
+      const closeModal = () => {
+        modal?.classList.add('hidden');
+        modal?.classList.remove('flex');
+        document.body.style.overflow = ''; // Restore scrolling
+        if (modalImage) {
+          modalImage.src = ''; // Clear src to free memory
+        }
+      };
+
+    // Open modal when image is clicked
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const imageSrc = trigger.getAttribute('data-image-src');
+        if (imageSrc) {
+          openModal(imageSrc);
+        }
+      });
+    });
+
+    // Close modal when close button is clicked
+    closeButton?.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside the image - improved detection
+    modal?.addEventListener('click', (e) => {
+      // Check if the click is on the backdrop (modal itself) or the backdrop div
+      const modalBackdrop = document.getElementById('modal-backdrop');
+      if (e.target === modal || e.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+
+    // Additional click handler for the backdrop div specifically
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    modalBackdrop?.addEventListener('click', (e) => {
+      // Only close if clicking directly on the backdrop, not on child elements
+      if (e.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+
+      // Handle window resize to maintain proper image scaling
+      window.addEventListener('resize', () => {
+        if (modal && !modal.classList.contains('hidden') && modalImage) {
+          // Trigger a reflow to recalculate image dimensions
+          modalImage.style.maxWidth = '100%';
+          modalImage.style.maxHeight = '100%';
+        }
+      });
+
+      // Add touch gesture support for mobile devices
+      let touchStartY = 0;
+      let touchStartX = 0;
+
+      modal?.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          touchStartY = e.touches[0].clientY;
+          touchStartX = e.touches[0].clientX;
+        }
+      });
+
+      modal?.addEventListener('touchend', (e) => {
+        if (e.changedTouches.length === 1) {
+          const modalBackdrop = document.getElementById('modal-backdrop');
+          // Check if touch ended on backdrop areas
+          if (e.target === modal || e.target === modalBackdrop) {
+            const touchEndY = e.changedTouches[0].clientY;
+            const touchEndX = e.changedTouches[0].clientX;
+            const deltaY = Math.abs(touchEndY - touchStartY);
+            const deltaX = Math.abs(touchEndX - touchStartX);
+
+            // If it's a tap (minimal movement), close the modal
+            if (deltaY < 10 && deltaX < 10) {
+              closeModal();
+            }
+          }
+        }
+      });
+    });
+  </script>
+)}
