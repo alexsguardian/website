@@ -7,11 +7,12 @@ import Footer from '@components/Footer.astro'
 import { ClientRouter } from 'astro:transitions'
 
 const {
-  title = 'Accessible Astro',
-  description = 'A starter project with accessibility features using Astro static site builder. Contains accessible landmarks, skip links, a dark mode color scheme, better focus outline and keyboard menu navigation.',
+  title = "Alex's Guardian",
+  description = "Alex's Guardian is an IT service provider committed to delivering transparent and reliable IT solutions without any hidden fees or surprises. We are located in Manheim, PA.",
   url = Astro.site,
-  image = 'social-preview-image.png',
-  author = 'Incluud',
+  image = '/hero.webp',
+  author = '',
+  showCallToAction = true,
 } = Astro.props
 ---
 
@@ -34,7 +35,7 @@ const {
     <main id="main-content" transition:animate="fade">
       <slot />
     </main>
-    <Footer />
+    <Footer showCallToAction={showCallToAction} />
     <style lang="scss" is:global>
       @use '../assets/scss/base/mixins' as *;
 
