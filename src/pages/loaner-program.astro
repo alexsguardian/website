@@ -1,0 +1,1021 @@
+---
+import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import { Heading, Notification } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+import Note from '@components/Note.astro'
+import loanerImg from '@assets/img/lp/undraw_shared-workspace_1u82.svg'
+---
+
+<DefaultLayout title="Loaner Program">
+  <PageHeader
+    title="Loaner Program"
+    subtitle="Bridging the digital divide for Manheim community members in need."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <!-- Program Overview -->
+  <section class="container my-16">
+    <ContentMedia
+      imgSrc={loanerImg.src}
+      >
+      <Heading level="h2">Technology for Those Who Need It</Heading>
+      <p>
+        We believe every student and adult deserves access to technology for education and personal growth.
+        Our Loaner Program provides <strong>refurbished laptops at no cost</strong> to Manheim Borough residents
+        who are experiencing financial hardship.
+      </p>
+      <p>
+        Whether it's for schoolwork, job searching, learning new skills, or staying connected. We are here to help
+        bridge the gap when purchasing a device isn't an option.
+      </p>
+    </ContentMedia>
+  </section>
+
+  <!-- Availability Notice -->
+  <section class="container my-8">
+    <Notification type="warning">
+      <Icon name="lucide:alert-triangle" class="notification-icon" />
+      <p>
+        <strong>Limited Availability:</strong> Device stock is limited and provided on a <strong>first-come, first-served</strong> basis.
+        We cannot guarantee availability at any given time.
+      </p>
+    </Notification>
+  </section>
+
+  <!-- Eligibility Section -->
+  <section class="container my-16">
+    <div class="section-intro">
+      <Heading level="h2">Eligibility Requirements</Heading>
+      <p class="lead">To ensure devices reach those who need them most, applicants must meet the following criteria:</p>
+    </div>
+
+    <div class="requirements-grid">
+      <div class="requirement-card">
+        <div class="requirement-icon">
+          <Icon name="lucide:map-pin" />
+        </div>
+        <h3>Manheim Borough Resident</h3>
+        <p>You must be a full time resident of Manheim Borough.</p>
+        <p>Parents of children that attend Manheim Central School District (MCSD) can also apply on their behalf.</p>
+      </div>
+
+      <div class="requirement-card">
+        <div class="requirement-icon">
+          <Icon name="lucide:file-check" />
+        </div>
+        <h3>Proof of Hardship</h3>
+        <p>Documentation showing financial need, such as:</p>
+        <ul>
+          <li>Free/Reduced Lunch Program enrollment</li>
+          <li>SNAP, TANF, or Medicaid benefits</li>
+          <li>Unemployment documentation</li>
+          <li>Letter from school counselor or social worker</li>
+        </ul>
+      </div>
+
+      <div class="requirement-card">
+        <div class="requirement-icon">
+          <Icon name="lucide:user-check" />
+        </div>
+        <h3>Age Requirement</h3>
+        <p>Applicants must be 18 years or older. Parents/guardians may apply on behalf of minor children for educational use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intended Use Cases -->
+  <section class="my-16 use-cases-section">
+    <div class="use-cases-container">
+      <div class="section-intro">
+        <Heading level="h2">Approved Use Cases</Heading>
+        <p class="lead">Loaner devices are intended for productive and educational purposes:</p>
+      </div>
+
+      <div class="use-cases-grid">
+      <div class="use-case">
+        <Icon name="lucide:graduation-cap" />
+        <span>K-12 Schoolwork</span>
+      </div>
+      <div class="use-case">
+        <Icon name="lucide:book-open" />
+        <span>Online Learning & Courses</span>
+      </div>
+      <div class="use-case">
+        <Icon name="lucide:briefcase" />
+        <span>Job Searching & Applications</span>
+      </div>
+      <div class="use-case">
+        <Icon name="lucide:file-text" />
+        <span>Resume Building</span>
+      </div>
+      <div class="use-case">
+        <Icon name="lucide:video" />
+        <span>Virtual Interviews</span>
+      </div>
+      <div class="use-case">
+        <Icon name="lucide:code" />
+        <span>Learning to Code</span>
+      </div>
+      </div>
+
+      <div class="not-approved-section">
+        <h3><Icon name="lucide:x-circle" /> Not Approved</h3>
+        <p>The following uses are <strong>not permitted</strong> and may result in your removal from the program:</p>
+        <div class="not-approved-grid">
+          <div class="not-approved-item">
+            <Icon name="lucide:pickaxe" />
+            <span>Cryptocurrency Mining</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:download" />
+            <span>Torrenting / Piracy</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:shopping-cart" />
+            <span>Running a Business</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:server" />
+            <span>Hosting Services</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:skull" />
+            <span>Illegal Activities</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:banknote" />
+            <span>Reselling / Pawning</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:wrench" />
+            <span>Modifying Hardware</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:eye-off" />
+            <span>Adult Content</span>
+          </div>
+          <div class="not-approved-item">
+            <Icon name="lucide:users" />
+            <span>Lending to Others</span>
+          </div>
+        </div>
+        <p class="use-cases-note">
+          <Icon name="lucide:file-text" />
+          <span>For a complete list of approved and prohibited uses, please refer to the <a href="#agreement">Loaner Agreement</a>.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agreement Section -->
+  <section class="container my-16" id="agreement">
+    <div class="agreement-section">
+      <div class="agreement-header">
+        <Icon name="lucide:file-signature" class="agreement-icon" />
+        <Heading level="h2">Loaner Agreement</Heading>
+      </div>
+      <p class="lead">All recipients must sign a loaner agreement acknowledging the following:</p>
+
+      <div class="agreement-terms">
+        <div class="term">
+          <Icon name="lucide:shield" />
+          <div>
+            <h4>Care & Responsibility</h4>
+            <p>You agree to take reasonable care of the device and keep it in a safe environment.</p>
+          </div>
+        </div>
+        <div class="term">
+          <Icon name="lucide:alert-circle" />
+          <div>
+            <h4>Damage Liability</h4>
+            <p>You acknowledge responsibility for damage caused by negligence, misuse, or failure to follow guidelines.</p>
+          </div>
+        </div>
+        <div class="term">
+          <Icon name="lucide:rotate-ccw" />
+          <div>
+            <h4>Return Policy</h4>
+            <p>Devices must be returned when no longer needed, or upon request. Failure to return may result in collection action and a ban from the program.</p>
+          </div>
+        </div>
+        <div class="term">
+          <Icon name="lucide:ban" />
+          <div>
+            <h4>Prohibited Activities</h4>
+            <p>Devices may not be used for illegal/illicit activities, resold, or transferred to another person.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Apply -->
+  <section class="container my-16">
+    <div class="apply-section">
+      <Heading level="h2">How to Apply</Heading>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Contact Us</h4>
+          <p>Reach out via our contact page or call to express interest in the program.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Gather Documents</h4>
+          <p>Prepare proof of residency and financial hardship documentation.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>Schedule Pickup</h4>
+          <p>Once approved, we'll arrange a time for you to pick up your device and sign the agreement.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>Get Started</h4>
+          <p>We'll give you a quick orientation and you're ready to go!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donate Section -->
+  <section class="container my-16">
+    <div class="donate-callout">
+      <div class="donate-content">
+        <Icon name="lucide:heart-handshake" class="donate-icon" />
+        <div>
+          <Heading level="h3">Help Grow the Program</Heading>
+          <p>Have an old laptop gathering dust? We accept donations of working or repairable laptops to refurbish for families in need. Every device makes a difference! If we cannot use your device, we'll responsibly recycle it.</p>
+        </div>
+      </div>
+      <a href="/contact" class="donate-button">Donate a Device</a>
+    </div>
+  </section>
+
+  <!-- Device Specifications -->
+  <section class="container my-16">
+    <div class="section-intro">
+      <Heading level="h2">Device Specifications</Heading>
+      <p class="lead">All loaner laptops are refurbished and tested to ensure reliable performance for everyday tasks.</p>
+    </div>
+
+    <div class="specs-layout">
+      <!-- Hardware Specs -->
+      <div class="specs-card">
+        <div class="specs-card-header">
+          <Icon name="lucide:cpu" />
+          <h3>Hardware</h3>
+        </div>
+        <ul class="specs-list">
+          <li>
+            <Icon name="lucide:microchip" />
+            <span><strong>Processor:</strong> Intel i3 / AMD Ryzen 3 or equivalent</span>
+          </li>
+          <li>
+            <Icon name="lucide:memory-stick" />
+            <span><strong>Memory:</strong> 4GB+ RAM</span>
+          </li>
+          <li>
+            <Icon name="lucide:hard-drive" />
+            <span><strong>Storage:</strong> 120GB+ SSD</span>
+          </li>
+          <li>
+            <Icon name="lucide:wifi" />
+            <span><strong>Connectivity:</strong> Wi-Fi 5 or newer</span>
+          </li>
+          <li>
+            <Icon name="lucide:camera" />
+            <span><strong>Camera:</strong> Built-in webcam & microphone</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Operating Systems -->
+      <div class="specs-card os-card">
+        <div class="specs-card-header">
+          <Icon name="lucide:monitor" />
+          <h3>Operating System</h3>
+        </div>
+        <p class="os-intro">Devices come pre-installed with one of the following:</p>
+        <div class="os-options">
+          <div class="os-option os-primary">
+            <div class="os-badge">Most Common</div>
+            <Icon name="lucide:circle-dot" class="os-icon" />
+            <span class="os-name">Ubuntu Desktop</span>
+            <span class="os-desc">Latest LTS release — free, secure, and easy to use</span>
+          </div>
+          <div class="os-option">
+            <Icon name="lucide:app-window" class="os-icon" />
+            <span class="os-name">Windows 11</span>
+            <span class="os-desc">When available with valid license</span>
+          </div>
+          <div class="os-option">
+            <Icon name="lucide:apple" class="os-icon" />
+            <span class="os-name">macOS</span>
+            <span class="os-desc">On donated MacBook devices</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specs-note">
+      <Icon name="lucide:info" class="specs-note-icon" />
+      <p>Specific device models vary based on donations and availability. We strive to provide reliable, tested hardware suitable for educational and productivity tasks.</p>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  .section-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .lead {
+    font-size: 1.125rem;
+    color: var(--color-neutral-600);
+    margin-top: 0.5rem;
+  }
+
+  :global(.darkmode) .lead {
+    color: var(--color-neutral-400);
+  }
+
+  /* Requirements Grid */
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .requirement-card {
+    background: var(--color-neutral-100);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  :global(.darkmode) .requirement-card {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  .requirement-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .requirement-icon :global(svg) {
+    width: 24px;
+    height: 24px;
+    color: white;
+  }
+
+  .requirement-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode) .requirement-card h3 {
+    color: var(--color-neutral-100);
+  }
+
+  .requirement-card p {
+    font-size: 0.95rem;
+    color: var(--color-neutral-600);
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.darkmode) .requirement-card p {
+    color: var(--color-neutral-400);
+  }
+
+  .requirement-card ul {
+    margin: 0.5rem 0 0 1.25rem;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+  }
+
+  :global(.darkmode) .requirement-card ul {
+    color: var(--color-neutral-400);
+  }
+
+  .requirement-card li {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Use Cases Grid */
+  .use-cases-section {
+    background: var(--color-neutral-100);
+    padding: 3rem 1rem;
+  }
+
+  :global(.darkmode) .use-cases-section {
+    background: var(--color-neutral-800);
+  }
+
+  .use-cases-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .use-cases-container .section-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .use-cases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .use-case {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: white;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  :global(.darkmode) .use-case {
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-700);
+  }
+
+  .use-case :global(svg) {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--brand-primary);
+  }
+
+  .use-case span {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-neutral-800);
+  }
+
+  :global(.darkmode) .use-case span {
+    color: var(--color-neutral-200);
+  }
+
+  /* Not Approved Section */
+  .not-approved-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--color-neutral-300);
+  }
+
+  :global(.darkmode) .not-approved-section {
+    border-color: var(--color-neutral-600);
+  }
+
+  .not-approved-section h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    color: #dc2626;
+    margin-bottom: 0.5rem;
+  }
+
+  .not-approved-section h3 :global(svg) {
+    width: 22px;
+    height: 22px;
+  }
+
+  .not-approved-section > p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    margin-bottom: 1.25rem;
+  }
+
+  :global(.darkmode) .not-approved-section > p {
+    color: var(--color-neutral-400);
+  }
+
+  .not-approved-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .not-approved-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .not-approved-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .not-approved-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1rem;
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: 6px;
+  }
+
+  :global(.darkmode) .not-approved-item {
+    background: rgba(220, 38, 38, 0.12);
+    border-color: rgba(220, 38, 38, 0.3);
+  }
+
+  .not-approved-item :global(svg) {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: #dc2626;
+  }
+
+  .not-approved-item span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #b91c1c;
+  }
+
+  :global(.darkmode) .not-approved-item span {
+    color: #fca5a5;
+  }
+
+  .use-cases-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+  }
+
+  :global(.darkmode) .use-cases-note {
+    color: var(--color-neutral-400);
+  }
+
+  .use-cases-note :global(svg) {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .use-cases-note a {
+    color: var(--brand-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .use-cases-note a:hover {
+    color: var(--brand-secondary);
+  }
+
+  /* Agreement Section */
+  .agreement-section {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    border-radius: 16px;
+    padding: 2.5rem;
+    color: white;
+  }
+
+  .agreement-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .agreement-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .agreement-section .lead {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .agreement-section :global(h2) {
+    color: white;
+    margin: 0;
+  }
+
+  .agreement-terms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .term {
+    display: flex;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.25rem;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+  }
+
+  .term :global(svg) {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .term h4 {
+    font-size: 1rem;
+    margin: 0 0 0.25rem;
+    color: white;
+  }
+
+  .term p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Apply Steps */
+  .apply-section {
+    text-align: center;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .step {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .step h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode) .step h4 {
+    color: var(--color-neutral-100);
+  }
+
+  .step p {
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    margin: 0;
+  }
+
+  :global(.darkmode) .step p {
+    color: var(--color-neutral-400);
+  }
+
+  /* Donate Callout */
+  .donate-callout {
+    background: var(--color-neutral-100);
+    border: 2px dashed var(--brand-primary);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .donate-callout {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  :global(.darkmode) .donate-callout {
+    background: var(--color-neutral-800);
+    border-color: var(--brand-secondary);
+  }
+
+  .donate-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    flex: 1;
+    min-width: 280px;
+  }
+
+  @media (max-width: 640px) {
+    .donate-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .donate-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--brand-primary);
+    flex-shrink: 0;
+  }
+
+  :global(.darkmode) .donate-icon {
+    color: var(--brand-secondary);
+  }
+
+  .donate-content :global(h3) {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .donate-content p {
+    margin: 0;
+    color: var(--color-neutral-600);
+  }
+
+  :global(.darkmode) .donate-content p {
+    color: var(--color-neutral-400);
+  }
+
+  .donate-button {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    color: white;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .donate-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .donate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 137, 198, 0.4);
+  }
+
+  /* Device Specs Section */
+  .specs-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .specs-card {
+    background: var(--color-neutral-100);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  :global(.darkmode) .specs-card {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  .specs-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  :global(.darkmode) .specs-card-header {
+    border-color: var(--color-neutral-700);
+  }
+
+  .specs-card-header :global(svg) {
+    width: 28px;
+    height: 28px;
+    color: var(--brand-primary);
+  }
+
+  .specs-card-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode) .specs-card-header h3 {
+    color: var(--color-neutral-100);
+  }
+
+  .specs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .specs-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .specs-list li :global(svg) {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--brand-secondary);
+    margin-top: 2px;
+  }
+
+  .specs-list span {
+    font-size: 0.95rem;
+    color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .specs-list span {
+    color: var(--color-neutral-300);
+  }
+
+  /* OS Options */
+  .os-intro {
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    margin-bottom: 1rem;
+  }
+
+  :global(.darkmode) .os-intro {
+    color: var(--color-neutral-400);
+  }
+
+  .os-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .os-option {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 0.75rem;
+    padding: 0.875rem 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--color-neutral-200);
+    position: relative;
+  }
+
+  :global(.darkmode) .os-option {
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-700);
+  }
+
+  .os-option.os-primary {
+    border-color: var(--brand-primary);
+    background: linear-gradient(135deg, rgba(99, 137, 198, 0.08), rgba(149, 80, 160, 0.08));
+  }
+
+  :global(.darkmode) .os-option.os-primary {
+    background: linear-gradient(135deg, rgba(99, 137, 198, 0.15), rgba(149, 80, 160, 0.15));
+    border-color: var(--brand-primary);
+  }
+
+  .os-badge {
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .os-icon {
+    grid-row: span 2;
+    width: 32px;
+    height: 32px;
+    color: var(--brand-primary);
+    align-self: center;
+  }
+
+  .os-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode) .os-name {
+    color: var(--color-neutral-100);
+  }
+
+  .os-desc {
+    font-size: 0.8rem;
+    color: var(--color-neutral-500);
+  }
+
+  :global(.darkmode) .os-desc {
+    color: var(--color-neutral-400);
+  }
+
+  .specs-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-neutral-100);
+    border-radius: 8px;
+    border-left: 3px solid var(--brand-primary);
+  }
+
+  :global(.darkmode) .specs-note {
+    background: var(--color-neutral-800);
+  }
+
+  .specs-note-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--brand-primary);
+    margin-top: 2px;
+  }
+
+  .specs-note p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+  }
+
+  :global(.darkmode) .specs-note p {
+    color: var(--color-neutral-400);
+  }
+
+  /* Notification styling */
+  :global(.notification) {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  :global(.notification-icon) {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+</style>
