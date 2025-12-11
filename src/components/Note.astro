@@ -1,0 +1,78 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  pre?: string;
+  text?: string;
+  icon?: string;
+  variant?: 'primary' | 'secondary' | 'neutral';
+}
+
+const { pre, text, icon, variant = 'primary' } = Astro.props;
+---
+
+<section class:list={['note', `note--${variant}`]}>
+  <div class="note-content">
+    {icon && <Icon name={icon} class="note-icon" />}
+    <p>
+      {pre && <span class="note-pre">{pre}</span>}
+      {text}
+    </p>
+  </div>
+</section>
+
+<style>
+  .note {
+    border-radius: var(--radius-large);
+    margin-block: var(--space-m);
+  }
+
+  .note-content {
+    max-width: 64rem;
+    margin-inline: auto;
+    padding: var(--space-s) var(--space-m);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-0);
+    text-align: center;
+    justify-content: center;
+  }
+
+  .note-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .note-pre {
+    font-weight: 700;
+  }
+
+  .note p {
+    margin: 0;
+  }
+
+  /* Primary variant */
+  .note--primary {
+    background: linear-gradient(135deg, var(--primary-color, #4f46e5) 0%, var(--secondary-color, #7c3aed) 100%);
+    color: var(--color-neutral-100);
+  }
+
+  /* Secondary variant */
+  .note--secondary {
+    background: linear-gradient(67.5deg, var(--secondary-color, #7c3aed) 0%, var(--primary-color, #4f46e5) 100%);
+    color: var(--color-neutral-100);
+  }
+
+  /* Neutral variant */
+  .note--neutral {
+    background-color: var(--color-neutral-300);
+    color: var(--color-neutral-800);
+  }
+
+  :global(.darkmode) .note--neutral {
+    background-color: var(--color-neutral-700);
+    color: var(--color-neutral-100);
+  }
+</style>
