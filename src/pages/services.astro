@@ -1,0 +1,538 @@
+---
+import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import { Heading } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+---
+
+<DefaultLayout title="Services" showCallToAction={false}>
+  <PageHeader
+    title="Services"
+    subtitle="Comprehensive IT solutions for individuals and small businesses."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <!-- Service Overview -->
+  <section class="container my-16">
+    <div class="service-intro">
+      <Heading level="h2">What We Offer</Heading>
+      <p>From remote troubleshooting to complete network installations, we provide reliable IT services tailored to your needs. Our goal is to keep your technology running smoothly so you can focus on what matters most.</p>
+    </div>
+  </section>
+
+  <!-- Remote & Support Services -->
+  <section class="container my-16">
+    <div class="service-group">
+      <div class="group-header">
+        <Heading level="h2">Remote Support & Troubleshooting</Heading>
+        <p>Get help fast without leaving your home or office.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:phone" />
+            </div>
+            <h3>Remote Support</h3>
+          </div>
+          <p>Fast and reliable remote troubleshooting and support to resolve your IT issues without needing a site visit. We can access your computer securely to diagnose and fix problems in real-time.</p>
+          <ul>
+            <li>Screen sharing support sessions</li>
+            <li>Software troubleshooting</li>
+            <li>Configuration assistance</li>
+            <li>Performance optimization</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:monitor-cloud" />
+            </div>
+            <h3>Software Installation &amp; Configuration</h3>
+          </div>
+          <p>Get assistance with installing and configuring software to ensure it runs optimally on your devices. From operating systems to specialized applications.</p>
+          <ul>
+            <li>Operating system installation</li>
+            <li>Application setup and configuration</li>
+            <li>Driver installation and updates</li>
+            <li>Software compatibility checks</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:printer" />
+            </div>
+            <h3>Printer Setup & Troubleshooting</h3>
+          </div>
+          <p>Ensure your printers are correctly set up and maintained for hassle-free printing. We handle everything from initial setup to ongoing maintenance.</p>
+          <ul>
+            <li>Printer installation and setup</li>
+            <li>Network printer configuration</li>
+            <li>Driver troubleshooting</li>
+            <li>Print queue management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware Services -->
+  <section class="container my-16">
+    <div class="service-group">
+      <div class="group-header">
+        <Heading level="h2">Hardware Services</Heading>
+        <p>From custom builds to repairs and upgrades.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:hammer" />
+            </div>
+            <h3>Custom PC Builds</h3>
+          </div>
+          <p>Whether you need a high-performance gaming rig, a productivity powerhouse, or a budget-friendly system, we can build it for you with carefully selected components.</p>
+          <ul>
+            <li>Gaming PCs</li>
+            <li>Workstation builds</li>
+            <li>Budget-friendly systems</li>
+            <li>Specialized configurations</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:cpu" />
+            </div>
+            <h3>Hardware Upgrades</h3>
+          </div>
+          <p>Boost the performance of your existing devices with our hardware upgrade services. RAM, storage, graphics cards, and more.</p>
+          <ul>
+            <li>Memory (RAM) upgrades</li>
+            <li>SSD and storage upgrades</li>
+            <li>Graphics card installation</li>
+            <li>Component compatibility assessment</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:wrench" />
+            </div>
+            <h3>Device Maintenance & Repair</h3>
+          </div>
+          <p>Keep your devices running smoothly with regular maintenance and prompt repairs when issues arise.</p>
+          <ul>
+            <li>Preventive maintenance</li>
+            <li>Hardware diagnostics</li>
+            <li>Component replacement</li>
+            <li>Performance tuning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security & Data Services -->
+  <section class="container my-16">
+    <div class="service-group">
+      <div class="group-header">
+        <Heading level="h2">Security & Data Protection</Heading>
+        <p>Protect your data and keep your systems secure.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:brick-wall-shield" />
+            </div>
+            <h3>Virus & Malware Removal</h3>
+          </div>
+          <p>Is your PC infected with malware or viruses? We can help eliminate threats and secure your system with comprehensive cleaning and protection.</p>
+          <ul>
+            <li>Virus and malware detection</li>
+            <li>System cleaning and disinfection</li>
+            <li>Security software installation</li>
+            <li>Prevention strategies</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:blocks" />
+            </div>
+            <h3>Data Recovery Services</h3>
+          </div>
+          <p>Recover lost data from failed or broken devices with our specialized recovery solutions. From hard drives to SSDs and memory cards.</p>
+          <ul>
+            <li>Hard drive data recovery</li>
+            <li>SSD recovery services</li>
+            <li>File system repair</li>
+            <li>Emergency recovery options</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:hard-drive-upload" />
+            </div>
+            <h3>Backup Solutions</h3>
+          </div>
+          <p>Protect your data with automated onsite or cloud backup services. Ensure your information is safe and easily recoverable in the event of a disaster.</p>
+          <ul>
+            <li>Automated backup setup</li>
+            <li>Cloud backup solutions</li>
+            <li>Local backup strategies</li>
+            <li>Recovery testing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Networking Services -->
+  <section class="container my-16">
+    <div class="service-group">
+      <div class="group-header">
+        <Heading level="h2">Networking & Infrastructure</Heading>
+        <p>Design, install, and optimize your network infrastructure.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:network" />
+            </div>
+            <h3>Network Design & Upgrade</h3>
+          </div>
+          <p>Expert guidance on designing, upgrading, or creating your network infrastructure for optimal performance and security.</p>
+          <ul>
+            <li>Network assessment and planning</li>
+            <li>Router and switch configuration</li>
+            <li>Wi-Fi optimization</li>
+            <li>Security implementation</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:cable" />
+            </div>
+            <h3>Home & Office Cabling</h3>
+          </div>
+          <p>Professional installation of structured cabling for homes and offices, ensuring reliable connectivity and future-proofing your network.</p>
+          <ul>
+            <li>Cat6/Cat6a cable installation</li>
+            <li>Ethernet outlet installation</li>
+            <li>Cable management and organization</li>
+            <li>Testing and certification</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:server" />
+            </div>
+            <h3>Home Server Setup</h3>
+          </div>
+          <p>Host your own services at home or decouple from the cloud with our expert home server solutions for media, backup, and productivity.</p>
+          <ul>
+            <li>NAS (Network Attached Storage) setup</li>
+            <li>Media server configuration</li>
+            <li>Home automation hubs</li>
+            <li>Private cloud solutions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consulting Services -->
+  <section class="container my-16">
+    <div class="service-group">
+      <div class="group-header">
+        <Heading level="h2">Consulting & Planning</Heading>
+        <p>Expert advice to help you make informed technology decisions.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:wallet" />
+            </div>
+            <h3>Device Consultancy</h3>
+          </div>
+          <p>Expert advice on selecting, setting up, and optimizing devices to meet your specific needs, ensuring seamless integration and enhanced performance.</p>
+          <ul>
+            <li>Technology needs assessment</li>
+            <li>Device recommendation</li>
+            <li>Budget planning</li>
+            <li>Future-proofing strategies</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="card-header">
+            <div class="service-icon">
+              <Icon name="lucide:circle-question-mark" />
+            </div>
+            <h3>Custom Solutions</h3>
+          </div>
+          <p>IT involves a wide range of services. If you don't see what you're looking for, just ask! We're always ready to tackle unique challenges.</p>
+          <ul>
+            <li>Custom project consultation</li>
+            <li>Specialized system integration</li>
+            <li>Workflow optimization</li>
+            <li>Technology audits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas & Contact -->
+  <section class="container my-16">
+    <div class="service-footer">
+      <Heading level="h2">Ready to Get Started?</Heading>
+      <p>We serve the Manheim area and surrounding communities. Whether you need a quick remote fix or a complete network overhaul, we're here to help.</p>
+      <div class="service-cta">
+        <a href="/contact" class="cta-button">Get a Free Consultation</a>
+        <a href="/about" class="cta-secondary">Learn More About Us</a>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  /* Service Intro */
+  .service-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .service-intro p {
+    font-size: 1.125rem;
+    color: var(--color-neutral-600);
+    margin-top: 1rem;
+  }
+
+  :global(.darkmode) .service-intro p {
+    color: var(--color-neutral-400);
+  }
+
+  /* Service Group */
+  .service-group {
+    margin-bottom: 2rem;
+  }
+
+  .group-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .group-header :global(h2) {
+    margin-bottom: 0.5rem;
+  }
+
+  .group-header > p {
+    font-size: 1.1rem;
+    color: var(--color-neutral-600);
+    margin: 0;
+  }
+
+  :global(.darkmode) .group-header > p {
+    color: var(--color-neutral-400);
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Service Card */
+  .service-card {
+    background: var(--color-neutral-100);
+    border-radius: 12px;
+    padding: 1.75rem;
+    border: 1px solid var(--color-neutral-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.darkmode) .service-card {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .service-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .service-icon :global(svg) {
+    width: 24px;
+    height: 24px;
+    color: white;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    margin: 0;
+    color: var(--color-neutral-900);
+    line-height: 1.3;
+  }
+
+  :global(.darkmode) .service-card h3 {
+    color: var(--color-neutral-100);
+  }
+
+  .service-card > p {
+    font-size: 0.95rem;
+    color: var(--color-neutral-600);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  :global(.darkmode) .service-card > p {
+    color: var(--color-neutral-400);
+  }
+
+  .service-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .service-card li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    margin-bottom: 0.375rem;
+  }
+
+  .service-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  }
+
+  :global(.darkmode) .service-card li {
+    color: var(--color-neutral-400);
+  }
+
+  /* Service Footer CTA */
+  .service-footer {
+    text-align: center;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    color: white;
+  }
+
+  .service-footer :global(h2) {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .service-footer > p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .service-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .cta-button {
+    background: white;
+    color: var(--brand-primary);
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 640px) {
+    .service-cta {
+      flex-direction: column;
+    }
+
+    .cta-button,
+    .cta-secondary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
