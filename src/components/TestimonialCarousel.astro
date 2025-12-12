@@ -26,11 +26,20 @@ import testimonials from '../../public/testimonials.json'
     justify-items: center;
     min-width: 80%;
     box-sizing: border-box;
-    padding: var(--gap-default) clamp(1rem, 6rem, 10vw);
+    padding: 1.75rem clamp(1rem, 6rem, 10vw);
     color: var(--foreground-color);
     text-align: center;
     flex: 0 0 100%;
     gap: 1rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--color-neutral-200);
+    margin: 1rem 0.5rem;
+  }
+
+  .darkmode .carousel-slide {
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-700);
   }
 
 
@@ -61,7 +70,7 @@ import testimonials from '../../public/testimonials.json'
   @media (max-width: 768px) {
     .carousel-slide {
       font-size: 0.9rem;
-      padding: 1rem;
+      padding: 1.25rem;
       gap: 0.5rem;
     }
   }
@@ -150,8 +159,10 @@ import testimonials from '../../public/testimonials.json'
 </div>
 
 <script is:inline>
-  (function() {
+  document.addEventListener('astro:page-load', function() {
     let track = document.getElementById('carousel-track');
+    if (!track) return;
+
     let slides = Array.from(track.children);
     let carousel = track.parentElement;
     let statusIndicator = document.getElementById('carousel-status');
@@ -246,11 +257,11 @@ import testimonials from '../../public/testimonials.json'
     // Start the carousel
     startAutoScroll();
 
-    // Cleanup
-    window.addEventListener('beforeunload', () => {
+    // Cleanup on page transition
+    document.addEventListener('astro:before-swap', () => {
       stopAutoScroll();
       clearTimeout(resumeTimeout);
       clearTimeout(hideTimeout);
-    });
-  })();
+    }, { once: true });
+  });
 </script>

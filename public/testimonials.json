@@ -1,26 +1,68 @@
 [
   {
-    "name": "John Doe",
-    "title": "Title",
-    "testimonial": "This is a great service! Highly recommended.",
-    "rating": 5
+      "name": "Mitchell Turner",
+      "title": "Awesome Service!",
+      "testimonial": "My PC was recently hit by a power surge and I needed to replace some parts. I decided to reach out to Alex since I have not been keeping up on all the latest and greatest equipment. Alex asked all of the right questions and found out what I needed in order for my PC to perform to my standards. I ordered all of the parts and couldn’t be happier. Everything is working great and I am extremely satisfied with his recommendations. Alex will always be my go to when it comes to PC, Network and overall tech hardware.",
+      "rating": 5
   },
   {
-    "name": "Jane Smith",
-    "title": "Title",
-    "testimonial": "Fantastic experience, very professional.",
-    "rating": 4
+      "name": "Kris",
+      "title": "Top Tier Service",
+      "testimonial": "Alex helped us setup the network for our small business, and also helped us find the right computers to fit our needs. Saved us from wasting time and money trying to figure it out ourselves.",
+      "rating": 5
   },
   {
-    "name": "Sam Wilson",
-    "title": "Title",
-    "testimonial": "They went above and beyond my expectations.",
-    "rating": 5
+      "name": "Trystan Splena",
+      "title": "Great Service",
+      "testimonial": "Extremely concise and affordable PC service. Helped me choose and install parts. Worked with my schedule to get the job done.",
+      "rating": 5
   },
   {
-    "name": "Sam Big",
-    "title": "Title",
-    "testimonial": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "rating": 5
-  } 
+      "name": "Quick and Painless",
+      "title": "Great Service",
+      "testimonial": "Recently decided to upgrade my local network, alex showed me the best equipment for what I needed then walked me through the entire setup process over the phone because I live several states away. Eveything went quick my network got setup all my smart devices connected and worked like they should.",
+      "rating": 4
+  },
+  {
+      "name": "Steven Pullam",
+      "title": "Need a new PC? Use this man!",
+      "testimonial": "I had a stock PC that i was using for a long time and it was time to build a new one from scratch. Helped me find really good parts that would be high quality while fitting in my quasi-budget as well. And further still, when actually putting the PC together, continue to provide support as needed to get the thing working. And it works flawlessly!",
+      "rating": 5
+  },
+  {
+      "name": "Luke Haverstein",
+      "title": "Knows his stuff",
+      "testimonial": "Hired this guy to build me a PC and he worked with budget and made it nice! Have had zero issues with the build and couldn’t have been more happy thank you!",
+      "rating": 5
+  },
+  {
+      "name": "Tiffany Dunn",
+      "title": "5 stars! Alex has quickly..",
+      "testimonial": "5 stars! Alex has quickly and easily resolved each issue on our personal devices as well as enhancing the performance of our work assigned devices.",
+      "rating": 5
+  },
+  {
+      "name": "RAH",
+      "title": "Exceptional service",
+      "testimonial": "Alex took the time to understand my expectations for my home WiFi network. He made recommendations based on my budget and ultimately installed something I’m extremely satisfied with.",
+      "rating": 5
+  },
+  {
+      "name": "Justin",
+      "title": "Thank You!",
+      "testimonial": "10 out of 10, reliable and accurate. Anytime I have had a problem Alex has resolved it",
+      "rating": 5
+  },
+  {
+      "name": "Joe Slovak",
+      "title": "Great!",
+      "testimonial": "10 out of 10, reliable and accurate. Anytime I have had a problem Alex has resolved it",
+      "rating": 4
+  },
+  {
+      "name": "Hudson Moser",
+      "title": "Great customer service",
+      "testimonial": "response time and patient when i dont know how to describe my tech problems well",
+      "rating": 4
+  }
 ]
