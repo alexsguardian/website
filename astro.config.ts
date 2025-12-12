@@ -11,7 +11,7 @@ import itsmatteomanfsecurityTxt from '@itsmatteomanf/astro-security-txt'
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://alexguardian.net',
+  site: 'https://alexsguardian.net',
   integrations: [
     compress(),
     icon(),
