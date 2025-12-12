@@ -4,67 +4,91 @@ import Hero from '@components/Hero.astro'
 import Feature from '@components/Feature.astro'
 import Counter from '@components/Counter.astro'
 import { Heading } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
 import TestimonialCarousel from '@components/TestimonialCarousel.astro'
 ---
 
-<DefaultLayout title="Home">
+<DefaultLayout title="Home" showCallToAction={false}>
   <Hero />
-  <section class="my-64">
+
+  <!-- Services Overview -->
+  <section class="services-section">
     <div class="container">
-      <Heading level="h2" class="mb-8">Services</Heading>
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature icon="lucide:phone" title="Remote Support">
-          Fast and reliable remote troubleshooting and support to resolve your IT issues without needing a site visit.
+      <div class="section-header">
+        <Heading level="h2">Services</Heading>
+        <p class="section-subtitle">Below are a few of the popular services we offer to our clients. Both end users and small businesses.</p>
+      </div>
+      <div class="services-grid">
+        <Feature icon="lucide:phone" title="Remote & Onsite Support">
+          Fast and reliable remote or onsite troubleshooting support to resolve your IT issues. Don't let an issue ruin your day!
         </Feature>
-        <Feature icon="lucide:wrench" title="Device Maintenance">
-          25+ components and counting, all tried and tested for the most optimal accessible experience for your
-          visitors.
-        </Feature>
-        <Feature icon="lucide:wallet" title="Device Consultancy">
-          Expert advice on selecting, setting up, and optimizing devices to meet your specific needs, ensuring seamless integration and enhanced performance.
-        </Feature>
-        <Feature icon="lucide:brick-wall-shield" title="Virus and Malware Removal">
+        <Feature icon="lucide:brick-wall-shield" title="Infection Removal">
           Is your PC infected with malware or viruses? We can help eliminate threats and secure your system!
         </Feature>
-        <Feature icon="lucide:server" title="Home Server Setup">
-          Host your own services at home or decouple from the cloud with our expert home server solutions.
+        <Feature icon="lucide:network" title="Networking">
+          Whether you are looking to upgrade or build out an entirely new network, we got you covered!
         </Feature>
-        <Feature icon="lucide:network" title="Network Design and Upgrade">
-          Expert guidance on designing, upgrading, or creating your network infrastructure for optimal performance and security.
+        <Feature icon="lucide:camera" title="Security">
+          Looking to secure your home or business with cameras or badge access? Rest easy knowing your property is secure!
         </Feature>
-        <Feature icon="lucide:cable" title="New/Reno Home Cabling">
-          Professional installation of structured cabling for homes, ensuring reliable connectivity and future-proofing your network.
+        <Feature icon="lucide:wrench" title="Device Maintenance">
+          Ensure your devices run smoothly and efficiently with our comprehensive maintenance services.
         </Feature>
-        <Feature icon="lucide:hammer" title="Custom PC Builds">
-          Whether you need a high-performance PC or one that fits your budget, we can build it for you!
+        <Feature icon="lucide:hammer" title="Custom PCs">
+          Upgrade your battle station or workstation with our tailored building services!
         </Feature>
-        <Feature icon="lucide:blocks" title="Data Recovery Services">
-          Recover lost data from failed or broken devices with our specialized recovery solutions.
-        </Feature>
-        <Feature icon="lucide:hard-drive-upload" title="Backup Solutions">
-          Protect your data with automated onsite or cloud backup services. Ensure your information is safe and easily recoverable in the event of a disaster.
-        </Feature>
-        <Feature icon="lucide:monitor-cloud" title="Software Installation and Configuration">
-          Get assistance with installing and configuring software to ensure it runs optimally on your devices.
-        </Feature>
-        <Feature icon="lucide:cpu" title="Hardware Upgrades">
-          Boost the performance of your existing devices with our hardware upgrade services.
-        </Feature>
-        <Feature icon="lucide:printer" title="Printer Setup and Troubleshooting">
-          Ensure your printers are correctly set up and maintained for hassle-free printing.
-        </Feature>
-        <Feature icon="lucide:circle-question-mark" title="..And More!">
-          IT involves a wide range of services. If you don't see what you're looking for, just ask!
-        </Feature>
+      </div>
+      <div class="services-cta">
+        <a href="/services" class="btn-primary">See All Services</a>
+        <a href="/nfp" class="btn-secondary">Not For Profits</a>
       </div>
     </div>
   </section>
 
-  <section class="mt-64 mb-32">
+  <!-- What Sets Us Apart -->
+  <section class="differentiators-section">
     <div class="container">
-      <Heading level="h2" class="mb-16">Company Stats</Heading>
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <Counter count="26+" title="Happy" sub="end users" />
+      <div class="section-header">
+        <Heading level="h2">What Sets Us Apart</Heading>
+      </div>
+      <div class="differentiators-grid">
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:shield-check" />
+          </div>
+          <h3>Starting on Solid Ground</h3>
+          <p>The tech industry is full of companies that either scam or overcharge for help. We are one of the few trying to change that.</p>
+        </div>
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:heart" />
+          </div>
+          <h3>Our Clients Come First</h3>
+          <p>When you reach out for help, you want someone who will think of you first before profit.</p>
+        </div>
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:megaphone-off" />
+          </div>
+          <h3>No Sales Pitches</h3>
+          <p>Don't you hate when tech companies constantly bug you with sales pitches? So do we.</p>
+        </div>
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:file-check" />
+          </div>
+          <h3>No Surprises</h3>
+          <p>A lot of companies obfuscate invoices and documents. We strive to be as transparent as possible so you aren't surprised.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <Counter count="30+" title="Happy" sub="end users" />
         <Counter count="7+" title="Happy" sub="small businesses" />
         <Counter count="10+" title="Years" sub="in service" />
         <Counter count="4.9" title="Rating" sub="based on user feedback" />
@@ -72,18 +96,284 @@ import TestimonialCarousel from '@components/TestimonialCarousel.astro'
     </div>
   </section>
 
-  <section class="my-16">
+  <!-- Testimonials -->
+  <section class="testimonials-section">
     <div class="container">
-      <Heading level="h2" class="mb-16">What Our Clients Say</Heading>
+      <div class="section-header">
+        <Heading level="h2">What Our Clients Say</Heading>
+      </div>
       <TestimonialCarousel />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <Heading level="h2">Ready to Fix Your Tech?</Heading>
+        <p>Get in touch and let's discuss how we can help with your technology needs.</p>
+        <a href="/contact" class="cta-button">Contact Us</a>
+      </div>
     </div>
   </section>
 </DefaultLayout>
 
 <style>
-  .avatar {
-    border: 1px solid var(--border-color-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-s);
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-neutral-600);
+    max-width: 600px;
+    margin: 0.75rem auto 0;
+  }
+
+  :global(.darkmode) .section-subtitle {
+    color: var(--color-neutral-400);
+  }
+
+  /* Services Section */
+  .services-section {
+    padding: 5rem 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .services-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 137, 198, 0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--brand-primary);
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--brand-primary);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--brand-primary);
+    color: white;
+  }
+
+  :global(.darkmode) .btn-secondary {
+    color: var(--brand-secondary);
+    border-color: var(--brand-secondary);
+  }
+
+  :global(.darkmode) .btn-secondary:hover {
+    background: var(--brand-secondary);
+    color: var(--color-neutral-900);
+  }
+
+  /* Differentiators Section */
+  .differentiators-section {
+    padding: 5rem 0;
+    background: var(--color-neutral-100);
+  }
+
+  :global(.darkmode) .differentiators-section {
+    background: var(--color-neutral-800);
+  }
+
+  .differentiators-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .differentiators-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .differentiators-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .differentiator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: center;
+    border: 1px solid var(--color-neutral-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .differentiator-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.darkmode) .differentiator-card {
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .differentiator-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .differentiator-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .differentiator-icon :global(svg) {
+    width: 28px;
+    height: 28px;
+    color: white;
+  }
+
+  .differentiator-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode) .differentiator-card h3 {
+    color: var(--color-neutral-100);
+  }
+
+  .differentiator-card p {
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  :global(.darkmode) .differentiator-card p {
+    color: var(--color-neutral-400);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    padding: 4rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    padding: 5rem 0;
+    background: var(--color-neutral-100);
+  }
+
+  :global(.darkmode) .testimonials-section {
+    background: var(--color-neutral-800);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 5rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    border-radius: 16px;
+    padding: 3.5rem 2rem;
+    color: white;
+  }
+
+  .cta-content :global(h2) {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content > p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: white;
+    color: var(--brand-primary);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 640px) {
+    .services-cta {
+      flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
   }
 </style>
