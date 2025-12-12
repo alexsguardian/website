@@ -75,6 +75,39 @@ import testimonials from '../../public/testimonials.json'
   .darkmode .star-empty {
     stroke: var(--border-color-subtle);
   }
+
+  /* Pause/Play Status Indicator */
+  .carousel-status {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .carousel-status.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .carousel-status .status-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .darkmode .carousel-status {
+    background: rgba(255, 255, 255, 0.15);
+  }
 </style>
 
 <!-- Json file lives on the cloud host only and is updated via an api call -->
@@ -104,6 +137,16 @@ import testimonials from '../../public/testimonials.json'
         </div>
       </div>
     ))}
+  </div>
+  <div class="carousel-status" id="carousel-status" aria-live="polite" aria-label="Carousel paused">
+    <svg class="status-icon" id="status-icon-pause" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+      <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+    </svg>
+    <svg class="status-icon" id="status-icon-play" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+    </svg>
+  </div>
 </div>
 
 <script is:inline>
@@ -111,13 +154,41 @@ import testimonials from '../../public/testimonials.json'
     let track = document.getElementById('carousel-track');
     let slides = Array.from(track.children);
     let carousel = track.parentElement;
+    let statusIndicator = document.getElementById('carousel-status');
+    let pauseIcon = document.getElementById('status-icon-pause');
+    let playIcon = document.getElementById('status-icon-play');
     let currentIndex = 0;
     let autoScrollInterval;
     let isPaused = false;
+    let resumeTimeout;
+    let hideTimeout;
 
     const moveToSlide = (index) => {
       let amountToMove = -index * track.clientWidth;
       track.style.transform = `translateX(${amountToMove}px)`;
+    };
+
+    const updateStatusIndicator = (paused) => {
+      // Clear any pending hide timeout
+      clearTimeout(hideTimeout);
+
+      if (paused) {
+        pauseIcon.style.display = 'block';
+        playIcon.style.display = 'none';
+        statusIndicator.setAttribute('aria-label', 'Carousel paused');
+        statusIndicator.classList.add('visible');
+      } else {
+        pauseIcon.style.display = 'none';
+        playIcon.style.display = 'block';
+        statusIndicator.setAttribute('aria-label', 'Carousel resuming');
+      }
+    };
+
+    const hideStatusIndicator = () => {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        statusIndicator.classList.remove('visible');
+      }, 500);
     };
 
     const autoScroll = () => {
@@ -128,34 +199,44 @@ import testimonials from '../../public/testimonials.json'
     };
 
     const startAutoScroll = () => {
-      autoScrollInterval = setInterval(autoScroll, 7000); // Slower 7 seconds
+      autoScrollInterval = setInterval(autoScroll, 7000);
     };
 
     const stopAutoScroll = () => {
       clearInterval(autoScrollInterval);
     };
 
-    // Pause on hover/focus
-    carousel.addEventListener('mouseenter', () => {
+    const pauseCarousel = () => {
       isPaused = true;
       stopAutoScroll();
-    });
+      clearTimeout(resumeTimeout);
+      clearTimeout(hideTimeout);
+      updateStatusIndicator(true);
+    };
 
-    carousel.addEventListener('mouseleave', () => {
-      isPaused = false;
-      startAutoScroll();
-    });
+    const resumeCarousel = () => {
+      // Clear any existing resume timeout
+      clearTimeout(resumeTimeout);
+      clearTimeout(hideTimeout);
+
+      // Show "Resuming..." indicator
+      updateStatusIndicator(false);
+
+      // Resume after 3.5 seconds
+      resumeTimeout = setTimeout(() => {
+        isPaused = false;
+        startAutoScroll();
+        hideStatusIndicator();
+      }, 3500);
+    };
+
+    // Pause on hover/focus
+    carousel.addEventListener('mouseenter', pauseCarousel);
+    carousel.addEventListener('mouseleave', resumeCarousel);
 
     // Handle focus events for accessibility
-    carousel.addEventListener('focusin', () => {
-      isPaused = true;
-      stopAutoScroll();
-    });
-
-    carousel.addEventListener('focusout', () => {
-      isPaused = false;
-      startAutoScroll();
-    });
+    carousel.addEventListener('focusin', pauseCarousel);
+    carousel.addEventListener('focusout', resumeCarousel);
 
     // Handle resize
     window.addEventListener('resize', () => {
@@ -168,6 +249,8 @@ import testimonials from '../../public/testimonials.json'
     // Cleanup
     window.addEventListener('beforeunload', () => {
       stopAutoScroll();
+      clearTimeout(resumeTimeout);
+      clearTimeout(hideTimeout);
     });
   })();
 </script>
