@@ -33,6 +33,7 @@ The original [MIT license](/LICENSE) covers all code and anything related to the
 
 The site is based on the Accessible Astro Stater theme. More information can be found below.
 
+
 <details closed>
 <summary>Expand to see original theme info</summary>
 

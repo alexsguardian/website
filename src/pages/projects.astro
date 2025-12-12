@@ -1,0 +1,464 @@
+---
+import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import { Heading } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+
+// Import project images
+import cameraInstall1 from '@assets/img/projects/camera-install-1.webp'
+import customPc1 from '@assets/img/projects/custom-pc-1.webp'
+import customPc2 from '@assets/img/projects/custom-pc-2.webp'
+import networkInstall1 from '@assets/img/projects/network-install-1.webp'
+---
+
+<DefaultLayout title="Projects" showCallToAction={false}>
+  <PageHeader
+    title="Projects"
+    subtitle="A showcase of real work we've completed for our clients."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <!-- Page Introduction -->
+  <section class="container my-16">
+    <div class="projects-intro">
+      <Heading level="h2">Our Work in Action</Heading>
+      <p>From custom PC builds to professional network installations, we take pride in delivering quality solutions tailored to each client's needs. Here are some examples of our recent projects.</p>
+      <p><em>All photos shared with client permission.</em></p>
+    </div>
+  </section>
+
+  <!-- Custom PC Build Project 1 -->
+  <section class="container my-16">
+    <div class="project-section">
+      <ContentMedia imgSrc={customPc1.src}>
+        <div class="project-header">
+          <Icon name="lucide:gamepad-2" />
+          <Heading level="h2">High-Performance Gaming Build</Heading>
+        </div>
+        <div class="project-details">
+          <p>Custom gaming PC built for Chris V. This build features:</p>
+          <ul>
+            <li><strong>Processor:</strong> Intel i7-13700K</li>
+            <li><strong>Graphics:</strong> Nvidia RTX 4090</li>
+            <li><strong>Memory:</strong> 32GB DDR5</li>
+            <li><strong>Storage:</strong> 2TB NVMe SSD</li>
+            <li><strong>Custom cooling:</strong> Corsair iCue H115i Elite Capellix</li>
+          </ul>
+          <p>The client wanted a system that could handle the latest AAA games at 4K resolution while maintaining high frame rates. We think it turned out awesome in the Lian Li 011 Dynamic Evo case.</p>
+        </div>
+        <div class="project-specs">
+          <div class="spec-item">
+            <Icon name="lucide:gpu" />
+            <span>Nvidia RTX 4090</span>
+          </div>
+          <div class="spec-item">
+            <Icon name="lucide:chart-line" />
+            <span>Raw Performance</span>
+          </div>
+          <div class="spec-item">
+            <Icon name="lucide:monitor" />
+            <span>4K Gaming</span>
+          </div>
+        </div>
+      </ContentMedia>
+    </div>
+  </section>
+
+  <!-- Budget PC Build Project -->
+  <section class="container my-16">
+    <div class="project-section">
+      <ContentMedia imgSrc={customPc2.src} reverseImg={true}>
+        <div class="project-header">
+          <Icon name="lucide:gamepad-2" />
+          <Heading level="h2">High-Performance Gaming Build</Heading>
+        </div>
+        <div class="project-details">
+          <p></p>Custom gaming PC built for Geoffery S. This build features:</p>
+          <ul>
+            <li><strong>Processor:</strong> Intel i7-14700K</li>
+            <li><strong>Graphics:</strong> Nvidia RTX 4070TI</li>
+            <li><strong>Memory:</strong> 32GB DDR5</li>
+            <li><strong>Storage:</strong> 2TB NVMe SSD</li>
+            <li><strong>Custom cooling:</strong> Deepcool LS720 SE WH AIO</li>
+          </ul>
+          <p>This build prioritized value over raw performance, perfect for 2k gaming. This build turned out great in the NZXT H9 Flow case.</p>
+          <sub>Photos provided by client.</sub>
+        </div>
+        <div class="project-specs">
+          <div class="spec-item">
+            <Icon name="lucide:dollar-sign" />
+            <span>Value Focused</span>
+          </div>
+          <div class="spec-item">
+            <Icon name="lucide:cpu" />
+            <span>Intel i7-14700K</span>
+          </div>
+          <div class="spec-item">
+            <Icon name="lucide:monitor" />
+            <span>2K Gaming</span>
+          </div>
+        </div>
+      </ContentMedia>
+    </div>
+  </section>
+
+  <!-- Network Installation Project -->
+  <section class="container my-16">
+    <div class="project-section">
+      <ContentMedia imgSrc={networkInstall1.src}>
+        <div class="project-header">
+          <Icon name="lucide:network" />
+          <Heading level="h2">Home Network Upgrade</Heading>
+        </div>
+        <div class="project-details">
+          <p>This upgrade allowed a client to get faster local networking to a detached garage. Utilizing two Ubquiti airMAX Nanostation 5AC Loco's we were able to get a rock steady 300-500Mbps connection between the main house and the garage. The previous setup consisted of two M5 Loco's</p>
+        </div>
+        <div class="project-specs">
+          <div class="spec-item">
+            <Icon name="lucide:network" />
+            <span>PTP Networking</span>
+          </div>
+        </div>
+      </ContentMedia>
+    </div>
+  </section>
+
+  <!-- Security Camera Installation -->
+  <section class="container my-16">
+    <div class="project-section">
+      <ContentMedia imgSrc={cameraInstall1.src} reverseImg={true}>
+        <div class="project-header">
+          <Icon name="lucide:camera" />
+          <Heading level="h2">Security Camera System</Heading>
+        </div>
+        <div class="project-details">
+          <p>Professional security camera installation for a local client needing 360° coverage:</p>
+          <ul>
+            <li><strong>Cameras:</strong> 6x 4K Color Night Vision Cameras, 2K Video Doorbell, 2x 2K Dome Cameras, and 3K 180° FOV Cameras.</li>
+            <li><strong>Storage:</strong> Network Video Recorder with 9TB storage</li>
+            <li><strong>Coverage:</strong> All entry points and common areas</li>
+            <li><strong>Remote Access:</strong> Mobile app for real-time viewing</li>
+          </ul>
+          <p>The system provides 24/7 monitoring with motion detection alerts. All cameras are weather-rated for outdoor use and include advanced features like AI person/vehicle/animal detection.</p>
+        </div>
+        <div class="project-specs">
+          <div class="spec-item">
+            <Icon name="lucide:eye" />
+            <span>24/7 Monitoring</span>
+          </div>
+          <div class="spec-item">
+            <Icon name="lucide:bot" />
+            <span>AI Detections</span>
+          </div>
+          <div class="spec-item">
+            <Icon name="lucide:cctv" />
+            <span>360° Coverage</span>
+          </div>
+        </div>
+      </ContentMedia>
+    </div>
+  </section>
+
+  <!-- Project Summary -->
+  <section class="container my-16">
+    <div class="project-summary">
+      <Heading level="h2">Every Project is Unique</Heading>
+      <p>These examples represent just a few of the diverse projects we handle. Whether you need a simple repair, a custom build, or a complex installation, we approach each project with the same attention to detail and commitment to quality.</p>
+
+      <div class="summary-stats">
+        <div class="stat-item">
+          <Icon name="lucide:users" />
+          <span class="stat-number">26+</span>
+          <span class="stat-label">Satisfied Clients</span>
+        </div>
+        <div class="stat-item">
+          <Icon name="lucide:wrench" />
+          <span class="stat-number">100+</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-item">
+          <Icon name="lucide:star" />
+          <span class="stat-number">4.9</span>
+          <span class="stat-label">Average Rating</span>
+        </div>
+        <div class="stat-item">
+          <Icon name="lucide:calendar" />
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+
+      <div class="project-cta">
+        <p>Ready to start your own project? We'd love to hear about your needs and how we can help.</p>
+        <a href="/contact" class="cta-button">Start Your Project</a>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  /* Projects Intro */
+  .projects-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .projects-intro p {
+    font-size: 1.125rem;
+    color: var(--color-neutral-600);
+    margin-top: 1rem;
+  }
+
+  .projects-intro em {
+    font-size: 0.95rem;
+    color: var(--color-neutral-500);
+  }
+
+  :global(.darkmode) .projects-intro p {
+    color: var(--color-neutral-400);
+  }
+
+  :global(.darkmode) .projects-intro em {
+    color: var(--color-neutral-500);
+  }
+
+  /* Project Section */
+  .project-section {
+    margin-bottom: 2rem;
+  }
+
+  /* Project Header */
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-header :global(svg) {
+    width: 32px;
+    height: 32px;
+    color: var(--brand-primary);
+    flex-shrink: 0;
+  }
+
+  :global(.darkmode) .project-header :global(svg) {
+    color: var(--brand-secondary);
+  }
+
+  .project-header :global(h2) {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  /* Project Details */
+  .project-details {
+    margin-bottom: 1.5rem;
+  }
+
+  .project-details p {
+    font-size: 0.95rem;
+    color: var(--color-neutral-600);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  :global(.darkmode) .project-details p {
+    color: var(--color-neutral-400);
+  }
+
+  .project-details ul {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+  }
+
+  .project-details li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .project-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  }
+
+  :global(.darkmode) .project-details li {
+    color: var(--color-neutral-400);
+  }
+
+  /* Project Specs */
+  .project-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-neutral-100);
+    border-radius: 8px;
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  :global(.darkmode) .spec-item {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  .spec-item :global(svg) {
+    width: 18px;
+    height: 18px;
+    color: var(--brand-primary);
+    flex-shrink: 0;
+  }
+
+  :global(.darkmode) .spec-item :global(svg) {
+    color: var(--brand-secondary);
+  }
+
+  .spec-item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .spec-item span {
+    color: var(--color-neutral-300);
+  }
+
+  /* Project Summary */
+  .project-summary {
+    text-align: center;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    color: white;
+  }
+
+  .project-summary :global(h2) {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .project-summary > p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* Summary Stats */
+  .summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+  }
+
+  .stat-item :global(svg) {
+    width: 28px;
+    height: 28px;
+    color: white;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+  }
+
+  /* Project CTA */
+  .project-cta {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .project-cta p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: white;
+    color: var(--brand-primary);
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 640px) {
+    .project-header {
+      flex-wrap: wrap;
+    }
+
+    .project-header :global(svg) {
+      width: 28px;
+      height: 28px;
+    }
+
+    .project-header :global(h2) {
+      font-size: 1.2rem;
+    }
+
+    .project-specs {
+      flex-direction: column;
+    }
+
+    .spec-item {
+      width: 100%;
+    }
+
+    .summary-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>

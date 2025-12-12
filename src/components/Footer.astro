@@ -1,6 +1,6 @@
 ---
 import CallToAction from './CallToAction.astro'
-import Logo from './Logo.astro'
+import { Icon } from 'astro-icon/components'
 import { Heading, Link } from 'accessible-astro-components'
 
 /**
@@ -8,93 +8,82 @@ import { Heading, Link } from 'accessible-astro-components'
  *
  * @description A component that displays the footer of the website
  */
+const { showCallToAction = true } = Astro.props
 const currentYear = new Date().getFullYear()
 ---
 
 <footer>
-  <CallToAction />
+
+  {showCallToAction && <CallToAction />}
+
   <section class="py-20">
+
     <Heading level="h2" class="sr-only">Footer</Heading>
-    <div class="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <div class="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       <div class="flex flex-col gap-4">
-        <Heading level="h3" size="h6">Theme features</Heading>
+        <Heading level="h3" size="h6">External</Heading>
         <ul class="flex flex-col gap-2">
-          <li><Link href="/accessibility-statement">Accessibility statement</Link></li>
-          <li><Link href="/accessible-components">Accessible components</Link></li>
-          <li><Link href="/color-contrast-checker">Color contrast checker</Link></li>
-          <li><Link href="/markdown-page">Markdown page</Link></li>
-          <li><Link href="/mdx-page">MDX page</Link></li>
-          <li><Link href="/404-page">404 page</Link></li>
-          <li><Link href="/sitemap">Sitemap</Link></li>
+          <!-- <li>
+            <Link isExternal href="https://uisp.alexsguardian.net/crm/login">WISP Portal</Link>
+          </li> -->
+          <li>
+            <Link isExternal href="https://blog.alexsguardian.net">Alex's Blog</Link>
+          </li>
+          <li>
+            <Link isExternal href="https://discord.gg/nf4nmnhYUC">Discord</Link>
+          </li>
+          <!-- <li>
+            <Link isExternal href="https://status.alexsguardian.net">Status</Link>
+          </li> -->
         </ul>
       </div>
+
       <div class="flex flex-col gap-4">
-        <Heading level="h3" size="h6">Incluud projects</Heading>
+        <Heading level="h3" size="h6">Support</Heading>
         <ul class="flex flex-col gap-2">
+          <!-- <li>
+            <Link href="/support#affiliate">Affiliate Links</Link>
+          </li> -->
+
           <li>
-            <Link isExternal href="https://accessible-astro-starter.incluud.dev">Accessible Astro Starter</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://accessible-astro-dashboard.incluud.dev">Accessible Astro Dashboard</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://accessible-astro-starter.incluud.dev/accessible-components"
-              >Accessible Astro Components</Link
-            >
-          </li>
-          <li>
-            <Link isExternal href="https://accessible-astro-docs.incluud.dev">Accessible Astro Docs</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://color-contrast.incluud.dev">Color Contrast Checker</Link>
+            <Link href="/loaner-program">Loaner Program</Link>
           </li>
         </ul>
       </div>
+
       <div class="flex flex-col gap-4">
-        <Heading level="h3" size="h6">Developer tools</Heading>
+        <Heading level="h3" size="h6">Company</Heading>
         <ul class="flex flex-col gap-2">
           <li>
-            <Link isExternal href="https://chrispederick.com/work/web-developer/">Web Developer Extension</Link>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link isExternal href="https://accessibilityinsights.io/">Accessibility Insights</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://www.deque.com/axe/devtools/">axe DevTools</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://wave.webaim.org/extension/">WAVE Web Accessibility</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://www.w3.org/WAI/ARIA/apg/patterns/">ARIA Design Patterns</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://aaardvarkaccessibility.com/wcag-plain-english/">WCAG Plain English</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
           </li>
         </ul>
       </div>
-      <div class="flex flex-col gap-4">
-        <Logo loading="lazy" />
-        <p class="leading-[1.75]">
-          Tip: always test for screen reader support. Press <kbd>⌘</kbd> + <kbd>F5</kbd> to start VoiceOver or <kbd
-            >Win</kbd
-          >
-          + <kbd>Ctrl</kbd> + <kbd>Enter</kbd> for Narrator.
-        </p>
-        <p>Cute astronaut image by <Link href="https://unsplash.com/@kobbymendez">Kobby Mendez</Link> on Unsplash.</p>
-      </div>
+
     </div>
   </section>
   <section class="py-8">
     <div class="container flex flex-col gap-4 md:flex-row md:justify-between">
       <p>
-        &copy; {currentYear} - Starter Theme for <Link href="https://astro.build/">Astro</Link>.
+        &copy; {currentYear} - Alex's Guardian. All Rights Reserved.
       </p>
-      <p>
-        Made with ❤️ by <Link href="https://github.com/markteekman">Mark Teekman</Link>. Part of <Link
-          href="https://www.incluud.dev">Incluud</Link
-        >.
-      </p>
+      <div class="flex flex-row gap-2">
+        <Link href="https://bsky.app/profile/alexsguardian.net" class="type-icon animate-rotate" title="Bluesky Profile">
+          <Icon aria-hidden="true" name="lucide:hash" />
+          <span class="sr-only">Go to the Bluesky profile</span>
+        </Link>
+        <Link href="https://www.facebook.com/people/Alexs-Guardian/100064867567241/" class="type-icon animate-rotate" title="Facebook Profile">
+          <Icon aria-hidden="true" name="lucide:facebook" />
+          <span class="sr-only">Go to the Facebook profile</span>
+        </Link>
+        <Link href="https://github.com/alexsguardian/website" class="type-icon animate-rotate" title="GitHub Organization">
+          <Icon aria-hidden="true" name="lucide:github" />
+          <span class="sr-only">Go to the GitHub organization</span>
+        </Link>
+      </div>
     </div>
   </section>
 </footer>

@@ -1,0 +1,502 @@
+---
+import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import { Heading } from 'accessible-astro-components'
+import Note from '@components/Note.astro'
+
+import heroImage from '@assets/img/nfp/undraw_team-collaboration_phnf.svg'
+import remoteSupportImage from '@assets/img/nfp/undraw_instant-support_oav0.svg'
+import onsiteSupportImage from '@assets/img/nfp/undraw_engineering-team_13ax.svg'
+import basicWebsiteHostingImage from '@assets/img/nfp/undraw_design_ewba.svg'
+import advancedWebsiteHostingImage from '@assets/img/nfp/undraw_web-developer_ggt0.svg'
+import lionsLogo from '@assets/img/nfp/orgs/lionslogo.png'
+---
+
+<DefaultLayout title="Not For Profits">
+  <PageHeader
+    title="Not For Profits"
+    subtitle="Elevate your organization with proper technology support."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <section class="container my-16">
+    <div class="space-content">
+
+      <div class="hero-intro">
+        <img src={heroImage.src} alt="Illustration of a group project" class="hero-image" />
+        <p>We understand that not-for-profit organizations often operate under tight budgets and require reliable, efficient technology to achieve their mission. That's why we offer comprehensive IT support and website services tailored specifically to meet your needs. Ensuring your technology is always working for you, not against you.</p>
+      </div>
+
+      <!-- IT Support Services Section -->
+      <Heading level="h2">IT Support Services</Heading>
+
+      <ContentMedia
+        imgSrc={remoteSupportImage.src}
+        reverseImg={false}
+        allowEnlarge={false}
+      >
+        <Heading level="h3">Remote Support</Heading>
+        <p>Our remote IT support service is ideal for organizations that need fast and effective problem-solving without the delay of an on-site visit. Using secure remote access tools, our team can diagnose and resolve technical issues, perform software updates, and provide troubleshooting assistance — all without disrupting your workday.</p>
+
+        <div class="service-list">
+          <div class="service-item">
+            <h4>Help Desk</h4>
+            <p>Quick response to critical issues when you need it most.</p>
+          </div>
+          <div class="service-item">
+            <h4>Troubleshooting & Diagnostics</h4>
+            <p>From software issues to network connectivity problems, we diagnose and fix it.</p>
+          </div>
+          <div class="service-item">
+            <h4>System Updates</h4>
+            <p>Keeping your software and security protocols up to date.</p>
+          </div>
+          <div class="service-item">
+            <h4>User Support</h4>
+            <p>Assisting your staff with everyday technology questions and challenges.</p>
+          </div>
+        </div>
+      </ContentMedia>
+
+      <ContentMedia
+        imgSrc={onsiteSupportImage.src}
+        reverseImg={true}
+        allowEnlarge={false}
+      >
+        <Heading level="h3">On-site Support</Heading>
+        <p>For not-for-profits in our local service area, we offer on-site IT support to address more complex issues that require hands-on attention. Our team will come directly to your location to ensure your systems are functioning optimally.</p>
+
+        <div class="service-list">
+          <div class="service-item">
+            <h4>Hardware Repairs & Installations</h4>
+            <p>Addressing issues with servers, workstations, printers, and other equipment.</p>
+          </div>
+          <div class="service-item">
+            <h4>Network Setup & Maintenance</h4>
+            <p>Ensuring your internet and intranet systems are secure and efficient.</p>
+          </div>
+          <div class="service-item">
+            <h4>Training Sessions</h4>
+            <p>Educating your staff on using new software or systems effectively.</p>
+          </div>
+          <div class="service-item">
+            <h4>Technology Assessments</h4>
+            <p>Identifying areas for improvement to help your organization run more smoothly.</p>
+          </div>
+        </div>
+      </ContentMedia>
+
+      <Note
+        icon="lucide:info"
+        text="Any hardware or software purchases are provided at cost with no additional markup."
+        variant="neutral"
+      />
+
+      <!-- Website Services Section -->
+      <Heading level="h2">Website Services</Heading>
+      <p>For not-for-profit organizations, having a reliable and well-maintained website is essential to engage supporters, communicate your mission, and streamline operations. We offer two comprehensive levels of service to match your needs and budget.</p>
+
+      <ContentMedia
+        imgSrc={basicWebsiteHostingImage.src}
+        reverseImg={false}
+        allowEnlarge={false}
+      >
+        <Heading level="h3">Basic Website Hosting</Heading>
+        <p>Our basic website hosting service is ideal for organizations seeking a simple yet professional online presence.</p>
+
+        <div class="service-list">
+          <div class="service-item">
+            <h4>Static Website Deployment</h4>
+            <p>We'll deploy a website that delivers key information about your organization in a clean, visually appealing format.</p>
+          </div>
+          <div class="service-item">
+            <h4>Basic Contact Form</h4>
+            <p>A user-friendly contact form that allows visitors to easily reach out to your organization via email.</p>
+          </div>
+          <div class="service-item">
+            <h4>Regular Maintenance</h4>
+            <p>Regular updates to ensure your website remains functional and secure.</p>
+          </div>
+        </div>
+      </ContentMedia>
+
+      <ContentMedia
+        imgSrc={advancedWebsiteHostingImage.src}
+        reverseImg={true}
+        allowEnlarge={false}
+      >
+        <Heading level="h3">Advanced Website Hosting</Heading>
+        <p>For not-for-profits with more complex needs, our advanced hosting package provides the tools and features to create an interactive and robust web presence.</p>
+
+        <div class="service-list">
+          <div class="service-item">
+            <h4>Dynamic Website Functionality</h4>
+            <p>A website that adapts to user input and provides customized content and experiences.</p>
+          </div>
+          <div class="service-item">
+            <h4>Database Integration</h4>
+            <p>Store and manage donor data, event registrations, volunteer applications, and other essential information.</p>
+          </div>
+          <div class="service-item">
+            <h4>Enhanced Features</h4>
+            <p>Options for e-commerce, member portals, event calendars, or any custom functionality tailored to your mission.</p>
+          </div>
+          <div class="service-item">
+            <h4>Comprehensive Maintenance</h4>
+            <p>Full maintenance and updates to ensure your website runs smoothly and stays current.</p>
+          </div>
+        </div>
+      </ContentMedia>
+
+      <Note
+        icon="lucide:info"
+        text="Organizations will be responsible for hosting fees, which will be billed at cost."
+        variant="neutral"
+      />
+
+      <!-- Website Design Services -->
+      <Heading level="h2">Website Design Services</Heading>
+      <p>We do not handle website design directly. We collaborate with trusted third-party web design professionals to ensure your website meets your expectations. Design services are subject to the third party's rates, which will be provided and agreed upon separately. We coordinate closely with these designers to ensure seamless integration into our hosting and management services.</p>
+
+      <!-- Pricing Section -->
+      <Heading level="h2">Pricing</Heading>
+      <p>We offer competitive pricing for our services to not-for-profit organizations.</p>
+
+      <div class="table-wrapper">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Service">Remote Support</td>
+              <td data-label="Description">Quick and efficient remote assistance for IT issues.</td>
+              <td data-label="Price">$10/hour</td>
+            </tr>
+            <tr>
+              <td data-label="Service">Onsite Support</td>
+              <td data-label="Description">Comprehensive IT solutions with onsite visits.</td>
+              <td data-label="Price">$15/hour + travel costs</td>
+            </tr>
+            <tr>
+              <td data-label="Service">Basic Website Hosting</td>
+              <td data-label="Description">Reliable and secure hosting for not-for-profit websites.</td>
+              <td data-label="Price">$5/month (up to 5GB storage)</td>
+            </tr>
+            <tr>
+              <td data-label="Service">Advanced Website Hosting</td>
+              <td data-label="Description">Enhanced performance and security for growing organizations.</td>
+              <td data-label="Price">$15/month (up to 25GB storage)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Proof of Status Section -->
+      <Heading level="h2">Proof of Not-For-Profit Status</Heading>
+      <p>When you contact us, we will request proof of your not-for-profit status. Any of the following documents are acceptable:</p>
+
+      <div class="document-list">
+        <div class="document-item">
+          <h4>IRS Listing Reference</h4>
+          <p>A reference to your organization's listing in the IRS's most recent list of tax-exempt organizations described in section 501(c)(3).</p>
+        </div>
+        <div class="document-item">
+          <h4>Tax Exemption Certificate</h4>
+          <p>A copy of a currently valid IRS tax exemption certificate.</p>
+        </div>
+        <div class="document-item">
+          <h4>State Certification</h4>
+          <p>A statement from a State taxing body, State Attorney General, or other appropriate State official certifying nonprofit status.</p>
+        </div>
+        <div class="document-item">
+          <h4>Certificate of Incorporation</h4>
+          <p>A certified copy of the organization's certificate of incorporation or similar document that clearly establishes nonprofit status.</p>
+        </div>
+        <div class="document-item">
+          <h4>Parent Organization Proof</h4>
+          <p>Proof for a state or national parent organization and a statement signed by the parent organization that your organization is a local nonprofit affiliate.</p>
+        </div>
+      </div>
+
+      <!-- Organizations We Work With -->
+      <Heading level="h2">Organizations We Work With</Heading>
+      <p>We're proud to support these not-for-profit organizations in our community:</p>
+
+      <div class="org-list">
+        <a href="https://manheimlions.org/" target="_blank" rel="noopener noreferrer" class="org-link">
+          <img src={lionsLogo.src} alt="Manheim Lions Club logo" class="org-logo" />
+          <span>Manheim Lions Club</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</DefaultLayout>
+
+<style>
+  .hero-intro {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 32rem;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+
+  .hero-intro p {
+    color: var(--foreground-color);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  .service-list {
+    margin-top: var(--space-m);
+  }
+
+  .service-item {
+    margin-bottom: var(--space-s);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--border-color-subtle);
+  }
+
+  .service-item:last-child {
+    border-bottom: none;
+  }
+
+  .service-item h4 {
+    color: var(--link-color);
+    margin: 0 0 var(--space-2xs) 0;
+    font-weight: 600;
+    font-size: var(--font-size-0);
+  }
+
+  .service-item p {
+    margin: 0;
+    color: var(--foreground-color);
+    opacity: 0.9;
+  }
+
+  .document-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-m);
+    margin-block: var(--space-m);
+  }
+
+  .document-item {
+    padding: var(--space-m);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    border-left: 4px solid var(--link-color);
+  }
+
+  .document-item h4 {
+    color: var(--link-color);
+    margin: 0 0 var(--space-xs) 0;
+    font-weight: 600;
+    font-size: var(--font-size-0);
+  }
+
+  .document-item p {
+    margin: 0;
+    color: var(--foreground-color);
+    font-size: var(--font-size--1);
+  }
+
+  :global(.darkmode) .document-item {
+    background-color: var(--color-neutral-800);
+  }
+
+  .org-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    margin-block: var(--space-l);
+  }
+
+  .org-link {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-s) var(--space-m);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    color: var(--foreground-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+    gap: var(--space-xs);
+  }
+
+  .org-logo {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+    border-radius: var(--radius-small);
+  }
+
+  .org-link:hover {
+    background-color: var(--color-primary-100);
+    transform: translateY(-2px);
+  }
+
+  :global(.darkmode) .org-link {
+    background-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .org-link:hover {
+    background-color: var(--color-primary-400);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-large);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color);
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    min-width: 600px;
+    background-color: var(--background-color);
+  }
+
+  .pricing-table thead {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+    color: var(--color-neutral-100);
+  }
+
+  .pricing-table th {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color-subtle);
+    color: var(--foreground-color);
+    background-color: var(--background-color);
+  }
+
+  .pricing-table tbody tr {
+    transition: background-color 0.15s ease;
+  }
+
+  .pricing-table tbody tr:hover {
+    background-color: var(--color-neutral-200);
+  }
+
+  .pricing-table tbody tr:nth-child(even) {
+    background-color: var(--color-neutral-200);
+  }
+
+  .pricing-table tbody tr:nth-child(even):hover {
+    background-color: var(--color-neutral-300);
+  }
+
+  .pricing-table tbody tr:nth-child(even) td {
+    background-color: var(--color-neutral-200);
+  }
+
+  .pricing-table tbody tr:hover td {
+    background-color: var(--color-neutral-200);
+  }
+
+  .pricing-table tbody tr:nth-child(even):hover td {
+    background-color: var(--color-neutral-300);
+  }
+
+  .pricing-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Dark mode specific overrides */
+  :global(.darkmode) .pricing-table tbody tr:hover {
+    background-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .pricing-table tbody tr:nth-child(even) {
+    background-color: var(--color-neutral-800);
+  }
+
+  :global(.darkmode) .pricing-table tbody tr:nth-child(even):hover {
+    background-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .pricing-table tbody tr:nth-child(even) td {
+    background-color: var(--color-neutral-800);
+  }
+
+  :global(.darkmode) .pricing-table tbody tr:hover td {
+    background-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .pricing-table tbody tr:nth-child(even):hover td {
+    background-color: var(--color-neutral-700);
+  }
+
+  /* Responsive: Stack cells on small screens */
+  @media (max-width: 640px) {
+    .pricing-table {
+      min-width: unset;
+    }
+
+    .pricing-table thead {
+      display: none;
+    }
+
+    .pricing-table tbody tr {
+      display: block;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-color-subtle);
+      border-radius: var(--radius-large);
+      padding: 0.5rem;
+      background-color: var(--background-color) !important;
+    }
+
+    .pricing-table tbody tr:nth-child(even) {
+      background-color: var(--background-color) !important;
+    }
+
+    .pricing-table td {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color-subtle);
+      gap: 1rem;
+      background-color: var(--background-color) !important;
+    }
+
+    .pricing-table td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      color: var(--link-color);
+      flex-shrink: 0;
+      min-width: 100px;
+    }
+
+    .pricing-table td:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

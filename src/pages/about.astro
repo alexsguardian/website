@@ -1,0 +1,299 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import { Heading } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+
+import heroImage from '@assets/img/about/undraw_programming_j1zw.svg'
+import mapImage from '@assets/img/about/map.webp'
+---
+
+<DefaultLayout title="About">
+  <PageHeader
+    title="Who is Alex's Guardian?"
+    subtitle="Making IT work easier and more transparent since 2015."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <!-- Mission Section -->
+  <section class="container my-16">
+    <div class="space-content">
+      <div class="hero-intro">
+        <img src={heroImage.src} alt="Illustration of a person programming" class="hero-image" />
+        <p class="intro-highlight">IT work should never be complicated, hidden behind bogus fees, or stressful.</p>
+        <p>
+          Alex's Guardian was started in 2015 by Alexander Henderson as a passion project with a simple goal: make Information Technology work easier and more transparent for end users and small businesses.
+        </p>
+        <p>
+          The IT industry is full of companies that overcharge, overcomplicate, and underdeliver. We're different. Our mission is to keep IT work transparent and surprise-free. So you can focus on what matters most.
+        </p>
+      </div>
+
+      <!-- Values Section -->
+      <Heading level="h2">What We Believe</Heading>
+      <div class="values-grid">
+        <div class="value-card">
+          <Icon name="lucide:eye" />
+          <h4>Transparency</h4>
+          <p>No hidden fees, no surprise charges. You'll always know what you're paying for.</p>
+        </div>
+        <div class="value-card">
+          <Icon name="lucide:message-circle" />
+          <h4>Clear Communication</h4>
+          <p>We explain things in plain English, not confusing tech jargon.</p>
+        </div>
+        <div class="value-card">
+          <Icon name="lucide:heart-handshake" />
+          <h4>Honest Service</h4>
+          <p>We'll tell you what you actually need not upsell you on things you don't.</p>
+        </div>
+        <div class="value-card">
+          <Icon name="lucide:users" />
+          <h4>Community Focus</h4>
+          <p>We're proud to serve our local Lancaster County community and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="container my-16">
+    <div class="space-content">
+      <Heading level="h2">Where We're Located</Heading>
+
+      <ContentMedia
+        imgSrc={mapImage.src}
+        reverseImg={false}
+        allowEnlarge={true}
+      >
+        <Heading level="h3">Manheim, PA</Heading>
+        <p>
+          Alex's Guardian is based in Manheim, PA. While we primarily focus on local clients, we've worked with customers across the county, state, and other states. So don't let distance discourage you from reaching out!
+        </p>
+        <p class="note-text">
+          <Icon name="lucide:info" class="inline-icon" />
+          <em>We currently don't have a storefront as we are a mobile business. If you need to drop off devices, give us a call or email! A storefront is planned for the future.</em>
+        </p>
+      </ContentMedia>
+
+      <Heading level="h3">Current Local Coverage</Heading>
+      <p>Our local coverage area includes the following towns in Lancaster County and surrounding areas:</p>
+
+      <div class="coverage-grid">
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Columbia</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Cornwall</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>East Petersburg</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Elizabethtown</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Lancaster City</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Landisville</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Lebanon</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Lititz</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Manheim</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Marietta</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Maytown</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Mt Joy</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Palmyra</span>
+        </div>
+        <div class="coverage-item">
+          <Icon name="lucide:map-pin" />
+          <span>Quarryville</span>
+        </div>
+      </div>
+
+      <p class="coverage-note">Don't see your area? <a href="/contact">Contact us</a> - we may still be able to help!</p>
+    </div>
+  </section>
+
+</DefaultLayout>
+
+<style>
+  .hero-intro {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 24rem;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+
+  .intro-highlight {
+    font-size: var(--font-size-2);
+    font-weight: 600;
+    color: var(--link-color);
+    margin-bottom: var(--space-m);
+  }
+
+  .hero-intro p {
+    color: var(--foreground-color);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  /* Values Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-m);
+    margin-block: var(--space-l);
+  }
+
+  .value-card {
+    padding: var(--space-m);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.darkmode) .value-card {
+    background-color: var(--color-neutral-800);
+  }
+
+  .value-card :global(svg) {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--link-color);
+    margin-bottom: var(--space-xs);
+    display: block;
+    margin-inline: auto;
+  }
+
+  .value-card h4 {
+    margin: 0 0 var(--space-xs) 0;
+    font-size: var(--font-size-0);
+    font-weight: 600;
+    color: var(--link-color);
+    line-height: 1.3;
+  }
+
+  .value-card p {
+    margin: 0;
+    font-size: var(--font-size--1);
+    color: var(--foreground-color);
+    line-height: 1.5;
+  }
+
+  /* Note text */
+  .note-text {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    padding: var(--space-s);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    font-size: var(--font-size--1);
+    margin-top: var(--space-m);
+  }
+
+  :global(.darkmode) .note-text {
+    background-color: var(--color-neutral-800);
+  }
+
+  .note-text :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--link-color);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Coverage Grid */
+  .coverage-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-block: var(--space-m);
+  }
+
+  .coverage-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-xs) var(--space-s);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .coverage-item:hover {
+    background-color: var(--color-primary-100);
+  }
+
+  :global(.darkmode) .coverage-item {
+    background-color: var(--color-neutral-800);
+  }
+
+  :global(.darkmode) .coverage-item:hover {
+    background-color: var(--color-primary-400);
+  }
+
+  .coverage-item :global(svg) {
+    width: 1rem;
+    height: 1rem;
+    color: var(--link-color);
+    flex-shrink: 0;
+  }
+
+  .coverage-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--foreground-color);
+    opacity: 0.8;
+  }
+
+  .coverage-note a {
+    color: var(--link-color);
+  }
+</style>

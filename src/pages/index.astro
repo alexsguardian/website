@@ -3,165 +3,377 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
 import Feature from '@components/Feature.astro'
 import Counter from '@components/Counter.astro'
-import ContentMedia from '@components/ContentMedia.astro'
-import { Accordion, AccordionItem, Avatar, AvatarGroup, Heading, Link } from 'accessible-astro-components'
+import { Heading } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
+import TestimonialCarousel from '@components/TestimonialCarousel.astro'
 ---
 
-<DefaultLayout title="Home">
+<DefaultLayout title="Home" showCallToAction={false}>
   <Hero />
-  <section class="my-64">
+
+  <!-- Services Overview -->
+  <section class="services-section">
     <div class="container">
-      <Heading level="h2" class="mb-8">Features</Heading>
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature icon="lucide:accessibility" title="Accessible by default">
-          Keyboard navigation, focus indicators, ARIA labels, semantic HTML, and more. This theme is designed to be
-          inclusive.
+      <div class="section-header">
+        <Heading level="h2">Services</Heading>
+        <p class="section-subtitle">Below are a few of the popular services we offer to our clients. Both end users and small businesses.</p>
+      </div>
+      <div class="services-grid">
+        <Feature icon="lucide:phone" title="Remote & Onsite Support">
+          Fast and reliable remote or onsite troubleshooting support to resolve your IT issues. Don't let an issue ruin your day!
         </Feature>
-        <Feature icon="lucide:puzzle" title="A11Y components">
-          25+ components and counting, all tried and tested for the most optimal accessible experience for your
-          visitors.
+        <Feature icon="lucide:brick-wall-shield" title="Infection Removal">
+          Is your PC infected with malware or viruses? We can help eliminate threats and secure your system!
         </Feature>
-        <Feature icon="lucide:moon" title="Dark mode">
-          Fully integrated Dark mode gives your users the choice for their favorite viewing mode.
+        <Feature icon="lucide:network" title="Networking">
+          Whether you are looking to upgrade or build out an entirely new network, we got you covered!
         </Feature>
-        <Feature icon="lucide:paintbrush" title="Tailwind 4.0">
-          Use the power of Tailwind to greatly improve your productivity and enhance your developer workflow.
+        <Feature icon="lucide:camera" title="Security">
+          Looking to secure your home or business with cameras or badge access? Rest easy knowing your property is secure!
         </Feature>
-        <Feature icon="lucide:sparkles" title="Prettier">
-          Less worry about formatting your code, let the Astro Prettier integration do the heavy lifting.
+        <Feature icon="lucide:wrench" title="Device Maintenance">
+          Ensure your devices run smoothly and efficiently with our comprehensive maintenance services.
         </Feature>
-        <Feature icon="lucide:code" title="ESLint">
-          Lint your code with strict a11y settings to ensure you stay on track with the WCAG standards.
+        <Feature icon="lucide:hammer" title="Custom PCs">
+          Upgrade your battle station or workstation with our tailored building services!
         </Feature>
-        <Feature icon="lucide:bookmark" title="Blog & portfolio">
-          This theme comes with a fully integrated blog and portfolio, dynamic pages and SEO optimization.
-        </Feature>
-        <Feature icon="lucide:file-text" title="Markdown & MDX">
-          Easily use .md and .mdx pages to build your websites or use it with Netlify CMS.
-        </Feature>
-        <Feature icon="lucide:blocks" title="Design system">
-          The theme offers some very handy utilities to help you build your website faster.
-        </Feature>
+      </div>
+      <div class="services-cta">
+        <a href="/services" class="btn-primary">See All Services</a>
+        <a href="/nfp" class="btn-secondary">Not For Profits</a>
       </div>
     </div>
   </section>
-  <ContentMedia imgSrc="/accessible-components.webp">
-    <Heading level="h2">Accessible components</Heading>
-    <p class="text-2xl">
-      This theme provides plenty of tried and tested Accessible Astro Components. Some are native to this theme and a
-      lot of others are integrated using a <Link
-        isExternal
-        href="https://github.com/incluud/accessible-astro-components">separate package</Link
-      >. They'll get you up and running in building an accessible solution for your visitors.
-    </p>
-  </ContentMedia>
-  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
-    <Heading level="h2">WCAG 2.2 AA compliant</Heading>
-    <p class="text-2xl">
-      Using semantic HTML, landmarks, skip links, screen reader friendly content, aria-labels, keyboard accessible
-      navigation and components, clear outlines and tab indicators and the right color contrast, you're more certain of
-      reaching WCAG AA compliance.
-    </p>
-  </ContentMedia>
-  <section class="my-64">
-    <div class="container grid grid-cols-1 gap-12 md:grid-cols-2">
-      <div class="flex flex-col items-start gap-4">
-        <Heading level="h2">FAQ</Heading>
-        <p class="text-2xl">
-          This section demonstrates how to effectively use the Accordion component to organize and display frequently
-          asked questions in an accessible and user-friendly way.
-        </p>
-        <Link href="/faq" isButton type="primary" animateOnHover animationType="boop">
-          <Icon aria-hidden="true" name="lucide:headset" size=" 1.5rem" />
-          Contact support team
-        </Link>
-      </div>
-      <div class="space-content">
-        <Accordion>
-          <AccordionItem name="exclusive" title="What is WCAG and why is it important?" open>
-            <p>
-              WCAG (Web Content Accessibility Guidelines) is a set of internationally recognized standards for web
-              accessibility. Following WCAG ensures your website is usable by people with various disabilities,
-              including visual, auditory, physical, and cognitive impairments. It's important not just for
-              accessibility, but also for legal compliance, SEO, and reaching a wider audience.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="What's the difference between ARIA labels and alt text?">
-            <p>
-              Alt text is specifically for describing images to screen reader users, while ARIA labels (aria-label,
-              aria-labelledby) can describe any element on a page. Alt text is HTML's native way to provide alternative
-              text for images, while ARIA labels are part of the ARIA specification that helps make dynamic content and
-              advanced UI controls more accessible.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="Why is keyboard navigation important?">
-            <p>
-              Keyboard navigation is essential for users who can't use a mouse, including people with motor
-              disabilities, visual impairments, or those who simply prefer keyboard controls. A website should be fully
-              operable using only a keyboard, with visible focus indicators and logical tab order. This includes being
-              able to access all interactive elements and navigate through content efficiently.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="What is a sufficient color contrast ratio?">
-            <p>
-              According to WCAG 2.2 AA standards, text should have a minimum contrast ratio of 4.5:1 against its
-              background for regular text, and 3:1 for large text (18pt or 14pt bold). For non-text elements like icons
-              or buttons, a minimum ratio of 3:1 is required. This ensures content is readable for users with visual
-              impairments or color blindness.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="How do I make custom components accessible?">
-            <p>
-              To make custom components accessible, focus on these key aspects: use semantic HTML where possible,
-              implement proper keyboard support, add appropriate ARIA attributes, manage focus when needed, and ensure
-              adequate color contrast. Always test with screen readers and keyboard navigation. Consider using
-              established design patterns from the <Link href="https://www.w3.org/WAI/ARIA/apg/patterns/"
-                >ARIA Authoring Practices Guide</Link
-              >.
-            </p>
-          </AccordionItem>
-        </Accordion>
-      </div>
-    </div>
-  </section>
-  <section class="my-64">
-    <div class="space-content container">
-      <Heading level="h2">Our community</Heading>
-      <p class="text-2xl">
-        We're a community of developers who are passionate about making the web more accessible. We're always looking
-        for new ways to improve the accessibility of the web.
-      </p>
-      <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
-        <Avatar initials="RJ" title="Robert Johnson" subtitle="Manager" />
-        <Avatar initials="MT" title="Maria Torres" subtitle="Developer" />
-        <Avatar initials="AK" title="Alex Kim" subtitle="Designer" />
-        <Avatar initials="SL" title="Sarah Lee" subtitle="Content Strategist" />
-        <Avatar initials="JP" title="James Peterson" subtitle="QA Engineer" />
-        <Avatar initials="LW" title="Lisa Wong" subtitle="Product Owner" />
-        <Avatar initials="DM" title="David Martinez" subtitle="UX Researcher" />
-        <Avatar initials="EB" title="Emma Brown" subtitle="Accessibility Specialist" />
-        <Avatar initials="TC" title="Thomas Chen" subtitle="Frontend Developer" />
-      </AvatarGroup>
-    </div>
-  </section>
-  <section class="mt-64 mb-32">
+
+  <!-- What Sets Us Apart -->
+  <section class="differentiators-section">
     <div class="container">
-      <Heading level="h2" class="mb-16">Impact in numbers</Heading>
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <Counter count="900+" title="Stars" sub="On GitHub" />
-        <Counter count="25+" title="Accessible" sub="Components" />
-        <Counter count="400+" title="Commits" sub="Merged" />
-        <Counter count="48+" title="Months" sub="Since launch" />
+      <div class="section-header">
+        <Heading level="h2">What Sets Us Apart</Heading>
+      </div>
+      <div class="differentiators-grid">
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:shield-check" />
+          </div>
+          <h3>Starting on Solid Ground</h3>
+          <p>The tech industry is full of companies that either scam or overcharge for help. We are one of the few trying to change that.</p>
+        </div>
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:heart" />
+          </div>
+          <h3>Our Clients Come First</h3>
+          <p>When you reach out for help, you want someone who will think of you first before profit.</p>
+        </div>
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:megaphone-off" />
+          </div>
+          <h3>No Sales Pitches</h3>
+          <p>Don't you hate when tech companies constantly bug you with sales pitches? So do we.</p>
+        </div>
+        <div class="differentiator-card">
+          <div class="differentiator-icon">
+            <Icon name="lucide:file-check" />
+          </div>
+          <h3>No Surprises</h3>
+          <p>A lot of companies obfuscate invoices and documents. We strive to be as transparent as possible so you aren't surprised.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <Counter count="30+" title="Happy" sub="end users" />
+        <Counter count="7+" title="Happy" sub="small businesses" />
+        <Counter count="10+" title="Years" sub="in service" />
+        <Counter count="4.9" title="Rating" sub="based on user feedback" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <Heading level="h2">What Our Clients Say</Heading>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <Heading level="h2">Ready to Fix Your Tech?</Heading>
+        <p>Get in touch and let's discuss how we can help with your technology needs.</p>
+        <a href="/contact" class="cta-button">Contact Us</a>
       </div>
     </div>
   </section>
 </DefaultLayout>
 
 <style>
-  .avatar {
-    border: 1px solid var(--border-color-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-s);
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-neutral-600);
+    max-width: 600px;
+    margin: 0.75rem auto 0;
+  }
+
+  :global(.darkmode) .section-subtitle {
+    color: var(--color-neutral-400);
+  }
+
+  /* Services Section */
+  .services-section {
+    padding: 5rem 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .services-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 137, 198, 0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--brand-primary);
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--brand-primary);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--brand-primary);
+    color: white;
+  }
+
+  :global(.darkmode) .btn-secondary {
+    color: var(--brand-secondary);
+    border-color: var(--brand-secondary);
+  }
+
+  :global(.darkmode) .btn-secondary:hover {
+    background: var(--brand-secondary);
+    color: var(--color-neutral-900);
+  }
+
+  /* Differentiators Section */
+  .differentiators-section {
+    padding: 5rem 0;
+    background: var(--color-neutral-100);
+  }
+
+  :global(.darkmode) .differentiators-section {
+    background: var(--color-neutral-800);
+  }
+
+  .differentiators-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .differentiators-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .differentiators-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .differentiator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: center;
+    border: 1px solid var(--color-neutral-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .differentiator-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.darkmode) .differentiator-card {
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .differentiator-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .differentiator-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .differentiator-icon :global(svg) {
+    width: 28px;
+    height: 28px;
+    color: white;
+  }
+
+  .differentiator-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode) .differentiator-card h3 {
+    color: var(--color-neutral-100);
+  }
+
+  .differentiator-card p {
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  :global(.darkmode) .differentiator-card p {
+    color: var(--color-neutral-400);
+  }
+
+  /* Stats Section */
+  .stats-section {
+    padding: 4rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    padding: 5rem 0;
+    background: var(--color-neutral-100);
+  }
+
+  :global(.darkmode) .testimonials-section {
+    background: var(--color-neutral-800);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 5rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    border-radius: 16px;
+    padding: 3.5rem 2rem;
+    color: white;
+  }
+
+  .cta-content :global(h2) {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content > p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: white;
+    color: var(--brand-primary);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 640px) {
+    .services-cta {
+      flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
   }
 </style>

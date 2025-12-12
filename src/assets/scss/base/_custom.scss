@@ -1,0 +1,20 @@
+#yt-vids {
+    display: grid;
+    grid: auto auto/auto auto;
+    row-gap: 10px;
+    column-gap: 10px;
+    margin-top: 4rem;
+
+    iframe {
+      aspect-ratio: 16/9;
+    }
+}
+@media (max-width: 960px) {
+    #yt-vids {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    iframe {
+      aspect-ratio: 4/3;
+    }
+}

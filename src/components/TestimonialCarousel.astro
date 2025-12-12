@@ -1,0 +1,264 @@
+---
+import testimonials from '../../public/testimonials.json'
+---
+
+<style lang="scss" is:global>
+
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  .darkmode .carousel {
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-700);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform var(--animation-speed-slow) var(--cubic-bezier);
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    min-width: 80%;
+    box-sizing: border-box;
+    padding: 1.75rem clamp(1rem, 6rem, 10vw);
+    color: var(--foreground-color);
+    text-align: center;
+    flex: 0 0 100%;
+    gap: 1rem;
+  }
+
+
+
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .star-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: color var(--animation-speed-fast);
+  }
+
+  .star-filled {
+    fill: var(--link-color);
+    stroke: var(--link-color);
+  }
+
+  .star-empty {
+    fill: none;
+    stroke: var(--border-color-subtle);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-slide {
+      font-size: 0.9rem;
+      padding: 1.25rem;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Enhanced focus and hover states */
+  .darkmode .star-filled {
+    fill: var(--link-hover-color);
+    stroke: var(--link-hover-color);
+  }
+
+  .darkmode .star-empty {
+    stroke: var(--border-color-subtle);
+  }
+
+  /* Pause/Play Status Indicator */
+  .carousel-status {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .carousel-status.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .carousel-status .status-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .darkmode .carousel-status {
+    background: rgba(255, 255, 255, 0.15);
+  }
+</style>
+
+<!-- Json file lives on the cloud host only and is updated via an api call -->
+<div class="carousel" aria-roledescription="carousel">
+  <div class="carousel-track" id="carousel-track">
+    {testimonials.map((testimonial, index) => (
+      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label={`Slide ${index + 1} of ${testimonials.length}`}>
+        <h3><strong>{testimonial.title}</strong></h3>
+        <blockquote>{testimonial.testimonial}</blockquote>
+        <cite>- {testimonial.name}</cite>
+        <div class="stars" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
+          {Array.from({ length: 5 }, (_, i) => (
+            <svg
+              class={`star-icon ${i < testimonial.rating ? 'star-filled' : 'star-empty'}`}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>
+            </svg>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="carousel-status" id="carousel-status" aria-live="polite" aria-label="Carousel paused">
+    <svg class="status-icon" id="status-icon-pause" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+      <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+    </svg>
+    <svg class="status-icon" id="status-icon-play" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+    </svg>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', function() {
+    let track = document.getElementById('carousel-track');
+    if (!track) return;
+
+    let slides = Array.from(track.children);
+    let carousel = track.parentElement;
+    let statusIndicator = document.getElementById('carousel-status');
+    let pauseIcon = document.getElementById('status-icon-pause');
+    let playIcon = document.getElementById('status-icon-play');
+    let currentIndex = 0;
+    let autoScrollInterval;
+    let isPaused = false;
+    let resumeTimeout;
+    let hideTimeout;
+
+    const moveToSlide = (index) => {
+      let amountToMove = -index * track.clientWidth;
+      track.style.transform = `translateX(${amountToMove}px)`;
+    };
+
+    const updateStatusIndicator = (paused) => {
+      // Clear any pending hide timeout
+      clearTimeout(hideTimeout);
+
+      if (paused) {
+        pauseIcon.style.display = 'block';
+        playIcon.style.display = 'none';
+        statusIndicator.setAttribute('aria-label', 'Carousel paused');
+        statusIndicator.classList.add('visible');
+      } else {
+        pauseIcon.style.display = 'none';
+        playIcon.style.display = 'block';
+        statusIndicator.setAttribute('aria-label', 'Carousel resuming');
+      }
+    };
+
+    const hideStatusIndicator = () => {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        statusIndicator.classList.remove('visible');
+      }, 500);
+    };
+
+    const autoScroll = () => {
+      if (!isPaused) {
+        currentIndex = (currentIndex + 1) % slides.length;
+        moveToSlide(currentIndex);
+      }
+    };
+
+    const startAutoScroll = () => {
+      autoScrollInterval = setInterval(autoScroll, 7000);
+    };
+
+    const stopAutoScroll = () => {
+      clearInterval(autoScrollInterval);
+    };
+
+    const pauseCarousel = () => {
+      isPaused = true;
+      stopAutoScroll();
+      clearTimeout(resumeTimeout);
+      clearTimeout(hideTimeout);
+      updateStatusIndicator(true);
+    };
+
+    const resumeCarousel = () => {
+      // Clear any existing resume timeout
+      clearTimeout(resumeTimeout);
+      clearTimeout(hideTimeout);
+
+      // Show "Resuming..." indicator
+      updateStatusIndicator(false);
+
+      // Resume after 3.5 seconds
+      resumeTimeout = setTimeout(() => {
+        isPaused = false;
+        startAutoScroll();
+        hideStatusIndicator();
+      }, 3500);
+    };
+
+    // Pause on hover/focus
+    carousel.addEventListener('mouseenter', pauseCarousel);
+    carousel.addEventListener('mouseleave', resumeCarousel);
+
+    // Handle focus events for accessibility
+    carousel.addEventListener('focusin', pauseCarousel);
+    carousel.addEventListener('focusout', resumeCarousel);
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      moveToSlide(currentIndex);
+    });
+
+    // Start the carousel
+    startAutoScroll();
+
+    // Cleanup on page transition
+    document.addEventListener('astro:before-swap', () => {
+      stopAutoScroll();
+      clearTimeout(resumeTimeout);
+      clearTimeout(hideTimeout);
+    }, { once: true });
+  });
+</script>

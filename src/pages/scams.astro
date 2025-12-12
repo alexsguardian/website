@@ -1,0 +1,558 @@
+---
+import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import { Notification, Link, Heading } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+---
+
+<DefaultLayout title="Scams">
+  <PageHeader
+    title="Scams"
+    subtitle="Protect yourself from fraud and deception."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <!-- Important Warning Section -->
+  <section class="my-16 container">
+    <div class="space-content">
+      <Notification type="error">
+        <div class="alert-content">
+          <strong class="alert-title">Stop! Did you receive a call from us?</strong>
+          <p>If you received an unexpected call from Alex's Guardian, it was most likely a <strong>scammer spoofing our number</strong>. We do not cold call.</p>
+
+          <div class="alert-details">
+            <div class="alert-section">
+              <strong>Legitimate contact from us:</strong>
+              <ul>
+                <li>Follow ups on an email conversation you initiated</li>
+                <li>Returning a voicemail/text you left</li>
+                <li>Is with an existing client (you'll have a Client ID on past invoices)</li>
+                <li>Comes from <em>@alexsguardian.net</em> emails only</li>
+                <li>Phone: <em>+1 717-573-0627</em></li>
+              </ul>
+            </div>
+
+            <div class="alert-section">
+              <strong>We will NEVER ask for:</strong>
+              <ul class="never-list">
+                <li>Social Security Number</li>
+                <li>Date of Birth</li>
+                <li>Credit Card information</li>
+                <li>Banking information</li>
+              </ul>
+            </div>
+
+            <div class="alert-section">
+              <strong>We ONLY ask for:</strong>
+              <ul class="only-list">
+                <li>Name</li>
+                <li>Callback number</li>
+                <li>Email address</li>
+                <li>Client ID</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="alert-tip"><strong>Tip:</strong> If you're unsure, ask for your Client ID — all legitimate clients have one.</p>
+        </div>
+      </Notification>
+      <Notification type="info">
+        <p>
+          <strong>Been targeted?</strong> If you received a scam call, email, or text from someone pretending to be Alex's Guardian,
+          please <Link href="/contact">report it to us</Link> immediately with as much detail as possible.
+        </p>
+      </Notification>
+    </div>
+  </section>
+
+  <!-- What Is A Scam Section -->
+  <section class="my-16 container">
+    <div class="space-content">
+      <Heading level="h2">What Is A Scammer / Scam?</Heading>
+
+      <p class="intro-highlight">A scammer uses deception to steal your money, information, or both.</p>
+
+      <p>
+        They might contact you by phone, email, text, social media, or fake websites — and they're often very convincing. Their tactics include:
+      </p>
+
+      <ul class="tactics-list">
+        <li><Icon name="lucide:alert-triangle" class="tactic-icon" /> <strong>False promises</strong>and fake urgency ("Act now or lose out!").</li>
+        <li><Icon name="lucide:user-x" class="tactic-icon" /> <strong>Impersonation</strong>of trusted companies, banks, or government agencies.</li>
+        <li><Icon name="lucide:brain" class="tactic-icon" /> <strong>Emotional manipulation</strong>exploiting fear, greed, loneliness, or excitement.</li>
+      </ul>
+
+      <p><strong>Anyone can be targeted.</strong> Staying informed is your best defense.</p>
+
+      <Heading level="h3">Common Scam Types</Heading>
+
+      <div class="scam-types-grid">
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:mail-warning" />
+          </div>
+          <h4>Phishing Scams</h4>
+          <p>Scammers send deceptive emails or messages that appear to be from reputable organizations, such as banks or online services. They aim to trick recipients into providing personal information like passwords, credit card details, or login credentials.</p>
+        </div>
+
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:monitor-smartphone" />
+          </div>
+          <h4>Tech Support Scams</h4>
+          <p>Scammers pretend to be tech support representatives from well-known companies and contact individuals claiming that their computer has a virus. They offer to "help" by gaining access to the victim's computer and may charge fees or steal sensitive data.</p>
+        </div>
+
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:shopping-cart" />
+          </div>
+          <h4>Online Purchase Scams</h4>
+          <p>Scammers set up fake online stores or auction listings to sell products that either don't exist or are significantly different from what is advertised. Victims pay for items but never receive them.</p>
+        </div>
+
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:crown" />
+          </div>
+          <h4>Nigerian Prince Scams</h4>
+          <p>A type of advance-fee scam where the scammer claims to be a wealthy individual and offers to share their fortune. However, the victim needs to pay various fees upfront, which leads to financial loss.</p>
+        </div>
+
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:ticket" />
+          </div>
+          <h4>Lottery or Prize Scams</h4>
+          <p>Scammers inform victims they have won a lottery or prize and ask for payment to cover taxes or processing fees before winnings can be claimed. In reality, there is no prize.</p>
+        </div>
+
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:heart-crack" />
+          </div>
+          <h4>Romance Scams</h4>
+          <p>Also known as "pig butchering," scammers create fake online dating profiles and form romantic relationships with victims. Once trust is established, they request money for various fabricated reasons.</p>
+        </div>
+
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:trending-up" />
+          </div>
+          <h4>Investment Scams</h4>
+          <p>Scammers offer fake investment opportunities promising high returns with little or no risk. Victims invest money, but the scammer disappears with the funds or provides false updates until the scheme collapses.</p>
+        </div>
+
+        <div class="scam-type-card">
+          <div class="scam-type-icon">
+            <Icon name="lucide:landmark" />
+          </div>
+          <h4>IRS Impersonation Scams</h4>
+          <p>Scammers impersonate IRS (or other government agencies) agents and contact individuals, claiming they owe back taxes and must make immediate payments to avoid legal consequences. They use fear and urgency to pressure victims.</p>
+        </div>
+      </div>
+
+      <p>
+        These are just a few examples of the many scams that exist. It's crucial to stay informed and vigilant to protect
+        yourself from falling victim to these fraudulent schemes. Remember to verify information, be cautious with
+        personal data, and report any suspicious activities to relevant authorities.
+      </p>
+
+      <Heading level="h3">Learn More</Heading>
+      <div class="resource-links">
+        <a href="https://en.wikipedia.org/wiki/Scam_(disambiguation)" target="_blank" rel="noopener noreferrer" class="resource-link">
+          <Icon name="lucide:external-link" />
+          <span>Wikipedia: Scams & Fraud</span>
+        </a>
+        <a href="https://en.wikipedia.org/wiki/Fraud" target="_blank" rel="noopener noreferrer" class="resource-link">
+          <Icon name="lucide:external-link" />
+          <span>Wikipedia: Fraud</span>
+        </a>
+        <a href="https://en.wikipedia.org/wiki/Internet_fraud" target="_blank" rel="noopener noreferrer" class="resource-link">
+          <Icon name="lucide:external-link" />
+          <span>Wikipedia: Internet Fraud</span>
+        </a>
+        <a href="https://consumer.ftc.gov/articles/what-do-if-you-were-scammed" target="_blank" rel="noopener noreferrer" class="resource-link">
+          <Icon name="lucide:external-link" />
+          <span>FTC: What To Do if You Were Scammed</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scam Baiting Section -->
+  <section class="my-16 container">
+    <div class="space-content">
+      <Heading level="h2">What Is Scam Baiting?</Heading>
+
+      <p class="intro-highlight">Fighting back against scammers — one wasted hour at a time.</p>
+
+      <p>
+        Scam baiters are individuals who deliberately engage with scammers to waste their time, expose their tactics, and protect potential victims. Using fake personas, they lead scammers on wild goose chases — time a scammer spends with a baiter is time they can't spend targeting real victims.
+      </p>
+
+      <div class="baiter-goals">
+        <div class="baiter-goal">
+          <Icon name="lucide:clock" />
+          <div>
+            <h4>Waste Scammers' Time</h4>
+            <p>Every minute a scammer spends with a baiter is a minute they can't scam real victims.</p>
+          </div>
+        </div>
+        <div class="baiter-goal">
+          <Icon name="lucide:search" />
+          <div>
+            <h4>Gather Intelligence</h4>
+            <p>Baiters collect information about scam operations, sometimes even accessing scammers' systems.</p>
+          </div>
+        </div>
+        <div class="baiter-goal">
+          <Icon name="lucide:megaphone" />
+          <div>
+            <h4>Raise Awareness</h4>
+            <p>By sharing recordings and stories, they educate the public about how scams work.</p>
+          </div>
+        </div>
+        <div class="baiter-goal">
+          <Icon name="lucide:shield-check" />
+          <div>
+            <h4>Get Scammers Shut Down</h4>
+            <p>Some baiters work with authorities to take down scam call centers entirely.</p>
+          </div>
+        </div>
+      </div>
+
+      <Notification type="warning">
+        <p>
+          <strong>Don't try this at home!</strong> Scam baiting carries real risks including retaliation and harassment. Professional baiters take extensive precautions to protect their identity. If you encounter a scam, simply hang up and report it.
+        </p>
+      </Notification>
+
+      <Heading level="h3">Watch Scam Baiters in Action</Heading>
+      <p>Curious to see how scam baiters work? Check out these videos from some of the most popular scam baiters on YouTube:</p>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/_3RBNNbMhqs?si=MwI4ygr0ZvvviNxs"
+            title="Scammer Payback - YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+          <p class="video-label">Scammer Payback</p>
+        </div>
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/vu-Y1h9rTUs?si=BL054ZNXVratT6V-"
+            title="Jim Browning - YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+          <p class="video-label">Jim Browning</p>
+        </div>
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/gtFEBY_9J30?si=MUjrIO72QFgePwzH"
+            title="Kitboga - YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+          <p class="video-label">Kitboga</p>
+        </div>
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/JlwQ2tPNSS8?si=Sk2s4YqDJVcPoM43"
+            title="Pleasant Green - YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+          <p class="video-label">Pleasant Green</p>
+        </div>
+        <div class="video-card">
+          <iframe
+            src="https://www.youtube.com/embed/qmd_gIFTLTo"
+            title="Scambaiter - YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+          <p class="video-label">Scambaiter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  /* Alert Notification Styles */
+  .alert-content {
+    text-align: left;
+  }
+
+  .alert-title {
+    font-size: var(--font-size-1);
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .alert-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-m);
+    margin-block: var(--space-m);
+    padding: var(--space-s);
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-large);
+  }
+
+  .alert-section strong {
+    display: block;
+    margin-bottom: var(--space-2xs);
+    font-size: var(--font-size--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .alert-section ul {
+    margin: 0;
+    padding-left: var(--space-m);
+    font-size: var(--font-size--1);
+  }
+
+  .alert-section li {
+    margin-bottom: var(--space-3xs);
+  }
+
+  .alert-tip {
+    margin-top: var(--space-s);
+    padding: var(--space-xs) var(--space-s);
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-small);
+    font-size: var(--font-size--1);
+  }
+
+  /* Intro Section */
+  .intro-highlight {
+    font-size: var(--font-size-2);
+    font-weight: 600;
+    color: var(--link-color);
+    margin-bottom: var(--space-s);
+  }
+
+  .tactics-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-m) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .tactics-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    padding: var(--space-s);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    font-size: var(--font-size-0);
+  }
+
+  :global(.darkmode) .tactics-list li {
+    background-color: var(--color-neutral-800);
+  }
+
+  .tactics-list :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--link-color);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Baiter Goals */
+  .baiter-goals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-m);
+    margin-block: var(--space-l);
+  }
+
+  .baiter-goal {
+    display: flex;
+    gap: var(--space-s);
+    padding: var(--space-m);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    transition: transform 0.15s ease;
+  }
+
+  .baiter-goal:hover {
+    transform: translateY(-2px);
+  }
+
+  :global(.darkmode) .baiter-goal {
+    background-color: var(--color-neutral-800);
+  }
+
+  .baiter-goal > :global(svg) {
+    width: 2rem;
+    height: 2rem;
+    color: var(--link-color);
+    flex-shrink: 0;
+  }
+
+  .baiter-goal h4 {
+    margin: 0 0 var(--space-2xs) 0;
+    font-size: var(--font-size-0);
+    font-weight: 600;
+    color: var(--link-color);
+  }
+
+  .baiter-goal p {
+    margin: 0;
+    font-size: var(--font-size--1);
+    color: var(--foreground-color);
+    line-height: 1.5;
+  }
+
+  /* Scam Types Grid */
+  .scam-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-m);
+    margin-block: var(--space-l);
+  }
+
+  .scam-type-card {
+    padding: var(--space-m);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    border-left: 4px solid var(--link-color);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .scam-type-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.darkmode) .scam-type-card {
+    background-color: var(--color-neutral-800);
+  }
+
+  .scam-type-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+    border-radius: var(--radius-large);
+    margin-bottom: var(--space-xs);
+  }
+
+  .scam-type-icon :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-neutral-100);
+  }
+
+  .scam-type-card h4 {
+    color: var(--link-color);
+    margin: 0 0 var(--space-xs) 0;
+    font-weight: 600;
+    font-size: var(--font-size-0);
+  }
+
+  .scam-type-card p {
+    margin: 0;
+    color: var(--foreground-color);
+    font-size: var(--font-size--1);
+    line-height: 1.6;
+  }
+
+  /* Resource Links */
+  .resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-block: var(--space-m);
+  }
+
+  .resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-xs) var(--space-s);
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    color: var(--foreground-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--font-size--1);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .resource-link:hover {
+    background-color: var(--color-primary-100);
+    transform: translateY(-1px);
+  }
+
+  :global(.darkmode) .resource-link {
+    background-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .resource-link:hover {
+    background-color: var(--color-primary-400);
+  }
+
+  .resource-link :global(svg) {
+    width: 1rem;
+    height: 1rem;
+    color: var(--link-color);
+  }
+
+  /* Video Grid */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-m);
+    margin-block: var(--space-l);
+  }
+
+  .video-card {
+    background-color: var(--color-neutral-200);
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .video-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  :global(.darkmode) .video-card {
+    background-color: var(--color-neutral-800);
+  }
+
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+  }
+
+  .video-label {
+    margin: 0;
+    padding: var(--space-s) var(--space-m);
+    font-weight: 600;
+    color: var(--foreground-color);
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Heading, Link, Notification } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+---
+
+<DefaultLayout title="Form Error" showCallToAction={false}>
+  <PageHeader
+    title="Form Error"
+    subtitle="There was a problem sending your message."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+  <section class="container my-16">
+    <div class="space-content">
+      <Notification type="error">
+        <p>
+          It looks like your message failed to send. Please try again or if you are experiencing consistent issues
+          please reach out to: <Link href="mailto:webmaster@alexsguardian.net">webmaster@alexsguardian.net</Link>.
+        </p>
+      </Notification>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <Link href="/" isButton type="primary" animateOnHover animation="boop" pulse>
+          <Icon aria-hidden="true" name="lucide:home" size={24} />
+          Home
+        </Link>
+        <Link href="/contact" isButton type="default" animateOnHover animation="boop" pulse>
+          <Icon aria-hidden="true" name="lucide:mail" size={24} />
+          Send another message
+        </Link>
+      </div>
+    </div>
+    <div class="my-16">
+      <Heading level="h3" class="mb-4">Troubleshooting:</Heading>
+      <ul class="list-inside list-disc">
+        <li>Ensure all required fields are filled out correctly.</li>
+        <li>Disable your ad blocker temporarily.</li>
+        <li>Load the page in a different browser or private window.</li>
+      </ul>
+    </div>
+  </section>
+</DefaultLayout>
