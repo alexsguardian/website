@@ -1,7 +1,8 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import { Form, Input, Button, Textarea } from 'accessible-astro-components'
+import { Form, Input, Button, Textarea, Heading } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
 
 const isLocalhost = import.meta.env.IS_LOCAL
 const isDev = import.meta.env.DEV
@@ -30,9 +31,59 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
     bgType="gradient"
     showBreadcrumbs={false}
   />
-  <section class="mx-auto mb-12 max-w-3xl px-4 sm:px-6 lg:px-8">
-    <div>
-      <div class="space-content p-4 sm:p-6">
+
+  <section class="container my-16">
+    <div class="contact-layout">
+      <!-- Contact Info Sidebar -->
+      <div class="contact-info">
+        <Heading level="h2">Get In Touch</Heading>
+        <p class="intro-text">Have a question or need help with your technology? We're here for you.</p>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-icon">
+              <Icon name="lucide:mail" />
+            </div>
+            <div>
+              <h3>Email</h3>
+              <p>info@alexsguardian.net</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <Icon name="lucide:phone" />
+            </div>
+            <div>
+              <h3>Phone</h3>
+              <p>(717) 573-0627</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <Icon name="lucide:clock" />
+            </div>
+            <div>
+              <h3>Response Time</h3>
+              <p>Usually within 24 hours</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <Icon name="lucide:map-pin" />
+            </div>
+            <div>
+              <h3>Service Area</h3>
+              <p>Manheim, PA &amp; surrounding areas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
         <Form name="contact" action={FORM_URL} method="POST">
           <!-- Formspark stuff -->
           <input type="hidden" name="_redirect" value={`${baseURL}form-success/`} />
@@ -41,31 +92,43 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
           <input type="hidden" name="_email.subject" value="New Website Contact Form Submission" />
           <input type="checkbox" name="_honeypot" value="Are you real?" style="display:none" tabindex="-1" autocomplete="off" />
           <!-- End Formspark stuff -->
-          <Input
-            id="name"
-            type="name"
-            name="name"
-            label="Name"
-            required
-            data-validation="We need your name to address you correctly"
-            autocomplete="name"
-          />
 
-          <Input name="email" type="email" id="email" label="Email address" required autocomplete="email" />
+          <div class="form-group">
+            <Input
+              id="name"
+              type="name"
+              name="name"
+              label="Name"
+              required
+              data-validation="We need your name to address you correctly"
+              autocomplete="name"
+            />
+          </div>
 
-          <Input
-            name="phone"
-            id="phone"
-            label="Phone number (123-456-7890)"
-            type="tel"
-            data-validation-pattern="^(?:[0-9]{10}|1-[0-9]{3}-[0-9]{3}-[0-9]{4})$"
-          />
+          <div class="form-group">
+            <Input name="email" type="email" id="email" label="Email address" required autocomplete="email" />
+          </div>
 
-          <Textarea name="message" id="message" label="Message" required />
+          <div class="form-group">
+            <Input
+              name="phone"
+              id="phone"
+              label="Phone number (123-456-7890)"
+              type="tel"
+              data-validation-pattern="^(?:[0-9]{10}|1-[0-9]{3}-[0-9]{3}-[0-9]{4})$"
+            />
+          </div>
 
-          <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
-            <Button id="submit-btn" htmlType="submit" type="primary" size="md" data-dev={isDev}>Send Message</Button>
-            <div id="cf-turnstile" class="max-w-full pt-2" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1">
+          <div class="form-group">
+            <Textarea name="message" id="message" label="Message" required />
+          </div>
+
+          <div class="form-actions">
+            <Button id="submit-btn" htmlType="submit" type="primary" size="md" data-dev={isDev}>
+              <Icon name="lucide:send" />
+              Send Message
+            </Button>
+            <div id="cf-turnstile" class="turnstile-widget" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1">
             </div>
           </div>
         </Form>
@@ -73,6 +136,218 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
     </div>
   </section>
 </DefaultLayout>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-layout {
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+    }
+  }
+
+  /* Contact Info Sidebar */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .intro-text {
+    color: var(--color-neutral-600);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  :global(.darkmode) .intro-text {
+    color: var(--color-neutral-400);
+  }
+
+  .info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-neutral-100);
+    border-radius: 12px;
+    border: 1px solid var(--color-neutral-200);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  :global(.darkmode) .info-card {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  :global(.darkmode) .info-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .info-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-icon :global(svg) {
+    width: 22px;
+    height: 22px;
+    color: white;
+  }
+
+  .info-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+    color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode) .info-card h3 {
+    color: var(--color-neutral-100);
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+    color: var(--color-neutral-600);
+    margin: 0;
+  }
+
+  :global(.darkmode) .info-card p {
+    color: var(--color-neutral-400);
+  }
+
+  /* Contact Form */
+  .contact-form-wrapper {
+    background: var(--color-neutral-100);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  :global(.darkmode) .contact-form-wrapper {
+    background: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group :global(label) {
+    font-weight: 500;
+    color: var(--color-neutral-700);
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.darkmode) .form-group :global(label) {
+    color: var(--color-neutral-300);
+  }
+
+  .form-group :global(input),
+  .form-group :global(textarea) {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-neutral-300);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-group :global(input:focus),
+  .form-group :global(textarea:focus) {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(99, 137, 198, 0.15);
+  }
+
+  :global(.darkmode) .form-group :global(input),
+  :global(.darkmode) .form-group :global(textarea) {
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-600);
+    color: var(--color-neutral-100);
+  }
+
+  :global(.darkmode) .form-group :global(input:focus),
+  :global(.darkmode) .form-group :global(textarea:focus) {
+    border-color: var(--brand-secondary);
+    box-shadow: 0 0 0 3px rgba(149, 80, 160, 0.15);
+  }
+
+  .form-group :global(textarea) {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .form-actions {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .form-actions :global(button) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    color: white;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .form-actions :global(button:hover:not(:disabled)) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 137, 198, 0.4);
+  }
+
+  .form-actions :global(button:disabled) {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-actions :global(button svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  .turnstile-widget {
+    max-width: 100%;
+  }
+</style>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
 
