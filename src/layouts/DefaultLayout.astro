@@ -14,6 +14,8 @@ const {
   author = '',
   showCallToAction = true,
 } = Astro.props
+
+const ga_key = import.meta.env.GA_KEY || '';
 ---
 
 <html lang="en" dir="ltr">
@@ -30,6 +32,15 @@ const {
     <!-- Enable Astro View Transitions for all browsers -->
     <ClientRouter />
   </head>
+
+    <script type="text/partytown" async src={`https://www.googletagmanager.com/gtag/js?id=${ga_key}`}></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${ga_key}');
+    </script>
+
   <body>
     <Header />
     <main id="main-content" transition:animate="fade">

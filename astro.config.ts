@@ -8,19 +8,16 @@ import tailwindcss from '@tailwindcss/vite'
 import itsmatteomanfsecurityTxt from '@itsmatteomanf/astro-security-txt'
 
 
+import partytown from '@astrojs/partytown';
+
+
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
   site: 'https://alexsguardian.net',
-  integrations: [
-    compress(),
-    icon(),
-    mdx(),
-    sitemap(),
-    itsmatteomanfsecurityTxt({
-      contact: 'mailto:webmaster@alexsguardian.net'
-    })
-  ],
+  integrations: [compress(), icon(), mdx(), sitemap(), itsmatteomanfsecurityTxt({
+    contact: 'mailto:webmaster@alexsguardian.net'
+  }), partytown()],
   vite: {
     css: {
       preprocessorOptions: {
