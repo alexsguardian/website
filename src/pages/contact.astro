@@ -106,7 +106,7 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
           </div>
 
           <div class="form-group">
-            <Input name="email" type="email" id="email" label="Email address" required autocomplete="email" />
+            <Input name="email" type="email" id="email" label="Email address" required autocomplete="email" maxlength="254" />
           </div>
 
           <div class="form-group">
@@ -116,11 +116,12 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
               label="Phone number (123-456-7890)"
               type="tel"
               data-validation-pattern="^(?:[0-9]{10}|1-[0-9]{3}-[0-9]{3}-[0-9]{4})$"
+              maxlength="12"
             />
           </div>
 
           <div class="form-group">
-            <Textarea name="message" id="message" label="Message" required />
+            <Textarea name="message" id="message" label="Message" required maxlength="500" />
           </div>
 
           <div class="form-actions">
